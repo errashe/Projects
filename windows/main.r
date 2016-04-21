@@ -80,7 +80,7 @@ kayzer_bessel <- function(N, a) {
 }
 
 a <- seq(-10, 10, 0.1)
-b <- sin(2*a) * sin(a/2)
+b <- sin(a)
 
 n <- length(b)
 cnt <- 0

@@ -1,0 +1,602 @@
+Catalog of key Windows kernel data structures
+During our Windows internals and debugging classes, students frequently ask us questions along the lines of - What data structure does the Windows kernel use for a mutex?. This article attempts to answer such questions by describing some of the key data structures that are used by the Windows kernel and device drivers.
+
+This article lays emphasis on the relationship of a structure with others in the system, helping the reader navigate through these structures in the kernel debugger. While reading this article, the reader is encouraged to have a kernel debugger readily available to try out the debugger commands and examine the structures and their fields. This article is intended to be a reference, not a tutorial.
+
+For each structure, this article provides a high level description of the structure, followed by details of some of the important fields that point to other structures. If applicable, debugger commands that apply to the structure and functions that manipulate the structure are provided. Most of the data structures mentioned in this article are allocated by the kernel from paged or non-paged pool, which is a part of the kernel virtual address space.
+
+The following data structures are discussed in this document, click on any of them to directly go to the description.
+
+Doubly Linked List :	LIST_ENTRY
+Process and Thread :	EPROCESS, KPROCESS, ETHREAD, KTHREAD
+Kernel and HAL :	KPCR, KINTERRUPT, CONTEXT, KTRAP_FRAME, KDPC, KAPC, KAPC_STATE
+Synchronization Objects :	DISPATCHER_HEADER, KEVENT, KSEMAPHORE, KMUTANT, KTIMER, KGATE, KQUEUE
+Executive & RTL :	IO_WORKITEM	
+I/O Manager :	IRP, IO_STACK_LOCATION, DRIVER_OBJECT, DEVICE_OBJECT, DEVICE_NODE, FILE_OBJECT
+Objects and Handles :	OBJECT_HEADER, OBJECT_TYPE, HANDLE_TABLE_ENTRY
+Memory Manager :	MDL, MMPTE, MMPFN, MMPFNLIST, MMWSL, MMWSLE, POOL_HEADER, MMVAD
+Cache Manager :	VACB, VACB_ARRAY_HEADER, SHARED_CACHE_MAP, PRIVATE_CACHE_MAP, SECTION_OBJECT_POINTERS
+Doubly Linked List
+
+nt!_LIST_ENTRY
+
+Most data structures in the Windows kernel are maintained in linked lists where in a list head points to a collection of list elements or entries. The LIST_ENTRY structure is used to implement these circular doubly linked lists. The LIST_ENTRY structure is used as the anchor or head of the list as well as the link that is used to maintain the individual elements in the list. The LIST_ENTRY structure is typically embedded in a larger structure that represents an individual element in the list.
+
+
+Figure : Data Structures in a Doubly Linked List
+The debugger's "dt -l" command walks a linked list using any of the embedded LIST_ENTRY structures and displays all the elements in the list. The "dl" and "db" commands walk a doubly linked list in the forward or backward direction and so do the "!dflink" and "!dblink" commands.
+
+APIs : InitializeListHead(), IsListEmpty(), InsertHeadList(), InsertTailList(), RemoveHeadList(), RemoveTailList(), RemoveEntryList(), ExInterlockedInsertHeadList(), ExInterlockedInsertTailList(), ExInterlockedRemoveHeadList()
+
+Process and Thread
+
+nt!_EPROCESS
+
+The Windows Kernel uses the EPROCESS structure to represent a process and contains all the information that the kernel needs to maintain about the process. There is an EPROCESS structure for every process running in the system including the System Process and the System Idle Process, the two processes that run in the kernel.
+
+The EPROCESS structure belongs to the executive component of the kernel and contains process resource related information like handle table, virtual memory, security, debugging, exception, creation information, I/O transfer statistics, process timing etc.
+
+The pointer to the EPROCESS structure for the system process is stored in nt!PsInitialSystemProcess and that of the SystemIdle process is stored nt!PsIdleProcess.
+
+Any process may simultaneously belong to multiple sets or groups. For example, a process is always in the list of processes that are active in the system, a process may belong to the set of processes running inside a session and a process may be the part of a job. In order to implement these sets or groups, EPROCESS structures are maintained as a part of multiple lists using different fields in the structure.
+
+The ActiveProcessLink field is used to maintain the EPROCESS structure is the list of processes in the system, and the head of this list is kept in the kernel variable nt!PsActiveProcessHead. Similarly, the SessionProcessLinks field is used to link the EPROCESS structure to a list of processes in a session whose list head is in MM_SESSION_SPACE.ProcessList. And the JobLinks field is used to link the EPROCESS to a list of processes that are a part of a job whose list head is in EJOB.ProcessListHead. The memory manager global variable MmProcessList maintains a list of processes using the MmProcessLinks field. This list is traversed by MiReplicatePteChange() to update the kernel mode portion of the process's virtual address space.
+
+A list of all threads that belong to a process is maintained in ThreadListHead in which threads are queued via ETHREAD.ThreadListEntry.
+
+The kernel variable ExpTimerResolutionListHead maintains a list of processes that have called NtSetTimerResolution() to change the timer interval. This list is used by ExpUpdateTimerResolution() to update the time resolution to the lowest requested value amongst all the processes.
+
+The "!process" command displays information from the EPROCESS structure. The ".process" command switches the debugger's virtual address space context to that of a particular process, this is a very critical step when examining user mode virtual address in a complete kernel dump or while live debugging a system using a kernel debugger.
+
+APIs : ZwOpenProcess(), ZwTerminateProcess(), ZwQueryInformationProcess(), ZwSetInformationProcess(), PsSuspendProcess(),PsResumeProcess(), PsGetProcessCreateTimeQuadPart(), PsSetCreateProcessNotifyRoutineEx(), PsLookupProcessByProcessId(), PsGetCurrentProcess(), PsGetCurrentProcessId(), PsGetCurrentProcessSessionId(), PsGetCurrentProcessWin32Process(), PsGetCurrentProcessWow64Process(), PsGetCurrentThreadProcess(), PsGetCurrentThreadProcessId(), PsGetProcessCreateTimeQuadPart(), PsGetProcessDebugPort(), PsGetProcessExitProcessCalled(), PsGetProcessExitStatus(), PsGetProcessExitTime(), PsGetProcessId(), PsGetProcessImageFileName(), PsGetProcessInheritedFromUniqueProcessId(), PsGetProcessJob(), PsGetProcessPeb(), PsGetProcessPriorityClass(), PsGetProcessSectionBaseAddress(), PsGetProcessSecurityPort(), PsGetProcessSessionIdEx(), PsGetProcessWin32Process(), PsGetProcessWin32WindowStation(), PsGetProcessWow64Process()
+
+nt!_KPROCESS
+
+The KPROCESS structure which is embedded inside the EPROCESS structure, and stored in the EPROCESS.Pcb field, is used by the lower layers of the kernel and contains scheduling related information like threads, quantum, priority and execution times.
+
+The field ProfileListHead contains list of profile objects that have been created for this process. This list is used by the profile interrupt to record the instruction pointer for profiling.
+
+The field ReadyListHead is list of threads that are ready to run in this process. This list is non-empty only for processes that are non-resident in memory. KTHREAD data structures of ready threads are linked to this list via the KTHREAD.WaitListEntry field.
+
+The field ThreadListHead is the list of all threads in the process. KTHREAD data structures are linked to this list via the KTHREAD.ThreadListEntry. This is used by the kernel to find all the threads in the process.
+
+The field JobLinks is the list of processes that are part of a job are queued together in a linked list with head of the list at EJOB. ProcessListHead.
+
+nt!_ETHREAD
+
+The Windows Kernel uses the ETHREAD structure to represent a thread and for every thread in the system there is an ETHREAD structure, including threads in the System Idle Process.
+
+ETHREAD structure belongs to the executive component of the kernel and contains information that other executive components like I/O manager, security reference monitor, memory mange, Advanced Local Procedure Call (ALPC) manager need to maintain about a thread.
+
+The Tcb field contains the KTHREAD structure embedded in the ETHREAD and used to store information related to thread scheduling.
+
+Every process stores the list of ETHREAD structures, representing threads running in the process, in the TheadListHead field of the EPROCESS structure. ETHREAD structures are linked to this list via the ThreadListEntry their fields.
+
+The KeyedWaitChain field is used to maintain the thread in the list of threads that are waiting on a particular keyed event. The function
+
+The IrpList is a list of IRPs representing I/O requests generated by this thread that are currently pending in various drivers in the system. These are the list of IRPs will have to be cancelled when the thread terminates.
+
+The CallbackListHead field is used to store a linked list of Registry callbacks that would be invoked in order to notify registry filter drivers about registry operations the thread is performing. This field is valid between the pre and post notification registry callbacks. The PostBlockList field is used
+
+The Win32StartAddress is the address to the thread's top level function i.e. the function that was passed in the CreateThread() for user mode threads and PsCreateSystemThread() for kernel mode threads.
+
+The ActiveTimerListHead is the head of the list of timers that are set as active (will expire after a certain period) by the current thread. The ActiveTimerListLock protects this list and the ETIMER.ActiveTimerListEntry field is used to queue the timer object to this list by the function ExpSetTimer().
+
+The debugger's "!thread", shows information about a thread. The ".thread" command switches the debugger's CPU register context to that of a particular thread.
+
+APIs : PsCreateSystemThread(), PsTerminateSystemThread(), PsGetCurrentThreadId(), PsSetCreateThreadNotifyRoutine(), PsRemoveCreateThreadNotifyRoutine(), PsLookupThreadByThreadId(), PsIsSystemThread(), PsIsThreadTerminating(), ZwCurrentThread()
+
+nt!_KTHREAD
+
+The KTHREAD structure which is embedded inside the ETHREAD structure, and stored in the ETHREAD.Tcb field, is used by the lower layers of the kernel and contains information like thread stacks, scheduling, APCs, system calls, priority, execution times etc.
+
+The QueueListEntry field is used to link threads that are associated with a KQUEUE data structure, the field KQUEUE.ThreadListHead is the head of this list. KQUEUE structures are used to implement executive worker queues (EX_WORK_QUEUE) and I/O completion ports. This is used by functions like KiCommitThreadWait() to activate other threads in a worker queue when the current worker thread associate with the queue waits on something other than a work queue.
+
+The MutantListHead field is used to maintain a list of mutexes that the thread has acquired. The function KiRundownMutants() uses this list to detect if a thread terminates before releasing all the mutexes it owns in which case it crashes the system with the bugcheck THREAD_TERMINATE_HELD_MUTEX.
+
+The Win32Thread field points to the Win32K.sys structure W32THREAD when a user mode thread gets converted to a User Interface (UI) thread when it makes a call into USER32 or GDI32 APIs. The function PsConvertToGuiThread() performs this conversion. The Win32K.sys function AllocateW32Thread() calls PsSetThreadWin32Thread() to set the value of the Win32Thread field. The size of the structure allocate per thread is stored in Win32K.sys variable W32ThreadSize.
+
+The WaitBlock field is an array of 4 KWAIT_BLOCK structures that the thread uses to wait on native kernel objects. One of the KWAIT_BLOCKs is reserved for implementing waits with timeouts and hence can only point to KTIMER objects.
+
+The WaitBlockList field points to an array of KWAIT_BLOCK structures that the thread uses to wait on one or more objects. This field is set by the function KiCommitThreadWait() right before the thread actually enters into its wait state. If the number of objects the thread us waiting on are less than THREAD_WAIT_OBJECTS(3), WaitBlockList might either point to the built in WaitBlock[] array, but if the number of objects are more than THREAD_WAIT_OBJECTS but less than MAXIMUM_WAIT_OBJECTS(64) then WaitBlockList points to an externally allocated array of KWAIT_BLOCKs. ObpWaitForMultipleObjects() is one of the functions that allocates the KWAIT_BLOCK array with the tag 'Wait'.
+
+The WaitListEntry field is used to add the KTHREAD structure to the list of threads that have entered into a wait state on a particular CPU. The WaitListHead field of the Kernel Processor Control Region (KPRCB) structure for every CPU links such threads together via the KTHREAD.WaitListEntry field. Threads are added to this list by the function KiCommitThreadWait() and removed from this list by KiSignalThread().
+
+API: KeWaitForSingleObject(), KeWaitForMultipleObject(), KeSetBasePriorityThread(), KeGetCurrentThread(), KeQueryPriorityThread(), KeQueryRuntimeThread(), KeSetSystemGroupAffinityThread(), KeRevertToUserAffinityThreadEx(), KeRevertToUserGroupAffinityThread(), KeDelayExecutionThread(), KeSetSystemAffinityThreadEx(), KeSetIdealProcessorThread(), KeSetKernelStackSwapEnable()
+
+Kernel and HAL
+
+nt!_KPCR
+
+KPCR represents the Kernel Processor Control Region. The KPCR contains per-CPU information which is shared by the kernel and the HAL. There are as many KPCR in the system as there are CPUs.
+
+The KPCR of the current CPU is always accessible at fs:[0] on the x86 systems and gs:[0] on x64 systems. Commonly used kernel functions like PsGetCurrentProcess() and KeGetCurrentThread() retrieve information from the KPCR using the FS/GS relative accesses.
+
+The Prcb field contains an embedded KPRCB structure that represents the Kernel Processor Control Block.
+
+The debugger's "!pcr" command displays partial contents of the PCR.
+
+nt!_KINTERRUPT
+
+Interrupt Service Routines (ISRs) execute on the CPU when whenever an interrupt or exception occurs. The Interrupt Descriptor Table (IDT) is a CPU defined data structure that points to the ISRs registered by the kernel. This IDT is used by the CPU hardware to lookup the ISR and dispatch it during an interrupt or exception. The IDT has 256 entries each one of which points to an ISR. The interrupt vector is the index of a particular slot in the IDT. The KINTERRUPT structure represents a driver's registration of an ISR for one of these vectors.
+
+The field DispatchCode is an array of bytes containing the first few instructions of the interrupt servicing code. The IDT entry for a particular vector points directly to the DispatchCode array which in turn calls the function pointed to by DispatchAddress. This function is typically KiInterruptDispatch() and is responsible for setting up the environment required to call the driver supplied ISR pointed to by the ServiceRoutine field.
+
+For Message Signaled Interrupts (MSIs) the ServiceRoutine field points to the kernel wrapper function KiInterruptMessageDispatch() which invokes the driver provided MSI interrupt service routine pointed to by MessageServiceRoutine.
+
+The ActualLock field points to the spinlock lock that is acquired at the IQRL in the field SynchronizeIrql before invoking the driver supplied ISR.
+
+Due to interrupt sharing on the PCI bus multiple KINTERRUPT data structures can be registered for a single Interrupt Request Line (IRQ). The IDT entry for such shared interrupt vectors point to the first KINTERUPT structure and the other KINTERRUPT structures are chained to the first one using the InterruptListEntry field.
+
+The debugger's "!idt -a" command displays the entire Interrupt Description Table of a particular CPU.
+
+API: IoConnectInterrupt(), IoConnectInterruptEx(), IoDisconnectInterrupt(), IoDisconnectInterruptEx(), KeAcquireInterruptSpinLock(), KeReleaseInterruptSpinLock(), KeSynchronizeExecution()
+
+nt!_CONTEXT
+
+This CONTEXT structure stores the CPU dependent part of an exception context which comprises of the CPU registers and is used by functions like KiDispatchException() to dispatch exceptions.
+
+The partial contents of the CONTEXT structure are populated from the registers captured in the KTRAP_FRAME structure by the function KeContextFromKframes(). Likewise after the exception has been dispatched the modified contents of the CONTEXT structure are restored back into the KTRAP_FRAME by the KeContextToKframes(). This mechanism is used in the implementation of structured exception handling (SEH).
+
+The ContextFlags field is a bitmask that determines which fields of the CONTEXT structure contain valid data. For example CONTEXT_SEGMENTS indicates that the segment registers in the context structure are valid.
+
+The debugger's ".cxr" command switches the debugger's current register context to that stored in a CONTEXT structure.
+
+API : RtlCaptureContext()
+
+nt!_KTRAP_FRAME
+
+KTRAP_FRAME is used to save the contents of the CPU's registers during exception or interrupt handling. KTRAP_FRAME structures are typically allocated on the kernel mode stack of the thread. A small part of the trap frame is populated by the CPU as a part of its own interrupt and exception handling, the rest of the trap frame is created by the software exception and interrupt handler provided by Windows i.e. functions like KiTrap0E() or KiPageFault and KiInterruptDispatch(). On the X64 CPU, some fields in the trap frame that contain non-volatile register values are not populated by the exception handlers.
+
+The debugger's ".trap" command switches the debugger's current register context to that stored in a KTRAP_FRAME structure.
+
+nt!_KDPC
+
+DPC Routines are used to postpone interrupt processing to IRQL DISPATCH_LEVEL. This reduces the amount of time a particular CPU has to spend at high IRQL i.e. DIRQLx. DPCs are also used to notify kernel components about expired timers. Interrupt service routines (ISRs) and timers request DPCs.
+
+KDPC represents a Deferred Procedure Call (DPC) data structure that contains a pointer to a driver supplied routine that would be called at IRQL DISPATCH_LEVEL in arbitrary thread context.
+
+Unlike interrupt service routines that execute on the stack of the thread that got interrupted DPC routines execute on a per-CPU DPC stack that is stored in KPCR.PrcbData.DpcStack.
+
+The DEVICE_OBJECT structure has a KDPC structure built in the field Dpc and is used to request DPC routine from ISRs.
+
+KDPC structures are maintained in a per-CPU DPC queue. The PrcbData.DpcData[0] field of the KPCR data structure contains the head of this list. The DpcListEntry field of the KDPC is used to maintain the DPC in this list.
+
+The debugger "!pcr" and "!dpcs" command displays information about DPC routines for a single processor.
+
+API : IoRequestDpc(), IoInitializeDpcRequest(), KeInitializeDpc(), KeInsertQueueDpc(), KeRemoveQueueDpc(), KeSetTargetProcessorDpcEx()
+
+nt!_KAPC
+
+Asynchronous Procedure Call (APC) routines execute at PASSIVE_LEVEL or APC_LEVEL in the context of a specific thread. These routines are used by drivers to perform actions in the context of a specific process, primarily to get access to the process's user mode virtual address space. Certain functionality in Windows like attaching and detaching a thread to process and thread suspension are built on top of APCs. APCs are of 3 types - user mode, normal kernel mode, special kernel mode.
+
+KAPC represents an Asynchronous Procedure Call (APC) structure that contains a pointer to a driver supplied routines that executes in the context of a specific thread at PASSIVE_LEVEL or APC_LEVEL when the conditions are conducive for APCs to be delivered to that thread.
+
+The 2 entries in the array KTHREAD.ApcState.ApcListHead[] contain the list of User Mode & Kernel Mode APCs pending for the thread. KAPC structures are linked to this list using the field ApcListEntry.
+
+Setting KTHREAD.SpecialApcDisable to a negative value causes special and normal kernel APCs to be disabled for that thread.
+
+Setting KTHREAD.KernelApcDisable to a negative value causes normal kernel APCs to be disabled for that thread.
+
+The field NormalRoutine is NULL for special kernel APCs. For normal kernel APCs the function pointed to by NormalRoutine runs at PASSIVE_LEVEL.
+
+The field KernelRoutine points to a function that executes at APC_LEVEL.
+
+The field RundownRoutine points to a function that executes when APC is discarded during thread termination.
+
+The debugger "!apc" command scans all the threads in the system for pending APCs and displays them.
+
+API : KeEnterGuardedRegion(), KeLeaveGuardedRegion(), KeEnterCriticalRegion(), KeLeaveCriticalRegion(), KeInitializeApc(), KeInsertQueueApc(), KeRemoveQueueDpc() KeFlushQueueApc(), KeAreApcsDiabled().
+
+nt!_KAPC_STATE
+
+The windows kernel allows threads to attach to a different process than the one they were originally created in. This allows threads to get temporary access to another processes user mode virtual address space. The KAPC_STATE is used to save the list of APCs queued to a thread when the thread attaches to another process. Since APCs are thread (and process) specific, when a thread attaches to a process different from its current process its APC state data needs to be saved. This is required because APC that are currently queued to the thread (that need the original process's address) cannot be delivered in the new process context to which the thread attaches itself. The KTHREAD structure has two built in KAPC_STATE objects - one for the thread's original process and another one for the attached process. In the event that the thread performs stacked (nested) attachments, the caller need to provide storage for more KAPC_STATE structures that would be required to save the current APC state variables and move to the new APC environment.
+
+The 2 entries in the array ApcListHead are the heads of the list of User Mode & Kernel Mode APCs pending for the thread. KAPC structures are linked to this list using the field ApcListEntry.
+
+API : KeAttachProcess(), KeDetachProcess(), KeStackAttachProcess(), KeUnstackDetachProcess().
+
+Synchronization Objects
+
+nt!_DISPATCHER_HEADER
+
+Native kernel objects in Windows are data structures that threads can directly wait on via calls to KeWaitForSingleObject() and its variants. While the logic around these structures is implemented in the kernel, most of these structures are exposed to user mode applications via native (Nt/Zw) Win32 APIs. Events, semaphores, mutexes, timers, threads, processes, and queues are examples of native kernel objects.
+
+The DISPATCHER_HEADER structure is embedded inside every native kernel object and is a key component in the thread wait functionality implemented in the scheduler.
+
+Every KTHREAD structure contains a built in array of KWAIT_BLOCK structures that are used to block the thread on native kernel objects. The WaitListHead field of the DISPATCHER_HEADER structure in the native kernel object, points to a chain of KWAIT_BLOCKs structures each one of which represents a thread waiting on the native kernel object. The KWAIT_LOCK.WaitListEntry field is used to maintain the KWAIT_BLOCK structures in this list. When the native kernel object is signaled one or more KWAIT_BLOCKs are removed from the list and the containing threads are put into the Ready state.
+
+The Type field identifies the containing object within which the DISPATCHER_HEADER is embedded. This is one of the first 10 values in the enumerated type nt!_KOBJECTS. This field determines how the other fields of the DISPATCHER_HEADER would be interpreted.
+
+The Lock field (bit 7) implements an object specific custom spin lock that protects the SignalState and WaitListFields fields of the DISPATCHER_HEADER structure. The SignalState field determines if the object has been signaled.
+
+API : KeWaitForSingleObject(), KeWaitForMultipleObjects(), KeWaitForMutexObject() etc.
+
+nt!_KEVENT
+
+KEVENT represents the kernel event data structure. Events are of 2 types - Synchronization (Auto Reset) and Notification (Manual Reset). When a synchronization event is signaled by a thread only one waiting thread is made ready to run, but when a notification event is signaled by a thread all the threads waiting on the event are put into the ready state. KEVENTs can exist as standalone data structures initialized by KeInitializeEvent() or as event objects created with ZwCreateEvent(), a native function internally used by the kernel APIs IoCreateSynchronizationEvent() and IoCreateNotificationEvent(). Events are built around a DISPATCHER_HEADER structure which is used to keep track of waiting threads and wake them up when the event is signaled.
+
+API : KeInitializeEvent(), KeSetEvent(), KeClearEvent(), KeResetEvent(), KeReadStateEvent(), KeWaitForSingleObject(), KeWaitForMultipleObject(), IoCreateSynchronizationEvent() and IoCreateNotificationEvent().
+
+nt!_KSEMAPHORE
+
+KSEMAPHORE represents the kernel semaphore data structure. Semaphores are claimed by threads calling KeWaitForSingleObject(). If the number of threads that have already acquired the semaphore exceed the semaphore limit, subsequent threads calling KeWaitForSingleObject() enter into a wait state. One such waiting thread is readied for execution when any thread releases the semaphore by making a call to KeReleaseSemaphore().
+
+The count of threads that have already claimed the semaphore is stored in the field Header.SignalState. The Limit field is used to store the maximum number of threads that are allowed to simultaneously claim the semaphore.
+
+API : KeInitializeSemaphore(), KeReadStateSemaphore(), KeReleaseSemaphore()
+
+nt!_KMUTANT
+
+KMUTANT represents a kernel mutex data structure. A mutex can only be acquired by a single thread any point in time, but the same thread can recursive acquire the mutex multiple times.
+
+The OwnerThread field points to the KTHREAD structure of the thread that has acquired he mutex.
+
+Every thread maintains the list of mutexes acquired by the it in a linked list, the head of this list is in the field KTHREAD.MutantListHead and MutantListEntry field of the mutex is used to chain it to this list.
+
+The ApcDisable field determines if the mutex is a user or kernel mode object, a value of 0 indicates user mode mutex and any other value indicates a kernel mode mutex.
+
+The Abandoned field of the mutex is set when the mutex is deleted without being released. This can result in the exception STATUS_ABANDONED being raised.
+
+API : KeInitializeMutex(), KeReadStateMutex(), KeReleaseMutex(), KeWaitForMutexObject()
+
+nt!_KTIMER
+
+KTIMER represents a timer data structure. When a thread goes to sleep or waits on a dispatcher object with a timeout the Windows kernel internally uses a KTIMER to implement the wait.
+
+The kernel maintains the array KiTimerListHead[] containing 512 list heads where each list stores a list of KTIMER objects are due to expire at a certain time. The field TimerListEntry is used to maintain the KTIMER in this list.
+
+When a timer expires, it can either wake up a thread waiting on the timer or it can schedule a DPC routine to notify a driver about timer expiration, the pointer to the DPC data structure is stored in the Dpc field. Timers can be episodic (expire once) or periodic (expire repeatedly until cancelled).
+
+The debugger's "!timer" command displays all the active KTIMERs in the system.
+
+API : KeInitializeTimer(),KeSetTimer(), KeSetTimerEx(), KeCancelTimer(), KeReadStateTimer()
+
+nt!_KGATE
+
+KGATE represents a kernel gate object. The functionality offered by KGATEs is every similar to that offered by Synchronization type KEVENTs, however KGATEs are more efficient than KEVENTs.
+
+When a thread waits on dispatcher objects like events, semaphores, mutexes etc., it uses KeWaitForSingleObject() or its variants all of which are generic functions and have to handle all the special case conditions related to thread waits e.g. alerts, APCs, worker thread wakeup etc. Waiting on KGATEs on the other hand is done through a specialized function KiWaitForGate() that does not cater to all the special case conditions, making the code path very efficient. The downside, However, of using a specialized API is that a thread cannot simultaneously wait on a KGATE object and another dispatcher object.
+
+KGATE APIs are used internally by the kernel and is not exported for drivers to call. KGATEs are used in many places internally in the kernel including for implementing guarded mutexes. Guarded mutexes internally wait on KGATE objects when the mutex is not available.
+
+API : KeWaitForGate(), KeInitializeGate(), KeSignalGateBoostPriority()
+
+nt!_KQUEUE
+
+KQUEUE represents a kernel queue data structure. KQUEUEs are used to implement executive work queues, thread pools as well as I/O completion ports.
+
+Multiple threads can simultaneously wait on a queue via calls to KeRemoveQueueEx(). When a queue item (any data structure with an embedded LIST_ENTRY field) is inserted into the queue, one of the waiting threads is woken up and provided with a pointer to the queue item after it is taken out of the queue.
+
+Generic kernel wait functions like KeWaitForSingleObject(), KeWaitForMultipleObjects() have special logic to deal with threads that are associated with a queue. Whenever such a thread waits on a dispatcher object other than a queue, another thread associated with the queue is woken up to process subsequent items from the queue. This ensures that items that are being inserted in the queue are serviced as soon as possible.
+
+The field EntryListHead is head of the list of items inserted into the queue using an embedded LIST_ENTRY field in the item. The function KiAttemptFastInsertQueue() inserts items into the queue and the function KeRemoveQueueEx() removes items from this queue.
+
+The field ThreadListHead points to the list of threads that are associated with this queue. For all such threads the KTHREAD.Queue field points to the queue.
+
+The CurrentCount field contains the number of threads that are actively processing queue items and is limited by the number stored in the field MaximumCount, which set according to the number of CPUs on the system.
+
+API : KeInitializeQueue(), KeInsertQueue(), KeRemoveQueue(), KeInsertHeadQueue()
+
+Executive and Run Time Library
+
+nt!_IO_WORKITEM
+
+Drivers use work items to defer execution of certain routines to kernel worker threads that invoke the driver supplied routine at PASSIVE_LEVEL. Work items containing pointer to driver supplied work routines are queued by drivers to a fixed set of kernel work queues. Kernel provided worker threads i.e. ExpWorkerThread() service these work queues by de-queuing work items and invoking the work routines therein. The IO_WORKITEM structure represents a work item.
+
+The kernel variable nt!ExWorkerQueue contains an array of 3 EX_WORK_QUEUE structures which represent the Critical, Delayed and HyperCritical work queues in the system. The WorkItem field is used to queue the IO_WORK_ITEM structure to one of these work queues.
+
+The function IoQueueWorkItemEx() takes a reference on IoObject, a pointer to the driver or device object, to prevent the driver from unloading as long as the work routine execution was pending.
+
+The WorkerRoutine field in the embedded WORK_QUEUE_ITEM structure points to the I/O manager provided wrapper function called IopProcessWorkItem() which invokes the driver supplied work routine and drops the reference count on IoObject.
+
+The Routine field points to the driver supplied work routine that will execute at IRQL PASSIVE_LEVEL.
+
+The debugger's "!exqueue" command displays information about worker queues and worker threads.
+
+API : IoAllocateWorkItem(), IoQueueWorkItem(), IoInitializeWorkItem(), IoQueueWorkItemEx(), IoSizeofWorkItem(), IoUninitializeWorkItem(), IoFreeWorkItem().
+
+I/O Manager
+
+nt!_IRP
+
+The IRP represents an I/O request packet structure which is used to encapsulate all the parameters that are required to perform a particular I/O operation as well as the status of the I/O operation. The IRP also acts as a thread independent call stack in that it can be passed from one thread to another thread or to a DPC routine via queues implemented in drivers. IRPs are key to Windows asynchronous I/O processing model where applications can fire off multiple I/O requests and continue to perform other processing while the I/O requests are being processed by drivers or hardware devices. This asynchronous model allows for maximum throughput and optimal resource utilization. IRPs are allocated by the I/O Manager component of the Windows Kernel in response to applications calling Win32 I/O APIs. IRPs can also be allocated by device drivers for I/O requests that are orginate in the kernel. IRPs flow through stack of drivers wherin each driver performs its value added per-processing on the IRP before passing it down to the driver below it, by calling IoCallDriver(). Typically the driver at the bottom of the stack completes the IRP, by calling IoCompleteRequest(), which results in each driver in the stack being notified about the completion and giving these drivers a chance to perform post-processing operations on the IRP.
+
+IRPs consist of a fixed length header i.e. the IRP data structure and a variable number of stack locations, stored in the field StackCount where each stack location is represented by the IO_STACK_LOCATION data structure. IRPs must contain at least as many stack locations as there are device objects layered on top of each other in a device stack, that will be processing the IRP. The number of device objects in a stack of drivers is stored in the DEVICE_OBJECT.StackSize field. IRPs are typically allocated from look-aside lists that support fixed sized allocations. Hence IRPs allocated by the I/O manager have either 10 or 4 I/O stack locations depending on the number of device objects in the stack the IRP is targeted at.
+
+Some IRPs are queued to the thread that originated them using the ThreadListEntry field. The head of this list is in ETHREAD.IrpList.
+
+The field Tail.Overlay.ListEntry is used by drivers to maintain the IRP in an internal queue, typically anchored in a field of type LIST_ENTRY stored in the device extension structure of a driver created DEVICE_OBJECT.
+
+The field Tail.CompletionKey is used when the IRP is queued to an I/O completion port.
+
+The debugger's "!irp" command displays details about an IRP. The "!irpfind" command finds all or specific set of IRPs in the system by scanning non-paged pool.
+
+API : IoAllocateIrp(), IoBuildDeviceIoControlRquest(), IoFreeIrp(), IoCallDriver(), IoCompleteRequest(), IoBuildAsynchronousFsdRequest(), IoBuildSynchronousFsdRequest(), IoCancelIrp(), IoForwardAndCatchIrp(), IoForwardIrpSynchronously(), IoIsOperationSynchronous(), IoMarkIrpPending().
+
+nt!_IO_STACK_LOCATION
+
+IO_STACK_LOCATION contains information about an I/O operation that a particular driver within a stack of drivers is required to perform. IRP contain multiple embedded I/O stack locations all of which are allocated at the time the IRP is allocated. There at least as many I/O stack locations in an IRP as there are driver in the device stack. I/O stack locations are owned by device in the reverse order in which they appear in the device stack i.e. the topmost device in the stack owns the bottom most stack location and vice versa. The I/O manager is responsible for populating the I/O stack location for the topmost device and each driver is responsible for populating the I/O stack location for the next device in the chain.
+
+The Parameters field is a union of multiple structures each representing an I/O operation that the corresponding driver must perform. The selection of a particular structure in the Parameters union depends on the MajorFunction field. The possible values in this field are defined by the IRP_MJ_xxx values defined in wdm.h. Certain major functions have minor function associated with them. These minor function numbers are stored in the MinorFunction field. For example IRP_MN_START_DEVICE is a minor function code associated with the major function IRP_MJ_PNP.
+
+API : IoGetCurrentIrpStackLocation(), IoGetNextIrpStackLocation(), IoCopyCurrentIrpStackLocationToNext(), IoSkipCurrentIrpStackLocation(), IoMarkIrpPending()
+
+nt!_DRIVER_OBJECT
+
+DRIVER_OBJECT represents a driver image loaded in memory. The I/O manager creates the driver object before a driver is loaded into memory and the DriverEntry() routine receives a pointer to the driver object. Similarly the driver object is freed after the driver is unloaded from memory.
+
+The MajorFunction field is an array with each element pointing to a function provided by the driver known as the dispatch entry point. These entry points are used by the I/O manager to dispatch IRPs to the driver for processing.
+
+The DriverName field contains the name of the driver object within the object manager name space.
+
+The field DriverStart is the address in the kernel virtual address space where the driver is loaded and DriverSize contains the number of bytes the driver mapping takes up, rounded up to the nearest page boundary.
+
+The field FastIoDispatch points to a structure of type FAST_IO_DISPATCH that contains pointers to routines provided by file system drivers.
+
+DriverSection points to a data structure of type LDR_DATA_TABLE_ENTRY, maintained by the loader to keep track of the driver image in memory.
+
+The debugger's "!drvobj" command displays information about a driver object.
+
+API : IoAllocateDriverObjectExtension(), IoGetDriverObjectExtension()
+
+nt!_DEVICE_OBJECT
+
+DEVICE_OBJECT represents a logical or physical device in the system. Unlike driver objects that are created by I/O manager before a driver is loaded, DEVICE_OBJECTs are created by the drivers themselves. I/O requests are always targeted at device objects as opposed to driver objects. A pointer to the device object is passed to the driver's dispatch routine to identify the device at which the I/O request is targeted.
+
+Driver objects maintain a linked list of devices that the driver has created. This list is anchored in DRIVER_OBJECT.DeviceObject and uses the NextDevice field to link the device objects together. The device object, in turn, points back to the owning driver object via the DriverObject field. Although device objects are system defined data structures they can have driver specific extensions. This extension data structure is allocated along with the device object, from non-paged pool, based on a caller specified size and the pointer to this extension is available in DeviceExtension.
+
+Device objects can be layered on top of other device objects forming a stack of devices. The StackSize field identifies how many device objects, including it, are below the device object. This field is also used by the I/O manger to allocate the appropriate number of I/O stack locations for IRPs targeted to that stack of device objects. The CurrentIrp and DeviceQueue fields are only used when the driver uses system managed I/O for the device, a feature that is rarely used in drivers, resulting in the CurrentIrp field being set to NULL in most cases. The AttachedDevice points to the next higher level device object in the device stack.
+
+The debugger's "!devobj" command displays information about a device object.
+
+API : IoCreateDevice(), IoDeleteDevice(), IoCreateDeviceSecure(), IoCreateSymbolicLink(), IoCallDriver(), IoCreateFileSpecifyDeviceObjectHint(), IoAttachDevice(), IoAttachDeviceToDeviceStack(), IoDetachDevice(), IoGetAttachedDevice(), IoGetAttachedDeviceReference(), IoGetLowerDeviceObject(), IoGetDeviceObjectPointer(), IoGetDeviceNumaNode()
+
+nt!_DEVICE_NODE
+
+DEVICE_NODE represents a physical or logical device that has been enumerated by the PnP manager. Device nodes are the targets of power management and PnP operations. The entire hardware device tree in the system is built from a hierarch of device nodes. Device nodes have a parent child and sibling relationship. The configuration manager APIs in user mode defined in CfgMgr32.h/CfgMgr32.lib deal with device nodes.
+
+The Child, Sibling, Parent and LastChild fields of DEVICE_NODE structure are used to maintain all device nodes in the system in a hierarchical structure. Device nodes comprise of, at least, a Physical Device Object (PDO) and pointed to by the field PhysicalDeviceObject and a Function Device Object (FDO) and can have one more Filter Device Objects (FDOs).The field ServiceName points to a string that identifies the function driver that creates the FDO and drives the device. The field InstancePath points to a string uniquely identifies a specific instance of a device, when there are multiple instances of the same device in the system. The combination of the fields State, PreviousState and StateHistory are used to identify what states the device node has gone through before it settled in its current state.
+
+The debugger's "!devnode" command in the debugger displays the contents of the DEVICE_NODE structure. The "!devstack" command displays all the device objects that are a part of a single devnode.
+
+nt!_FILE_OBJECT
+
+FILE_OBJECT represents an open instance of a device object. File objects are created when a user mode process calls CreateFile() or the native API NtCreateFile() or a kernel mode driver calls ZwCreateFile(). Multiple file objects can point to a device object unless the device is marked as exclusive by setting the DO_EXCLUSIVE bit in DEVICE_OBJECT.Flags.
+
+The DeviceObject field points to the device object whose open instance the file object represents. The Event field contains an embedded event structure that is used to block a thread that has requested synchronous I/O operation on a device object for which the owning driver performs asynchronous I/O.
+
+The fields FsContext and FsContext2 are used by File System Drivers (FSDs) to store file object specific context information. When used by a file system driver the FsContext field points to a structure of type FSRTL_COMMON_FCB_HEADER or FSRTL_ADVANCED_FCB_HEADER which contains information about a file or a stream within the file. The FsContext fields of multiple FILE_OBJECTs that represent open instances of the same file (or stream) point to the same File Control Block (FCB). The FsContext2 field points to a cache control block, a data structure that the FSD uses to store instance specific information about the file or stream.
+
+The fields CompletionContext, IrpList and IrpListLock are used then the file object is associated with an I/O completion port. The CompletionContext field is initialized by NtSetInformationFile() when called with the information class FileCompletionInformation. The CompletionContext.Port field points to a structure of type KQUEUE which contains a list of IRPs that have been completed and are awaiting retrieval. IoCompleteRequest() queues IRPs to this list via the field IRP.Tail.Overlay.ListEntry.
+
+The debugger's "!fileobj" displays information about a file object.
+
+API : IoCreateFile(), IoCreateFileEx(), IoCreateFileSpecifyDeviceObjectHint(), IoCreateStreamFileObject(), IoCreateStreamFileObjectEx(), ZwCreateFile(), ZwReadFile(), ZwWriteFile(), ZwFsControlFile(), ZwDeleteFile(), ZwDeviceIoControlFile(), ZwFlushBuffersFile(), ZwOpenFile(), ZwFsControlFile(), ZwLockFile(), ZwQueryDirectoryFile(), ZwQueryEaFile(), ZwCancelIoFile(), ZwQueryFullAttributesFile(), ZwQueryInformationFile(),ZwQueryVolumeInformationFile(), ZwSetEaFile(), ZwSetInformationFile(), ZwSetQuotaInformationFile(), ZwSetVolumeInformationFile(), ZwUnlockFile(), ZwWriteFile()
+
+Objects and Handles
+
+nt!_OBJECT_HEADER
+
+Objects in Windows are kernel data structures representing commonly used facilities like files, registry keys, processes, threads, devices etc. that are managed by the Object Manager, a component of the Windows Kernel. All such objects are preceded by an OBJECT_HEADER structure that contains information about the object and is used to manage the life cycle of the object, allow the object to be uniquely named, secure the object by applying access control, invoke object type specific methods and track the allocator's quota usage.
+
+The object that follows the OBJECT_HEADER structure partially overlaps the OBJECT_HEADER structure in that the object is placed beginning at the Body field of the OBJECT_HEADER rather than after the end of the structure.
+
+The object header contains the reference counts HandleCount and PointerCount that are used by the object manager to keep the object around as long as there are outstanding references to the object. HandleCount is the number of handles and PointerCount is the number of handles and kernel mode references to the object.
+
+The object header may be preceded by optional object header information structures like OBJECT_HEADER_PROCESS_INFO, OBJECT_HEADER_QUOTA_INFO, OBJECT_HEADER_HANDLE_INFO, OBJECT_HEADER_NAME_INFO and OBJECT_HEADER_CREATOR_INFO which describe additional attributes about the object. The InfoMask field is a bitmask that determines which of the aforementioned headers are present.
+
+The SecurityDescriptor field points to a structure of type SECURIRTY_DESCRIPTOR that contains the Discretionary Access Control List (DACL) and the System Access Control List (SACL). The DACL is checked against the process tokens for access to the object. The SACL is used for auditing access to the object.
+
+The kernel cannot delete objects at IRQL greater than PASSIVE_LEVEL. The function ObpDeferObjectDeletion() links together the objects whose deletion needs to be deferred in a list anchored in the kernel variable ObpRemoveObjectList. The NextToFree field is for this purpose.
+
+The QuotaBlockCharged field points to the EPROCESS_QUOTA_BLOCK structure at EPROCESS.QuotaBlock and is used by the functions PsChargeSharedPoolQuota() and PsReturnSharedPoolQuota() to track a particular process's usage of NonPaged Pool and Paged Pool. Quota is always charged to the process that allocates the object.
+
+The debugger's "!object" command displays information that is stored in the object header. The "!obtrace" command displays object reference tracing data for objects, if object reference tracing is enabled on an object and the '!obja' command displays object attribute information for any object.
+
+API : ObReferenceObject(), ObReferenceObjectByPointer(), ObDereferenceObject()
+
+nt!_OBJECT_TYPE
+
+For every type of object managed by the Object Manger there is a 'Type Object' structure that stores properties common to objects of that type. This 'Type Object' structure is represented by OBJECT_TYPE. As of Windows 7 there are about 42 different object type structures. The kernel variable ObTypeIndexTable is an array of pointers that point to OBJECT_TYPE structures for each object type. For every object in the system the OBJECT_HEADER.TypeIndex field contains the index of the OBJECT_TYPE structure in the ObTypeIndexTable. For each object type the kernel also maintains a global variable that points to the associated object type structure. E.g. The variable nt!IoDeviceObjectType points to the OBJECT_TYPE structure for DEVICE_OBJECTs.
+
+The TypeInfo field of the of the OBJECT_TYPE structure points to an OBJECT_TYPE_INITIALIZER structure that, amongst other things, contains the object type specific functions that are invoked by the object manager to perform various operations on the object.
+
+The CallbackList field is the head of the list of driver installed callbacks for a particular object type. Currently only Process and Thread objects support callbacks as indicated by the TypeInfo.SupportsObjectCallbacks field.
+
+The Key field contains the pool tag that is used to allocate objects of that type.
+
+The debugger's "!object \ObjectTypes" command displays all the type objects in the system.
+
+nt!_HANDLE_TABLE_ENTRY
+
+Processes in Windows have their own private handle table which is stored in the kernel virtual address space. HANDLE_TABLE_ENTRY represents an individual entry in the process's handle table. Handle tables are allocated from Paged Pool. When a process terminates the function ExSweepHandleTable() closes all handles in the handle table of that process.
+
+The Object field points to the object structure i.e. File, Key, Event etc., for which the handle has been created.
+
+The GrantedAccess field is a bitmask of type ACCESS_MASK which determines the set of operations that the particular handle permits on the object. The value of this field is computed by SeAccessCheck() based on the access requested by the caller (Desired Access) and the access allowed by the ACEs in the DACL in the security descriptor of the object.
+
+The debugger's "!handle" command can be used to examine the handle table of any process. The '!htrace' command can be used to display stack trace information about handles, if handle tracing is enabled.
+
+API : ObReferenceObjectByHandle(), ObReferenceObjectByHandleWithTag().
+
+Memory Manager
+
+nt!_MDL
+
+MDL represents a memory descriptor list structure which describes user or kernel mode memory that has been page locked. It comprises of a fixed length header and is followed by a variable number of Page Frame Numbers (PFNs) one for each page the MDL describes.
+
+The MDL structure contains the virtual address and the size of the buffer that it describes and for user mode buffers it also points to the process that owns the buffer. MDLs are used by device drivers to program hardware devices to perform DMA transfers as well as mapping buffers user mode to kernel mode and vice versa.
+
+Certain types of drivers e.g. network stack, in Windows support chained MDLs where in multiple MDL describing virtually fragmented buffers are linked together using the Next field.
+
+For MDLs that describe user mode buffers, the Process field points to the EPROCESS structure of the process whose virtual address space is locked by the MDL.
+
+If the buffer described by the MDL is mapped to kernel virtual address space the MappedSystemVa points to the address of the buffer in kernel mode. This field is valid only if the bits MDL_MAPPED_TO_SYSTEM_VA or MDL_SOURCE_IS_NONPAGED_POOL are set in the MdlFlags field.
+
+The Size field contains the size of the MDL data structure and the entire PFN array that follows the MDL.
+
+The StartVa field and the ByteOffset field together define the start of the original buffer that is locked by the MDL. The StartVa points to the start of the page and the ByteOffset contains the offset from StartVa where the buffer actually starts.
+
+The ByteCount field describes the size of the buffer locked by the MDL.
+
+API : IoAllocateMdl(), IoBuildPartialMdl(), IoFreeMdl(), MmInitializeMdl(), MmSizeOfMdl(), MmPrepareMdlForReuse(), MmGetMdlByteCount(), MmGetMdlByteOffset(), MmGetMdlVirtualAddress(), MmGetSystemAddressForMdl(), MmGetSystemAddressForMdlSafe(), MmGetMdlPfnArray(), MmBuildMdlForNonPagedPool(), MmProbeAndLockPages(), MmUnlockPages(), MmMapLockedPages(), MmMapLockedPagesSpecifyCache(), MmUnmapLockedPages(), MmAllocatePagesForMdl(), MmAllocatePagesForMdlEx(), MmFreePagesFromMdl(), MmMapLockedPagesWithReservedMapping(), MmUnmapReservedMapping(), MmAllocateMappingAddress(), MmFreeMappingAddress()
+
+nt!_MMPTE
+
+MMPTE is the memory managers' representation of a Page Table Entry (PTE), which is used by the CPU's memory management unit (MMU) to translate a virtual address (VA) to a physical address (PA). The number of translation levels that are required to map a VA to a PA depends the on the CPU type. For instance X86 uses a 2 level translation (PDE and PTE), X86 when operating in PAE mode uses a 3 level translation (PPE, PDE and PTE) and the CPU X64 uses a 4 level translation (PXE, PPE, PDE, PTE). Since the format of the different levels of structures i.e. PXE, PPE, PDE and PTE are similar, the MMPTE can be used to represent not just the PTE, but any of these translation structures.
+
+The MMPTE structure is a union of multiple sub-structures which are used by the Windows memory managers' page fault handling mechanism to find the location of the page represented by the PTE. For instance, when a PTE contains a valid physical address of a page and the MMU is able to use the PTE for address translation the u.Hard sub-structure is used.
+
+When a page is removed (trimmed) from the working set of a process the Windows Memory Manager marks the page's PTE as invalid from a hardware perspective and re-purposes the PTE to store OS specific information about page. As a result of this the CPUs Memory Management Unit (MMU) can no longer use this PTE for address translation. In the event the process attempts to access such a page, the CPU generates a page fault invoking the Windows page fault handler. The information encoded in the PTE is now used to locate the page and bring it back into the process's working set, this resolving the page fault. An example of this is a transition PTE, which represents a page in standby or modified state. In this case the u.Transition substructure is used to store information about the page.
+
+When the contents of a physical page are saved to the page file, the Windows Memory Manager modifies the PTE to point to the location of the page in the page file in which case the u.Soft substructure is used. The field u.Soft.PageFileLow determines which one of the 16 page files supported by Windows contains the page and u.Soft.PageFileHigh contains the index of the page in that particular pagefile.
+
+The debugger's "!pte" command displays the contents of all level of the page table for the given virtual address.
+
+nt!_MMPFN
+
+Windows Memory Manager maintains information about every physical page in the system in an array called the PFN database. The MMPFN structure represents individual entries in this database and contains information about a single physical page.
+
+The variable nt!MmPfnDatabase points to the array of MMPN structures that make up the PFN database. The number of entries in the PFN database is nt!MmPfnSize and has extra entries to deal with hot-plug memory. In order to conserve memory the MMPFN structure is tightly packed. The interpretation of each field is different and depends on the state of the page.
+
+The state of the physical page is stored in u3.e1.PageLocation, identified by one of the entries in the enumerated type nt!_MMLISTS.
+
+The field u2.ShareCount contains the number of process PTEs that point to the page, which would be more than one in case of shared pages.
+
+The filed u3.e2.ReferenceCount contains the number of references on the page which includes the lock count in case the page is locked. This reference count is decremented when the u2.ShareCount becomes zero.
+
+The PteAddress points to the process specific or prototype PTE structure that point to that particular PFN entry.
+
+The debugger's "!pfn" command displays the contents of the MMPFN structure for a given physical page.
+
+nt!_MMPFNLIST
+
+The memory manager maintains links together physical pages that are in the same state. This speeds up the task of finding one or pages in a given state e.g. free pages or pages that are zeroed out. The MMPFNLIST structure maintains the head of these lists. There are multiple MMPFNLIST structures in the system each one of which contains pages in a particular state and are located at the kernel variable nt!Mm<PageState>ListHead where <PageState> can be Standby, Modified, ModifiedNoWrite, Free, Rom, Bad, Zeroed. Pages that are in the Active state i.e. pages that currently belong to a process's working set are not maintained in any list.
+
+In newer versions of Windows the nt!MmStandbyPageListHead is not used, instead standby pages are maintained in a prioritized set of 8 lists at nt!MmStandbyPageListByPriority. Similarly the nt!MmFreePageListHead and nt!MmModifiedPageListHead are not used anymore, instead such pages are maintained in lists at nt!MmFreePagesByColor and nt!MmModifiedProcessListByColor or nt!MmModifiedPageListByColor respectively.
+
+The MMPFN.u1.Flink and MMPFN.u2.Blink fields of the MMPFN structure, for a particular page is used to maintain the page in a double linked list. The head of these lists are maintained in the Flink and Blink field of the corresponding MMPFNLIST structures.
+
+The ListName field is of the enumerated type MMLISTS, which identifies the type of pages that are linked to this list.
+
+The debugger's "!memusage 8" command displays the count of pages in a particular state.
+
+nt!_MMWSL
+
+Every process in Windows has a working set associated with it, which comprises of pages that the process can reference without incurring a page fault. The Working Set Trimmer (WST), a component of the memory manager that runs in the context of the KeBalanceSetManager() thread, endeavors to remove pages that are not being used by a process and re-distribute them to other processes that actually need them. In order to perform this task, the WST needs to store information about the working set of each process in the system. This information is maintained in the MMWSL structure. Every process's EPROCESS.Vm.VmWorkingSetList points to the MMWSL structure for that process.
+
+The MMWSL of each process in the system is mapped at the exact same address in the HyperSpace portion of the kernel virtual address space. HyperSpace is the part of the kernel virtual address space that has a per process mapping as opposed to having a single shared mapping across all processes, as is the case with the rest of the kernel virtual address space. Hence the memory manager, at any given instance, can only access the MMWSL of the current process i.e. the process whose thread is currently running on the CPU.
+
+The Wsle field of the MMWSL structure points to the base of the Working Set List Entry array of the process. The number of valid entries in the array is in EPROCESS.Vm.WorkingSetSize.
+
+nt!_MMWSLE
+
+The MMWSLE data structure represents the working set list entry for a single page in the process's working set, so there is one MMWSLE structure for every page that is a part of a process's working set. This data structure is used by the working set trimmer to determine if that particular page is a potential candidate for trimming i.e. removal from the working set of the process.
+
+When a process attempts to access a page that is part of its working set, the CPU's memory management unit (MMU) sets the MMPTE.Hard.Accessed bit in the PTE that corresponds to that page. The working set trimmer wakes up at regular intervals and scans a part of the process's WSLEs. During this periodic scan it checks if a particular page has been accessed since the last time it ran by checking the accessed bit of the PTE. If the page has not been accessed since the last scan, the page is gradually aged out by incrementing the u1.e1.Age field. If the page was accessed since the last scan, the u1.e1.Age field is reset to zero. When the value of the u1.e1.Age reaches a value of 7, the page is considered as a potential candidate for trimming.
+
+The u1.e1.VirtualPageNumber is the upper 20 bits (on X86) or 52 bits (on X64) of the Virtual Address of the page represented by the MMWSLE.
+
+The debugger's "!wsle" command displays working set list entries for a particular process.
+
+nt!_POOL_HEADER
+
+Dynamic memory allocations in the kernel are made out of NonPaged Pool, Paged Pool or Session Pool. Depending on the size of the memory requested, pool allocations are categorized as small pool allocations (Size < 4K) and large pool allocations (Size >= 4K). Pool allocation sizes are always rounded up to nearest multiple of 8 bytes on X86 systems and 16 bytes on X64 systems.
+
+Every small pool allocation consists of a pool header, data area where the allocator stores data and a few bytes of padding to meet the granularity requirements. The pool header is represented by the structure POOL_HEADER and structure contains information about the data area following the header.
+
+The BlockSize field contains the size of the pool block including the header and any padding bytes. The PreviousSize field contains the size of the previous block (adjacent block at a numerically lower address). Both BlockSize and PreviousSize are stored in multiple of 8 bytes on X86 and multiple of 16 bytes on X64. The PoolTag field contains the 4 character tag that helps identify the owner of the pool allocation, which is primarily used for debugging. If the most significant bit (i.e. bit 31) of the pool tag is set the pool allocation is marked as protected.
+
+Large Pool allocations do not have the POOL_HEADER embedded with the allocation, instead the pool headers are stored in a separate table called the nt!PoolBigTable. This is required since large pool allocations are required to be aligned on a page (4K) boundary.
+
+The debugger's "!pool" command displays information about all the pool blocks in a page given any address within that pool page. "!vm" displays pool consumption information. '!poolused' displays number of bytes consumed and the number of blocks for all pool tags. "!poolfind" locates the pool allocation for a particular tag. "!poolval" check the pool headers for corruption, note that it does not check for corruption in the actual pool data. "!frag" displays the external pool fragmentation information in non-paged pool. The output shows the number of free blocks (fragments) that are available cumulatively across all the non-pool pages in the system and the amount of memory they take up.
+
+API : ExAllocatePoolWithTag(),ExAllocatePoolWithQuotaTag(), ExFreePool().
+
+nt!_MMVAD
+
+MMAD structures represent virtual address descriptors (VADs) and are used to describe virtually contiguous regions of a process's user mode virtual address space. There is a single MMVAD structure is created every time a part of the processes virtual address is reserved for use by VirtualAlloc() or MapViewOfSection(). MMVADs are allocated from non-paged pool and organized in the form of an AVL tree. Every process has its own VAD tree which is only used to describe user mode virtual address space i.e. there are no VADs for kernel virtual address pace.
+
+The StartingVpn and EndingVpn contains the upper 20 bits (on X86) or 52 bits (on X64) of the starting and ending virtual address, respectively, of the region described by the VAD. The LeftChild and RightChild fields point to the nodes at the next lower level in the VAD tree.
+
+The debugger's "!vad" command displays information about the VAD structure for a process.
+
+API : ZwAllocateVirtualMemory(), ZwMappedViewOfSection(), MmMapLockedPagesSpecifyCache()
+
+Cache Manager
+
+nt!_VACB
+
+The system cache virtual address space is divided into 256K (defined by the ntifs.h constant VACB_MAPPING_GRANULARITY) blocks called views. This number also determines the granularity and alignment at which files are mapped into the system cache. For each view the cache manager maintains a Virtual Address Control Block (VACB) that contains information about the view.
+
+The kernel globals CcNumberOfFreeVacbs and CcNumberOfFreeHighPriorityVacbs together determine count of VACBs that are available for allocation. All such VACBs are maintained in the list at CcVacbFreeList or CcVacbFreeHighPriorityList. The Links field is used for this purpose.
+
+The BaseAddress field points to the starting address of the view in the system cache that he VACB describes and is generated by the function MmMapViewInSystemCache().
+
+The SharedCacheMap field points to the shared cache map structure that owns this VACB and describes the section of the file mapped that the VACB maps into the view.
+
+The ArrayHead field points to the VACB_ARRAY_HEADER structure that contains the VACB.
+
+The debugger's "!filecache" command displays information about the VACB structures that are in use.
+
+nt!_VACB_ARRAY_HEADER
+
+VACBs are allocated together in chunks of 4095 structure accompanied by the header VACB_ARRAY_HEADER, which is used manage VACBs. The VACB_ARRAY_HEADER structure is immediately followed by the array of VACB structures.
+
+The size of the single unit of VACB array header allocation is 128K which includes the VACB_ARRAY_HEADER and the 4095 VACB structures following it. So each unit can map up to 1023 MB of system cache virtual address space (single VABC maps 256K). The maximum number of VACB_ARRAY_HEADER structures and the embedded VACBs is limited by the total system cache virtual address space on the system i.e. 1TB on X64 and 2GB on X86. So on X86 systems there can be at the most 2 VACB_ARRAY_HEADER structures system wide.
+
+The kernel variable CcVacbArrays points to an array of pointers pointing to VACB_ARRAY_HEADER structures. The VacbArrayIndex field is the index of that particular VACB_ARRAY_HEADER structure in the CcVacbArrays array. The variable CcVacbArraysHighestUsedIndex contains the index of the last used entry in the CcVacbArrays array. This array is protected by the queued spin lock CcVacbSpinLock.
+
+The number of VACB_ARRAY_HEADER header structures that are currently allocated across the entire system and pointed to by CcVacbArrays, is stored in the global variable CcVacbArraysAllocated.
+
+nt!_SHARED_CACHE_MAP
+
+SHARED_CACHE_MAP is used by the cache manger to store information about parts of the file that are currently cached in the system cache virtual address space. For a cached file, there is a single instance of SHARED_CACHE_MAP structure across all open instances of the file. So SHARED_CACHE_MAP structures are associated with a file rather than an open instance of the file. All FILE_OBJECTs that represent open instances of a particular file, point to the same SHARED_CACHE_MAP via the SectionObjectPointers.SharedCacheMap field in FILE_OBJECT.
+
+All VACBs that map portions of the same file streams are accessible through the same SHARED_CACHE_MAP structure. The shared cache map structure guarantees that a particular section of a file never has more than one mapping in the cache.
+
+The global variable CcDirtySharedCacheMapList contains the list of all SHARED_CACHE_MAP structures that contain views with dirty data. Within this list there is a special entry - the global variable CcLazyWriterCursor, which determines the start of a sub-list of SHARED_CACHE_MAP structures that are to be lazy written. CcLazyWriterCursor is moved within the CcDirtySharedCacheMapList after every pass of the lazy writer. SHARED_CACHE_MAP structures that contain views without any dirty pages are maintained in a global linked list at CcCleanSharedCacheMapList. The field SharedCacheMapLinks is used to queue the SHARED_CACHE_MAP to the CcCleanSharedCacheMapList or CcDirtySharedCacheMapList lists.
+
+The SectionSize field determines the size of the section that is mapped by the SHARED_CACHE_MAP.
+
+The InitialVacbs field is a built in array of 4 VACB pointers that are used to map file sections that are less than 1MB in size. If the section size exceeds 1MB an array of 128 VACB pointers is allocated and stored in the Vacbs fields which point to VACBs that can now describe files up to 32MB (i.e. 128 * 256K). If the section size exceeds 32MB then each one of the 128 entries pointer array is used to point to another array of 128 VACB pointers. This additional level or indirection allows for section sizes of 4GB (i.e. 128 * 128 * 256K). There can up to 7 levels of VACB indirection allowing for files size of (128^7 * 256K) which is larger than the maximum section size supported by the cache manager i.e. (2^63).
+
+The function CcCreateVacbArray() creates the VACB arrays and all the VACB arrays are protected by the push lock in the field VacbLock.
+
+The field PrivateList is the head of a linked list used to maintain a list of PRIVATE_CACHE_MAP structures that are associated with each open instance of the file i.e. the FILE_OBJECT. The PRIVATE_CACHE_MAP.PrivateLinks field is used to link together the structures in the list.
+
+The debugger's "!fileobj" command displays information about the SECTION_OBJECT_POINTER structure which in turn contains a pointer to the SHARED_CACHE_MAP.
+
+nt!_PRIVATE_CACHE_MAP
+
+The cache manager performs intelligent read ahead caching on a file to improve performance. These read ahead operations are performed independently on every open instance of a particular file. The PRIVATE_CACHE_MAP structure, which is associated with every open instance of a file, maintains a history of last few read operations on the file and is used by the Cache Manager to perform intelligent read ahead operations for that file.
+
+The FILE_OBJECT.PrivateCacheMap points to the PRIVATE_CACHE_MAP structure associated with that open instance of the file. This field initialized by CcInitailizeCacheMap() when caching is enabled for that file and cleared when the caching is torn down via CcUninitializeCacheMap().
+
+The FileObject field, points to the FILE_OBJECT that PRIVATE_CACHE_MAP is associated with. Read ahead operations are performed only if FILE_OBJECT.Flags field does not have the FO_RANDOM_ACCESS bit set.
+
+The SHARED_CACHE_MAP.PrivateList points to the PRIVATE_CACHE_MAP structures for all open instances of a particular file. PRIVATE_CACHE_MAP structures for open instances of a particular file are linked to this list via the PrivateLinks field.
+
+The combination of the fields FileOffset1, FileOffset2, BeyondLastByte, BeyondLastByte2 is used to determine the pattern of reads being performing on the file via that particular FILE_OBJECT. The cache manager function CcUpdateReadHistory() is called to update these counters at every read operation.
+
+The Flags.ReadAheadEnabled field determines if read ahead operations are required to be scheduled for that particular open instance of the file. The field Flags.ReadAheadActive, which is set by CcScheduleReadAhead(), indicates that the read worker routine in the field ReadAheadWorkItem is currently active.
+
+The debuggers's "!fileobj" command displays information about the PRIVATE_CACHE_MAP.
+
+API : CcInitailizeCacheMap(), CcUninitailizeCacheMap(), CcIsFileCached()
+
+nt!_SECTION_OBJECT_POINTERS
+
+SECTION_OBJECT_POINTERS is associated with the file object and points to file mapping and the cache related information for the file. A single file can have 2 separate mappings one as executable file or another as a data file.
+
+The DataSectionObject field points to the control area, a structure that serves as a link between the memory manager and the file system and is used to memory map data files.
+
+The ImageSectionObject field points to another control area structure and is used to memory map executable files. While a data mapping comprises of a single contiguous VA with the same protection attributes, an image mapping consists of mapping the various sections of the executable into multiple ranges with different protection attributes.
+
+The SharedCacheMap field points to the SHARED_CACHE_MAP structure for the file, that describes which parts of the file are cached and where.
+
+The fields in the SECTION_OBJECT_POINTERS structure, mentioned above, are set by the memory manager and the File System Driver associates the SECTION_OBJECT_POINTERS with the file object.
+
+API : CcFlushCache(), CcPurgeCacheSection(),CcCoherencyFlushAndPurgeCache(), MmFlushImageSection(), MmForceSectionClosed(), MmCanFileBeTruncated(), MmDoesFileHaveUserWritableReferences(), CcGetFileObjectFromSectionPtrsRef(), CcSetFileSizes()
+

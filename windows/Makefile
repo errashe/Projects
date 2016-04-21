@@ -1,4 +1,2 @@
-all: rc
-
-rc: main.r Makefile
+all:
 	@rscript main.r

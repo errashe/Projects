@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Grapher tool!</title>
+	<script src="ze.js"></script>
+	<script src="dy.js"></script>
+	<script src="ma.js"></script>
+	<script>
+		Zepto(function($) {
+			var Resulter = function() { this.string = [] }
+			Resulter.prototype.setTitle 	= function(first, second) 	{ this.string[0] = [first, second] };
+			Resulter.prototype.addData 		= function(X, Y) 						{ this.string.push([X,Y]) };
+			Resulter.prototype.getString 	= function() 								{ return this.string.join("\n") };
+
+			function plot(graph) {
+				var res = new Resulter();
+				res.setTitle("X", "Y");
+
+				for(var i=-10; i<10; i+=0.05) {
+					var scope = {x: i};
+					var result = math.eval(graph, scope);
+					res.addData(i, result);
+				}
+
+				var div = $("#graphdiv")[0];
+				var g = new Dygraph(div, res.getString(), {
+					valueRange: [-10, 10],
+					dateWindow: [-10, 10]
+				});
+			}
+
+			plot($("#graph").val());
+			$("#plot").click(function() { plot($("#graph").val()) });
+			$("#graph").keydown(function(e) { if(e.keyCode == 13) { plot($("#graph").val()) } });
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="graph" value="cos(x)" style="width: 500px; margin: 0 0 10px 55px;" autofocus>
+	<button id="plot">Plot</button>
+	<div id="graphdiv" style="width: 100%; height: 500px;"></div>
+</body>
+</html>
