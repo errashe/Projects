@@ -1,15 +1,21 @@
 all: server client
 
-server: server.go Makefile
+server: server.go
 	go build server.go
 
-client: client.go Makefile
+client: client.go
 	go build client.go
 
-win: client.go server.go Makefile
+win:
 	@GOOS=windows GOARCH=386 go build client.go
 	@GOOS=windows GOARCH=386 go build server.go
-	@echo "Compiled!"
+	@echo "Compiled win!"
 
-cpp: echo_client.cpp Makefile
-	g++ echo_client.cpp -o echo
+unix:
+	@GOOS=linux GOARCH=386 go build -o clientu client.go
+	@GOOS=linux GOARCH=386 go build -o serveru server.go
+	@echo "Compiled unix!"
+
+clean:
+	@rm -rf client clientu client.exe
+	@rm -rf server serveru server.exe

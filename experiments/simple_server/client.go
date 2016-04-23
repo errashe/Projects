@@ -20,12 +20,12 @@ var msg = []byte("Hello")
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
-	for th := 0; th < 100; th++ {
+	for i := 0; i < 10; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
 			for {
-				conn, err := net.Dial("tcp", "95.213.195.152:1234")
+				conn, err := net.Dial("tcp", "localhost:1234")
 				handleError(err, "Dial")
 
 				conn.Write(msg)
