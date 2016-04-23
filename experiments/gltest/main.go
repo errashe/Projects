@@ -6,22 +6,13 @@
 package main
 
 import (
-	"image"
-	"image/draw"
-	_ "image/png"
 	"log"
-	"os"
+	"math"
+	"math/rand"
 	"runtime"
 
 	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/go-gl/glfw/v3.1/glfw"
-)
-
-var (
-	faraway   float32 = 5
-	texture   uint32
-	rotationX float32
-	rotationY float32
 )
 
 func init() {
@@ -48,8 +39,7 @@ func main() {
 		panic(err)
 	}
 
-	texture = newTexture("square.png")
-	defer gl.DeleteTextures(1, &texture)
+	window.SetKeyCallback(onKey)
 
 	setupScene()
 	for !window.ShouldClose() {
@@ -59,64 +49,39 @@ func main() {
 	}
 }
 
-func newTexture(file string) uint32 {
-	imgFile, err := os.Open(file)
-	if err != nil {
-		log.Fatalf("texture %q not found on disk: %v\n", file, err)
-	}
-	img, _, err := image.Decode(imgFile)
-	if err != nil {
-		panic(err)
-	}
+var buffer [][]float32
 
-	rgba := image.NewRGBA(img.Bounds())
-	if rgba.Stride != rgba.Rect.Size().X*4 {
-		panic("unsupported stride")
+func recreate(a float32) {
+	buffer = nil
+	var x float32
+	for x = -10; x < 10; x += 0.1 {
+		buffer = append(buffer, []float32{x, a * float32(math.Sin(float64(x)))})
 	}
-	draw.Draw(rgba, rgba.Bounds(), img, image.Point{0, 0}, draw.Src)
+}
 
-	gl.Enable(gl.TEXTURE_2D)
-	gl.GenTextures(1, &texture)
-	gl.BindTexture(gl.TEXTURE_2D, texture)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-	gl.TexParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-	gl.TexImage2D(
-		gl.TEXTURE_2D,
-		0,
-		gl.RGBA,
-		int32(rgba.Rect.Size().X),
-		int32(rgba.Rect.Size().Y),
-		0,
-		gl.RGBA,
-		gl.UNSIGNED_BYTE,
-		gl.Ptr(rgba.Pix))
+var push bool = false
 
-	return texture
+func onKey(w *glfw.Window, key glfw.Key, scancode int,
+	action glfw.Action, mods glfw.ModifierKey) {
+	if key == glfw.KeyEscape && action == glfw.Press {
+		w.SetShouldClose(true)
+	} else if key == glfw.KeyR {
+		if action == glfw.Press {
+			push = true
+		} else if action == glfw.Release {
+			push = false
+		}
+	}
 }
 
 func setupScene() {
-	gl.Enable(gl.DEPTH_TEST)
-	gl.Enable(gl.LIGHTING)
-
-	gl.ClearColor(0.5, 0.5, 0.5, 0.0)
-	gl.ClearDepth(1)
-	gl.DepthFunc(gl.LEQUAL)
-
-	ambient := []float32{0.5, 0.5, 0.5, 1}
-	diffuse := []float32{1, 1, 1, 1}
-	lightPosition := []float32{-5, 5, 10, 0}
-	gl.Lightfv(gl.LIGHT0, gl.AMBIENT, &ambient[0])
-	gl.Lightfv(gl.LIGHT0, gl.DIFFUSE, &diffuse[0])
-	gl.Lightfv(gl.LIGHT0, gl.POSITION, &lightPosition[0])
-	gl.Enable(gl.LIGHT0)
-
 	gl.MatrixMode(gl.PROJECTION)
 	gl.LoadIdentity()
 	gl.Frustum(-1, 1, -1, 1, 1.0, 1000.0)
 	gl.MatrixMode(gl.MODELVIEW)
 	gl.LoadIdentity()
+
+	recreate(0)
 }
 
 func destroyScene() {
@@ -127,30 +92,20 @@ func drawScene() {
 
 	gl.MatrixMode(gl.MODELVIEW)
 	gl.LoadIdentity()
-	gl.Translatef(0, 0, -faraway)
-	gl.Rotatef(rotationX, 1, 0, 0)
-	gl.Rotatef(rotationY, 0, 1, 0)
+	gl.Translatef(0, 0, -10)
+	// gl.Rotatef(rotationX, 1, 0, 0)
+	// gl.Rotatef(rotationY, 0, 1, 0)
 
-	rotationX += 0.5
-	rotationY += 0.5
-	faraway += 0.001
+	// rotationX += 0.5
+	// rotationY += 0.5
+	if push {
+		recreate(5 * rand.Float32())
+	}
 
-	gl.BindTexture(gl.TEXTURE_2D, texture)
-
-	gl.Color4f(1, 1, 1, 1)
-
-	gl.Begin(gl.QUADS)
-
-	gl.Normal3f(0, 0, 1)
-
-	gl.TexCoord2f(0, 0)
-	gl.Vertex3f(1, -2, 1)
-	gl.TexCoord2f(1, 0)
-	gl.Vertex3f(-2, 0, 1)
-	gl.TexCoord2f(1, 1)
-	gl.Vertex3f(0, 2, 1)
-	gl.TexCoord2f(0, 1)
-	gl.Vertex3f(2, 2, 1)
-
+	gl.LineWidth(10)
+	gl.Begin(gl.LINE_STRIP)
+	for _, i := range buffer {
+		gl.Vertex2f(i[0], i[1])
+	}
 	gl.End()
 }

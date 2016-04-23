@@ -1,9 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"log"
 	"net"
-	"runtime"
 	"sync"
 	"time"
 )
@@ -19,8 +19,6 @@ var err error
 var cnt int
 
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-
 	l, err := net.Listen("tcp", ":1234")
 	handle_error(err, "Listen")
 	log.Println(l.Addr().String())
@@ -28,7 +26,7 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		for range time.Tick(time.Second) {
+		for _ = range time.Tick(time.Second) {
 			log.Println(cnt)
 			cnt = 0
 		}
@@ -38,9 +36,17 @@ func main() {
 		conn, err := l.Accept()
 		handle_error(err, "Accept")
 
-		cnt++
+		go func() {
+			scanner := bufio.NewScanner(conn)
+			for {
+				cnt++
+				if ok := scanner.Scan(); !ok {
+					break
+				}
+			}
 
-		conn.Close()
+			conn.Close()
+		}()
 	}
 
 }

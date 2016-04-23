@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net"
-	"runtime"
 	"sync"
 )
 
@@ -15,22 +14,21 @@ func handleError(err error, name string) {
 
 var err error
 var wg sync.WaitGroup
-var msg = []byte("Hello")
+var msg = []byte("h\n")
 
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 50; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			for {
-				conn, err := net.Dial("tcp", "localhost:1234")
-				handleError(err, "Dial")
+			conn, err := net.Dial("tcp", "localhost:1234")
+			handleError(err, "Dial")
 
+			for {
 				conn.Write(msg)
-				conn.Close()
 			}
+
+			conn.Close()
 		}()
 	}
 
