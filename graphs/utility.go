@@ -12,13 +12,13 @@ type Point struct {
 
 type Points []Point
 
-func (p *Points) Find(i int) (float64, float64) {
+func (p *Points) Find(i int) Point {
 	for _, e := range *p {
 		if e.Id == i {
-			return e.X, e.Y
+			return e
 		}
 	}
-	return 0, 0
+	return Point{}
 }
 
 func (p *Points) Merge(ip Points) {
@@ -49,20 +49,15 @@ type Pair struct {
 	dist          float64
 }
 
-func (p *Pair) Reverse() Pair {
-	temp := Pair{}
-	temp.first = p.second
-	temp.second = p.first
-	temp.dist = p.dist
-	return temp
-}
-
 func Grad2Rad(grad float64) float64 {
 	return grad * math.Pi / 180
 }
 
 func (p *Pair) CalcDist() {
-	temp := math.Sin(Grad2Rad(p.first.X))*math.Sin(Grad2Rad(p.second.X)) + math.Cos(Grad2Rad(p.first.X))*math.Cos(Grad2Rad(p.second.X))*math.Cos(Grad2Rad(p.first.Y)-Grad2Rad(p.second.Y))
+	p1 := math.Sin(Grad2Rad(p.first.X)) * math.Sin(Grad2Rad(p.second.X))
+	p2 := math.Cos(Grad2Rad(p.first.X)) * math.Cos(Grad2Rad(p.second.X))
+	p3 := math.Cos(Grad2Rad(p.first.Y) - Grad2Rad(p.second.Y))
+	temp := p1 + p2*p3
 	temp = math.Acos(temp)
 	p.dist = temp * 6371000
 }
@@ -76,4 +71,16 @@ func (p *Pairs) Isset(ip Pair) bool {
 		}
 	}
 	return false
+}
+
+func (p *Pairs) FillByPoints(po *Points) {
+	for i := range *po {
+		for j := range *po {
+			pair := Pair{}
+			pair.first = (*po)[i]
+			pair.second = (*po)[j]
+			pair.CalcDist()
+			*p = append(*p, pair)
+		}
+	}
 }

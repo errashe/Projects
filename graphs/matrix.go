@@ -38,6 +38,21 @@ func (m *Matrix) FillByPairs(pairs Pairs) {
 	}
 }
 
+func (m *Matrix) FillTemp() [][]int {
+	ret := make([][]int, len(*m))
+	for i := range ret {
+		ret[i] = make([]int, len(*m))
+	}
+
+	for i := range *m {
+		for j := range (*m)[i] {
+			ret[i][j] = (*m)[i][j].dist
+		}
+	}
+
+	return ret
+}
+
 func (m *Matrix) Print() {
 	for _, row := range *m {
 		for _, cell := range row {
@@ -130,7 +145,18 @@ func (m *Matrix) CalcKoef() {
 	}
 }
 
-func (m *Matrix) FindMaxKoef() []MiniPair {
+func (m *Matrix) OldToNew(iq, jq int) (int, int) {
+	for a, row := range *m {
+		for b, cell := range row {
+			if cell.pos.x == iq && cell.pos.y == jq {
+				return a, b
+			}
+		}
+	}
+	return 0, 0
+}
+
+func (m *Matrix) FindMaxKoef(temp *[][]int) (int, int) {
 	max := 0
 	for i := range *m {
 		for j := range (*m)[i] {
@@ -151,7 +177,16 @@ func (m *Matrix) FindMaxKoef() []MiniPair {
 		}
 	}
 
-	return res
+	max, iq, jq := 0, 0, 0
+	for _, mpair := range res {
+		if (*temp)[mpair.x][mpair.y] >= max {
+			max = (*temp)[mpair.x][mpair.y]
+			iq = mpair.x
+			jq = mpair.y
+		}
+	}
+
+	return iq, jq
 }
 
 func (m *Matrix) FindRow() int {
