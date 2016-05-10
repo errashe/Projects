@@ -67,7 +67,7 @@ func (m *Matrix) Print() {
 }
 
 func (m *Matrix) RowMin(i int, exclude ...MiniPair) int {
-	var min int = 10e10
+	var min int = 10e5
 
 	for j := 0; j < len((*m)); j++ {
 		if len(exclude) > 0 {
@@ -102,7 +102,7 @@ func (m *Matrix) ReduxRows() {
 }
 
 func (m *Matrix) ColMin(i int, exclude ...MiniPair) int {
-	var min int = 10e10
+	var min int = 10e5
 
 	for j := 0; j < len((*m)); j++ {
 		if len(exclude) > 0 {

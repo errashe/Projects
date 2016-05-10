@@ -2,43 +2,48 @@ package main
 
 import (
 	"crypto/md5"
+	"encoding/json"
 	"fmt"
-	"github.com/Jeffail/gabs"
 	"io"
 	"io/ioutil"
 	"net/http"
-	"strings"
 )
 
 var key string = "84c9a5c4-d59b-41d7-8b78-1794d43d3549"
 
-// var key string = "aa6a7c24-03d4-4c7b-8b13-3813d4413663"
-
 func Search(name string) Points {
 
-	resp, _ := http.Get(fmt.Sprintf("https://search-maps.yandex.ru/v1/?apikey=%s&text=%s&lang=ru_RU", key, name))
+	resp, err := http.Get(fmt.Sprintf("https://search-maps.yandex.ru/v1/?apikey=%s&text=%s&lang=ru_RU", key, name))
+	ehandle("Get", err)
 	defer resp.Body.Close()
 
-	content, _ := ioutil.ReadAll(resp.Body)
+	content, err := ioutil.ReadAll(resp.Body)
+	ehandle("ReadAll", err)
 
-	jsonParsed, _ := gabs.ParseJSON(content)
-	// fmt.Println(jsonParsed)
+	var jsonParsed map[string]interface{}
 
-	ser := jsonParsed.S("features")
-	k, _ := ser.Children()
+	err = json.Unmarshal(content, &jsonParsed)
+	ehandle("JSON", err)
+
+	ser := jsonParsed["features"].([]interface{})
 
 	res := Points{}
 	h := md5.New()
 
-	for _, children := range k {
+	for _, item := range ser {
 		h.Reset()
-		name := children.Path("properties.CompanyMetaData.name").Data().(string)
-		coords := children.Path("geometry.coordinates")
+
+		pname := item.(map[string]interface{})["properties"]
+		cname := pname.(map[string]interface{})["CompanyMetaData"]
+		name := cname.(map[string]interface{})["name"].(string)
+		geometry := item.(map[string]interface{})["geometry"]
+		xy := geometry.(map[string]interface{})["coordinates"]
+
 		io.WriteString(h, name)
 		hash := h.Sum(nil)
 		p := Point{}
-		p.Y = coords.Index(0).Data().(float64)
-		p.X = coords.Index(1).Data().(float64)
+		p.X = xy.([]interface{})[1].(float64)
+		p.Y = xy.([]interface{})[0].(float64)
 		p.Name = name
 		p.Hash = fmt.Sprintf("%x", hash)
 		res = append(res, p)
@@ -47,15 +52,18 @@ func Search(name string) Points {
 	return res
 }
 
-func main() {
-	finds := []string{
-		"больницы кургана",
-		"детские поликлиники кургана",
+func StartSearch(searchs []string) []string {
+	if len(searchs) == 0 {
+		return []string{}
 	}
 
 	res := Points{}
-	for _, find := range finds {
+	for _, find := range searchs {
 		res.Merge(Search(find))
+	}
+
+	if len(res) == 0 {
+		return []string{}
 	}
 
 	res.Numerate()
@@ -83,35 +91,16 @@ func main() {
 	paths = append(paths, MiniPair{matrix[0][0].pos.x, matrix[0][0].pos.y})
 
 	sort(&paths)
-	results := goPath(&paths, &res, 0)
-	fmt.Printf("https://www.google.ru/maps/dir/%s", strings.Join(results, "/"))
+	return goPath(&paths, &res, 0)
 }
 
-func goPath(p *[]MiniPair, res *Points, first int) []string {
-	var out []string
-	temp := first
-	for i := 0; i < len(*p); i++ {
-		for j := 0; j < len(*p); j++ {
-			if (*p)[j].x == temp {
-				e := (*res).Find((*p)[j].x)
-				out = append(out, fmt.Sprintf("%f+%f", e.X, e.Y))
-				temp = (*p)[j].y
-				break
-			}
-		}
-	}
-	out = append(out, out[0])
-	return out
-}
+func main() {
+	// p := []string{"музеи кургана"}
+	// fmt.Printf("https://yandex.ru/maps/53/kurgan/?rtext=%s", strings.Join(StartSearch(p), "~"))
 
-func sort(p *[]MiniPair) {
-	for i := len(*p) - 1; i >= 0; i-- {
-		for j := 0; j < i; j++ {
-			if (*p)[j].x > (*p)[j+1].x {
-				x := MiniPair{(*p)[j].x, (*p)[j].y}
-				(*p)[j] = (*p)[j+1]
-				(*p)[j+1] = x
-			}
-		}
-	}
+	go delaySecond(1, func() {
+		start("http://localhost:8080/")
+		fmt.Println("Served on 8080")
+	})
+	StartServer()
 }
