@@ -56,9 +56,7 @@ func sort(p *[]MiniPair) {
 	}
 }
 
-type slowed func()
-
-func delaySecond(n time.Duration, fn slowed) {
+func delaySecond(n time.Duration, fn func()) {
 	time.Sleep(n * time.Second)
 	fn()
 }
