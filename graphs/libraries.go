@@ -66,7 +66,7 @@ func start(what string) {
 	switch runtime.GOOS {
 	case "linux":
 		err = exec.Command("xdg-open", what).Start()
-	case "windows", "darwin":
+	case "darwin":
 		err = exec.Command("open", what).Start()
 	default:
 		err = fmt.Errorf("unsupported platform")

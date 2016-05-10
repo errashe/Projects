@@ -64,6 +64,7 @@ func ghandler(w http.ResponseWriter, r *http.Request) {
 	var f string
 	if len(res) == 0 {
 		fmt.Fprintf(w, page, "Не достаточно аргументов или не найдены объекты по критериям")
+		return
 	}
 	for _, item := range res {
 		f += fmt.Sprintf("%s<br />", item)
