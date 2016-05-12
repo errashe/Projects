@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"runtime"
 	"time"
@@ -11,7 +10,7 @@ import (
 func ehandle(where string, e error) {
 	if e != nil {
 		fmt.Println(where, " -> ", e.Error())
-		os.Exit(0)
+		// os.Exit(0)
 	}
 }
 
@@ -65,7 +64,9 @@ func start(what string) {
 	var err error
 	switch runtime.GOOS {
 	case "linux":
-		err = exec.Command("xdg-open", what).Start()
+		// err = exec.Command("xdg-open", what).Start()
+	case "windows":
+		exec.Command("cmd", "/c", "start", what).Start()
 	case "darwin":
 		err = exec.Command("open", what).Start()
 	default:

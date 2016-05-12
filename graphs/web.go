@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
 )
 
 var page string = `
@@ -34,11 +33,6 @@ var form string = `
 			div.appendChild(del);
 			var where = document.querySelector("#params");
 			where.appendChild(div);
-			console.log("Hello, world!")
-		}
-
-		function debug() {
-			console.log(countOfInputs());
 		}
 	</script>
 	<form method="post" action="/graph">
@@ -49,8 +43,54 @@ var form string = `
 `
 
 var result string = `
-	<a href="%s">Карта</a><br />
-	%s
+	<script src="https://api-maps.yandex.ru/2.1/?lang=en_US" type="text/javascript"></script>
+	<script type="text/javascript">
+		function str2xy(str) {
+			var arrContent = str.split(",");
+			var x = parseFloat(arrContent[0]);
+			var y = parseFloat(arrContent[1]);
+			return [x,y]
+		}
+	
+		ymaps.ready(init);
+		var myMap;
+
+		function init(){     
+			myMap = new ymaps.Map("map", {
+				center: [55.76, 37.64], 
+				zoom: 7
+			});
+
+			var points = document.querySelectorAll(".point");
+			var poly = [];
+			for(var i=0; i<points.length; i++) {
+				var temp = str2xy(points[i].textContent);
+				myPlacemark = new ymaps.Placemark(temp, {
+					iconContent: i,
+				});
+				myMap.geoObjects.add(myPlacemark);
+				poly.push(temp);
+			}
+			var polyline = new ymaps.Polyline(poly);
+
+			myMap.geoObjects.add(polyline);
+			myMap.setBounds(polyline.geometry.getBounds());
+
+			// ymaps.route(poly, {
+			// 	multiRoute: true
+			// }).done(function (route) {
+			// 	route.getWayPoints().options.set("visible", false)
+			// 	myMap.geoObjects.add(route);
+			// 	myMap.setBounds(route.getBounds());
+			// }, function (err) {
+			// 	throw err;
+			// }, this);
+		}
+
+
+	</script>
+	<div id="map" style="width: 1000px; height: 1000px; float: left;"></div>
+	<div style="margin-left: 1020px;" id="points">%s</div>
 `
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -60,17 +100,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func ghandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	res := StartSearch(r.Form["path"])
-	link := fmt.Sprintf("https://yandex.ru/maps/53/kurgan/?rtext=%s", strings.Join(res, "~"))
 	var f string
 	if len(res) == 0 {
 		fmt.Fprintf(w, page, "Не достаточно аргументов или не найдены объекты по критериям")
 		return
 	}
 	for _, item := range res {
-		f += fmt.Sprintf("%s<br />", item)
+		f += fmt.Sprintf("<span class='point'>%s</span><br />", item)
 	}
 
-	fmt.Fprintf(w, page, fmt.Sprintf(result, link, f))
+	fmt.Fprintf(w, page, fmt.Sprintf(result, f))
 }
 
 func StartServer() {

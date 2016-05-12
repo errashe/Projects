@@ -13,7 +13,7 @@ var key string = "84c9a5c4-d59b-41d7-8b78-1794d43d3549"
 
 func Search(name string) Points {
 
-	resp, err := http.Get(fmt.Sprintf("https://search-maps.yandex.ru/v1/?apikey=%s&text=%s&lang=ru_RU", key, name))
+	resp, err := http.Get(fmt.Sprintf("https://search-maps.yandex.ru/v1/?apikey=%s&text=%s&lang=ru_RU&results=5000", key, name))
 	ehandle("Get", err)
 	defer resp.Body.Close()
 
@@ -99,7 +99,7 @@ func main() {
 	// fmt.Printf("https://yandex.ru/maps/53/kurgan/?rtext=%s", strings.Join(StartSearch(p), "~"))
 
 	go delaySecond(1, func() {
-		start("http://localhost:8080/")
+		// start("http://localhost:8080/")
 		fmt.Println("Served on 8080")
 	})
 	StartServer()
