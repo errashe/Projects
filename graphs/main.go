@@ -95,11 +95,8 @@ func StartSearch(searchs []string) []string {
 }
 
 func main() {
-	// p := []string{"музеи кургана"}
-	// fmt.Printf("https://yandex.ru/maps/53/kurgan/?rtext=%s", strings.Join(StartSearch(p), "~"))
-
 	go delaySecond(1, func() {
-		// start("http://localhost:8080/")
+		start("http://localhost:8080/")
 		fmt.Println("Served on 8080")
 	})
 	StartServer()
