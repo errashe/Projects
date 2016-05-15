@@ -108,7 +108,7 @@ func main() {
 		RemoveDuplicates(&res)
 		for _, id := range res {
 			u := getProfiles(id)
-			if u.Counters.Friends < 50 {
+			if u.Counters.Friends < 20 {
 				fmt.Println(u.UID)
 			}
 		}

@@ -1,4 +1,4 @@
-all: search
+all: build
 
 parse:
 	@go run *.go
