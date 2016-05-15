@@ -1,0 +1,83 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Фигуры Лиссажу</title>
+<script type="application/javascript">
+var ctx;
+var timer = null, delay=20;
+var aS = new Array();
+var rad = 199;
+var max=3*360, m1=max-1, m2 = max/2;
+var iXo=0, iYo=m2/2;
+var parN=2, parM=1;
+
+function init() {
+ var canvas = document.getElementById("canvas");
+ if (canvas.getContext) { ctx = canvas.getContext("2d");
+  sf=Math.sin(3.14159265/m2);  cf=Math.cos(3.14159265/m2);
+  s=-sf; c=cf;
+  for (i=0; i<m2; i++) {
+    s1=s*cf+c*sf; c=c*cf-s*sf; s=s1;
+    aS[i]=Math.round(rad*(1.+s))+1;
+    aS[i+m2]=Math.round(rad*(1.-s))+1;
+  }
+  startAnimation();
+ }
+}
+function draw() {
+  Xo=aS[iXo],Yo=aS[iYo];
+  ctx.beginPath();
+  ctx.moveTo(Xo,Yo);
+  for (j=max; j>0; j--) {
+    iX=(iXo+parM) % max; iY=(iYo+parN) % m1;
+    X=aS[iX];  Y=aS[iY];
+    ctx.lineTo(X,Y);
+    iXo=iX; iYo=iY; Xo=X; Yo=Y;
+  }
+  ctx.clearRect (0, 0, 400, 400);
+  ctx.stroke();
+}
+function startAnimation() {
+  if (!timer) timer = setInterval(draw,delay);
+}
+function stopAnimation() {
+  if (!timer) return false;
+  clearInterval(timer);
+  timer = null;
+}
+function setDelay(v) {
+  delay = parseInt(v);
+  stopAnimation(); startAnimation();
+}
+</script>
+<style type="text/css"></style></head>
+<body onload="init();">
+<h2>Фигуры Лиссажу</h2>
+
+<table><tbody><tr><td>
+ <button onclick="startAnimation()">Start</button>
+ <button onclick="stopAnimation()">Stop</button>
+M=<select onchange="parM=parseInt(this.options[this.selectedIndex].value)">
+   <option selected="1">1
+   </option><option value="2">2
+   </option><option value="3">3
+   </option><option value="4">4
+   </option><option value="5">5
+   </option><option value="6">6
+   </option></select>
+N=<select onchange="parN=parseInt(this.options[this.selectedIndex].value)">
+   <option value="1">1
+   </option><option selected="2">2
+   </option><option value="3">3
+   </option><option value="4">4
+   </option><option value="5">5
+   </option><option value="6">6
+   </option><option value="7">7
+   </option></select>
+delay<select onchange="setDelay(this.options[this.selectedIndex].value)">
+   <option value="0">0
+   </option><option selected="20">20
+   </option><option value="50">50
+   </option><option value="100">100
+   </option><option value="200">200
+   </option></select>
+<p><canvas id="canvas" width="400" height="400"></canvas>
+</body></html>
