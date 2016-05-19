@@ -53,6 +53,6 @@ func WriteToBase() {
 		if err != nil {
 			return err
 		}
-		return b.Put(time.Now().UnixNano(), []byte("My New Year post"))
+		return b.Put([]byte(fmt.Sprintf("%f", time.Now().UnixNano())), []byte("Hello"))
 	})
 }
