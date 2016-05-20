@@ -13,6 +13,7 @@ import (
 var token string = "18125f3dea048c0dfc3b75b906691ee20a603e56ba0cdaaefcdca43733602d1e96b07c7a199e3077a175f"
 
 func VK(method, params string) Resp {
+	time.Sleep(200 * time.Millisecond)
 	link := fmt.Sprintf("https://api.vk.com/method/%s?%s&access_token=%s", method, params, token)
 	// fmt.Println(link)
 	resp, err := http.Get(link)
@@ -41,18 +42,33 @@ func Range(start, end, step int) []string {
 	return res
 }
 
-func WriteToBase() {
-	db, err := bolt.Open("users.db", 0600, nil)
+func OpenDB(name string) *bolt.DB {
+	db, err := bolt.Open(name, 0600, nil)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err.Error())
 	}
-	defer db.Close()
+	return db
+}
 
+func WriteData(db *bolt.DB, users []Meta) {
 	db.Update(func(tx *bolt.Tx) error {
 		b, err := tx.CreateBucketIfNotExists([]byte("users"))
 		if err != nil {
 			return err
 		}
-		return b.Put([]byte(fmt.Sprintf("%f", time.Now().UnixNano())), []byte("Hello"))
+		for _, user := range users {
+			if user.Deactivated == "deleted" || user.Deactivated == "banned" {
+				continue
+			}
+			d, err := json.Marshal(user)
+			if err != nil {
+				fmt.Println(err.Error())
+			}
+			err = b.Put([]byte(fmt.Sprintf("%d", time.Now().UnixNano())), d)
+			if err != nil {
+				fmt.Println(err.Error())
+			}
+		}
+		return nil
 	})
 }

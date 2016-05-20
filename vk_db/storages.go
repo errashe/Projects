@@ -4,10 +4,6 @@ type Resp struct {
 	Metas []Meta `json:"response"`
 }
 
-func (r *Resp) Prune() {
-	// TODO: code deleting row
-}
-
 type Meta struct {
 	UID         int    `json:"uid"`
 	FirstName   string `json:"first_name"`
