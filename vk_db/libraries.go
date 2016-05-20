@@ -13,12 +13,12 @@ import (
 var token string = "18125f3dea048c0dfc3b75b906691ee20a603e56ba0cdaaefcdca43733602d1e96b07c7a199e3077a175f"
 
 func VK(method, params string) Resp {
-	time.Sleep(200 * time.Millisecond)
+	time.Sleep(500 * time.Millisecond)
 	link := fmt.Sprintf("https://api.vk.com/method/%s?%s&access_token=%s", method, params, token)
 	// fmt.Println(link)
 	resp, err := http.Get(link)
 	if err != nil {
-		log.Panic(err.Error())
+		log.Println(err.Error())
 	}
 	defer resp.Body.Close()
 
@@ -28,7 +28,7 @@ func VK(method, params string) Resp {
 
 	err = json.Unmarshal(str, &ret)
 	if err != nil {
-		log.Panic(err.Error())
+		log.Println(err.Error())
 	}
 
 	return ret
