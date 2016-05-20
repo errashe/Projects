@@ -15,7 +15,7 @@ func main() {
 			fmt.Sprintf("user_ids=%s&fields=verified,sex,bdate,city,country", strings.Join(Range(i*100, i*100+100, 1), ",")),
 		)
 
-		WriteData(db, res.Metas)
+		WriteData(db, res)
 		fmt.Println(i * 100)
 	}
 

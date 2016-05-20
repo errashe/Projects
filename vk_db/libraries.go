@@ -50,13 +50,13 @@ func OpenDB(name string) *bolt.DB {
 	return db
 }
 
-func WriteData(db *bolt.DB, users []Meta) {
+func WriteData(db *bolt.DB, users Resp) {
 	db.Update(func(tx *bolt.Tx) error {
 		b, err := tx.CreateBucketIfNotExists([]byte("users"))
 		if err != nil {
 			return err
 		}
-		for _, user := range users {
+		for _, user := range users.Metas {
 			if user.Deactivated == "deleted" || user.Deactivated == "banned" {
 				continue
 			}
