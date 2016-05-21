@@ -45,9 +45,9 @@ func saveMap(m [][]int) [][]string {
 		for y := 0; y < len(m[x]); y++ {
 			switch m[x][y] {
 			case 0:
-				res[x][y] = "L"
-			case 1:
 				res[x][y] = "W"
+			case 1:
+				res[x][y] = "L"
 			}
 		}
 	}
@@ -81,6 +81,6 @@ func main() {
 		temp[i] = strings.Join(row, "")
 	}
 	res := strings.Join(temp, "\n")
-	w.WriteString(res)
+	w.Write([]byte(res))
 	w.Flush()
 }
