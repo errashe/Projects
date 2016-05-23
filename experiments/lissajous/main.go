@@ -59,7 +59,6 @@ func main() {
 	// defer f.Close()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		println(r.URL.String())
 		A, _ := strconv.ParseFloat(r.URL.Query().Get("A"), 64)
 		B, _ := strconv.ParseFloat(r.URL.Query().Get("B"), 64)
 		wa, _ := strconv.ParseFloat(r.URL.Query().Get("wa"), 64)
