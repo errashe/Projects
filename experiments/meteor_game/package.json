@@ -1,5 +1,5 @@
 {
-  "name": "meteor_blog",
+  "name": "meteor_game",
   "private": true,
   "scripts": {
     "start": "meteor run"
