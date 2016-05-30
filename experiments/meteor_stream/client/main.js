@@ -1,4 +1,4 @@
-import "/libs/main.js"
+// import "/libs/main.js"
 
 sendMessage = function(message) {
 	Streamer.emit('message', message);
