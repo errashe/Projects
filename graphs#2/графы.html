@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>PDF</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css">
+	<script type="text/javascript" src="pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js"></script>
+	<script type="text/javascript" src="vfs_fonts.js"></script>
+	<script type="text/javascript">
+		drawGraph = function(render, call) {
+			var n = render.length;
+			Nodes = new vis.DataSet();
+			for(var i=0; i<n; i++) {
+				Nodes.add({id: i, label: `Node ${i}`})
+			}
+
+			Nodes._data[0].label = "Start";
+			Nodes._data[n-1].label = "End";
+
+			Edges = new vis.DataSet();
+			for(var i=0; i<n; i++) {
+				for(var j=0; j<n; j++) {
+					if(render[i][j] != "M" && render[i][j] != "0")
+						Edges.add({from: i, to: j, label: render[i][j]})
+				}
+			}
+
+			var container = document.getElementById('test');
+			var data = {
+				nodes: Nodes,
+				edges: Edges
+			};
+			var options = {};
+			var network = new vis.Network(container, data, options);
+		}
+
+		renderCommon = function(n, neg=false) {
+			var render = [];
+			for(var i=0; i<n; i++) {
+				render.push("M".repeat(n).split(''));
+				for(var j=0; j<n; j++) {
+					if(i != j) {
+						var range = (neg == false) ? Math.random()*10 : Math.random()*20-10;
+						render[i][j] = Math.round(range).toString();
+					}
+				}
+			}
+
+			return render;
+		}
+
+		renderMaxPath = function(n) {
+			var render = [];
+			for(var i=0; i<n; i++) {
+				render.push("M".repeat(n).split(''));
+				var rnd = Math.round(Math.random()*2+2);
+				var count = 0;
+				for(var j=i+1; (j<n) && (count<rnd); j++) {
+					if(i != j) {
+						if((i==0)?true:render[i-1][j] == "M") {
+							render[i][j] = Math.round(Math.random()*10).toString();
+							count++;
+						}
+					}
+				}
+			}
+
+			render[8][9] = Math.round(Math.random()*2+8).toString();
+
+			return render;
+		}
+
+		renderPlusMinus = function(n) {
+			var render = [];
+			for(var i=0; i<n; i++) {
+				render.push("-".repeat(n).split(''));
+				for(var j=0; j<n; j++) {
+					if(i != j) {
+						render[i][j] = Math.random()<0.5?"+":"-";
+					}
+				}
+			}
+
+			return render;
+		}
+
+		function fnc() {
+
+			var q1 = renderCommon(10);
+			var q2 = renderMaxPath(10);
+			var q3 = renderCommon(10, true);
+			var q4 = renderCommon(10);
+			var q5 = renderPlusMinus(10);
+
+			drawGraph(q2);
+			setTimeout(function() {
+				var docDefinition = {
+					content: [
+					{ table: { body: q1 } },
+					{ text: 'Задача#1' },
+					{ table: { body: q2 } },
+					{ image: document.querySelector("canvas").toDataURL(), fit: [200, 200] },
+					{ text: 'Задача#2' },
+					{ table: { body: q3 } },
+					{ text: 'Задача#3' },
+					{ table: { body: q4 } },
+					{ text: 'Задача#4' },
+					{ table: { body: q5 } },
+					{ text: 'Задача#5' },
+					]
+				};
+
+				pdfMake.createPdf(docDefinition).open();
+			}, 1000);
+
+		}
+
+		document.addEventListener('DOMContentLoaded', fnc, false);
+	</script>
+</head>
+<body>
+	<div id="test" style="width: 500px; height: 500px;"></div>
+</body>
+</html>
