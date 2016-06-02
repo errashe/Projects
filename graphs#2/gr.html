@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js"></script>
 	<script type="text/javascript" src="vfs_fonts.js"></script>
 	<script type="text/javascript">
-		drawGraph = function(render, call) {
+		drawGraph = function(render) {
 			var n = render.length;
 			Nodes = new vis.DataSet();
 			for(var i=0; i<n; i++) {
@@ -22,7 +22,7 @@
 			for(var i=0; i<n; i++) {
 				for(var j=0; j<n; j++) {
 					if(render[i][j] != "M" && render[i][j] != "0")
-						Edges.add({from: i, to: j, label: render[i][j]})
+						Edges.add({from: i, to: j, label: render[i][j], arrows: 'to'})
 				}
 			}
 
@@ -50,6 +50,26 @@
 			return render;
 		}
 
+		renderMirror = function(n, neg=false) {
+			var render = [];
+			for(var i=0; i<n; i++) {
+				render.push("M".repeat(n).split(''));
+			}
+
+			for(var i=0; i<n; i++) {
+				for(var j=i; j<n; j++) {
+					if(i != j) {
+						var range = (neg == false) ? Math.random()*10 : Math.random()*20-10;
+						var num = Math.round(range).toString();
+						render[i][j] = num;
+						render[j][i] = num;
+					}
+				}
+			}
+
+			return render;
+		}
+
 		renderMaxPath = function(n) {
 			var render = [];
 			for(var i=0; i<n; i++) {
@@ -66,12 +86,30 @@
 				}
 			}
 
-			render[8][9] = Math.round(Math.random()*2+8).toString();
+			render[render.length-2][render.length-1] = Math.round(Math.random()*2+render.length-2).toString();
 
 			return render;
 		}
 
 		renderPlusMinus = function(n) {
+			function check(render) {
+				for(var row in render) {
+					var count = 0;
+					for(var cell in render[row]) {
+						if(render[row][cell] == "+") count++;
+					}
+					if(count == 0) render[row][Math.round(Math.random()*render[row].length-1)] = "+";
+				}
+
+				for(var i=0; i<render.length; i++) {
+					var count = 0;
+					for(var j=0; j<render[i].length; j++) {
+						if(render[j][i] == "+") count++;
+					}
+					if(count == 0) render[j][Math.round(Math.random()*render[j].length-1)] = "+";
+				}
+			}
+
 			var render = [];
 			for(var i=0; i<n; i++) {
 				render.push("-".repeat(n).split(''));
@@ -82,16 +120,23 @@
 				}
 			}
 
+			check(render);
+
 			return render;
 		}
 
-		function fnc() {
+		N = 10
+		function work(draw=true) {
 
-			var q1 = renderCommon(10);
-			var q2 = renderMaxPath(10);
-			var q3 = renderCommon(10, true);
-			var q4 = renderCommon(10);
-			var q5 = renderPlusMinus(10);
+			if(N<3) {
+				return;
+			}
+
+			var q1 = renderMirror(N);
+			var q2 = renderMaxPath(N);
+			var q3 = renderCommon(N, true);
+			var q4 = renderCommon(N);
+			var q5 = renderPlusMinus(N);
 
 			drawGraph(q2);
 			setTimeout(function() {
@@ -100,9 +145,9 @@
 					{ table: { body: q1 } },
 					{ text: 'Задача#1' },
 					{ table: { body: q2 } },
-					{ image: document.querySelector("canvas").toDataURL(), fit: [200, 200] },
+					{ image: document.querySelector("canvas").toDataURL(), fit: [300, 300] },
 					{ text: 'Задача#2' },
-					{ table: { body: q3 } },
+					{ table: { body: q3 }, pageBreak: "before" },
 					{ text: 'Задача#3' },
 					{ table: { body: q4 } },
 					{ text: 'Задача#4' },
@@ -111,12 +156,13 @@
 					]
 				};
 
-				pdfMake.createPdf(docDefinition).open();
+				if(draw)
+					pdfMake.createPdf(docDefinition).open();
 			}, 1000);
 
 		}
 
-		document.addEventListener('DOMContentLoaded', fnc, false);
+		document.addEventListener('DOMContentLoaded', work, false);
 	</script>
 </head>
 <body>
