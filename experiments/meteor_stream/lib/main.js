@@ -1,1 +1,0 @@
-Streamer = new Meteor.Streamer('chat');
