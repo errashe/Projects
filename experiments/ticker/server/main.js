@@ -10,6 +10,7 @@ Meteor.methods({
 			}, 1000);
 		} else {
 			clearInterval(int);
+			int = null;
 		}
 	}
 });
