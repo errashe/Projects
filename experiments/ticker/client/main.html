@@ -3,12 +3,12 @@
 </head>
 
 <body>
-	<h1>Welcome to Meteor!</h1>
-
-	{{> hello}}
+	{{> parse}}
 </body>
 
-<template name="hello">
-	<button>Click Me</button>
-	<h1>Hello, world!</h1>
+<template name="parse">
+	<button>Update</button><br />
+	{{#each matches}}
+	<span style="background-color: {{color(stat)}}">{{time}} - {{match}} - {{hero}} - {{stat}}</span><br />
+	{{/each}}
 </template>
