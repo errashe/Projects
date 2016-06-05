@@ -7,16 +7,15 @@
 </body>
 
 <template name="parse">
-	<button>Update</button><br />
 	<table border="1">
-	{{#each matches}}
-	<tr style="background-color: {{ color(stat) }}">
-		<td>{{user}}</td>
-		<td>{{time}}</td>
-		<td>{{match}}</td>
-		<td>{{hero}}</td>
-		<td>{{stat}}</td>
-	</tr>
-	{{/each}}
+		{{#each matches}}
+		<tr style="background-color: {{ color(stat) }}">
+			<td>{{user}}</td>
+			<td>{{time}}</td>
+			<td>{{match}}</td>
+			<td>{{hero}}</td>
+			<td>{{stat}}</td>
+		</tr>
+		{{/each}}
 	</table>
 </template>

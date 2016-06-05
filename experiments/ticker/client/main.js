@@ -14,9 +14,3 @@ Template.parse.helpers({
 		}
 	}
 });
-
-Template.parse.events({
-	'click button'(event, instance) {
-		Meteor.call("parse");
-	},
-});
