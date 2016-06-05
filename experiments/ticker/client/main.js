@@ -4,7 +4,7 @@ Template.parse.rendered = function() {
 
 Template.parse.helpers({
 	"matches": function() {
-		return Matches.find({}, {sort: { time: -1 }, limit: 10});
+		return Matches.find({});
 	},
 	"color": function(stat) {
 		if(stat == "Победа") {
