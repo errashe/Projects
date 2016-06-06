@@ -10,7 +10,6 @@ function parse(url) {
 	};
 
 	request(options, Meteor.bindEnvironment(function(err, resp, body){
-		console.log(err);
 		$ = cheerio.load(body);
 		var user = $("div.header-content-title h1");
 		user = user.clone().children().remove().end().text();
@@ -48,10 +47,13 @@ function parseAll() {
 	}
 }
 
+function publish() {
+	Meteor.publish("matches", function() {
+		return Matches.find({}, {limit: 20});
+	});
+}
+
 Meteor.startup(() => {
 	setInterval(Meteor.bindEnvironment(parseAll), 10*1000);
-
-	Meteor.publish("matches", function() {
-		return Matches.find({}, {sort: { time: -1 }, limit: 20});
-	});
+	publish();
 });
