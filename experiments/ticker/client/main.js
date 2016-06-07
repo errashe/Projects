@@ -1,6 +1,6 @@
-Template.parse.rendered = function() {
+Template.parse.onCreated(function() {
 	Meteor.subscribe("matches");
-}
+});
 
 Template.parse.helpers({
 	"matches": function() {

@@ -49,7 +49,7 @@ function parseAll() {
 
 function publish() {
 	Meteor.publish("matches", function() {
-		return Matches.find({}, {limit: 20});
+		return Matches.find({}, {limit: 20, sort: { time: -1 }});
 	});
 }
 
