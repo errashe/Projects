@@ -14,7 +14,7 @@
 			{{#each matches}}
 			<tr class="{{ color(stat) }}">
 				<td>{{user}}</td>
-				<td>{{time}}</td>
+				<td>{{strToHours(time)}}</td>
 				<td><a href="http://dotabuff.com/matches/{{match}}">{{match}}</a></td>
 				<td>{{hero}}</td>
 				<td>{{stat}}</td>
