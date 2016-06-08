@@ -3,19 +3,23 @@
 </head>
 
 <body>
-	{{> parse}}
+	<div class="container">
+		{{> parse}}
+	</div>
 </body>
 
 <template name="parse">
-	<table border="1">
-		{{#each matches}}
-		<tr style="background-color: {{ color(stat) }}">
-			<td>{{user}}</td>
-			<td>{{time}}</td>
-			<td>{{match}}</td>
-			<td>{{hero}}</td>
-			<td>{{stat}}</td>
-		</tr>
-		{{/each}}
+	<table class="table table-bordered text-center">
+		<tbody>
+			{{#each matches}}
+			<tr class="{{ color(stat) }}">
+				<td>{{user}}</td>
+				<td>{{time}}</td>
+				<td><a href="http://dotabuff.com/matches/{{match}}">{{match}}</a></td>
+				<td>{{hero}}</td>
+				<td>{{stat}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
 	</table>
 </template>

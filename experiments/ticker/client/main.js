@@ -8,9 +8,9 @@ Template.parse.helpers({
 	},
 	"color": function(stat) {
 		if(stat == "Победа") {
-			return "green";
+			return "success";
 		} else {
-			return "red";
+			return "danger";
 		}
 	}
 });
