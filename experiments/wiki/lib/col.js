@@ -1,1 +1,0 @@
-Temp = new Mongo.Collection("temp");
