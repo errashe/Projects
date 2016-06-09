@@ -14,12 +14,7 @@ Template.parse.helpers({
 		}
 	},
 	"strToHours": function(str) {
-		var d = new Date();
-		d.setTime(Date.parse(str));
-		var res = Date.now() - d.getTime();
-		res = (res/1000).toFixed(0);
-		res = (res/(60*60)).toFixed(2);
-		res = Math.round(res);
-		return res == 0 ? "Только что" : `${res} часа(ов) назад`;
+		moment.updateLocale("ru");
+		return moment(str).fromNow();
 	}
 });
