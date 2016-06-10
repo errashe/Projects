@@ -1,3 +1,7 @@
+Debug = function() {
+	Meteor.call("debug");
+}
+
 Template.parse.onCreated(function() {
 	Meteor.subscribe("matches");
 });
