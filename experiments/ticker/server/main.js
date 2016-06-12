@@ -25,22 +25,9 @@ function parseAll() {
 	}
 }
 
-function publish() {
+Meteor.startup(() => {
+	Meteor.setInterval(parseAll, 10*1000);
 	Meteor.publish("matches", function() {
 		return Matches.find({}, {limit: 15, sort: { time: -1 }});
 	});
-}
-
-Meteor.startup(() => {
-	Meteor.setInterval(parseAll, 10*1000);
-	publish();
-});
-
-Meteor.methods({
-	"debug": function() {
-		Matches.insert({user: "test", time: "2016-06-11T23:19:08+00:00", hero: "test", match: "100500", stat: "Победа"})
-		setTimeout(Meteor.bindEnvironment(function() {
-			Matches.remove({user: "test"});
-		}), 5000);
-	}
 });
