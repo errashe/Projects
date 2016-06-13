@@ -1,8 +1,6 @@
 var request = require("request");
 var cheerio = require("cheerio");
 
-// import cheerio from "cheerio"
-// import request from "request"
 exports.go = function(url, next) {
 	var options = {
 		url: url,
