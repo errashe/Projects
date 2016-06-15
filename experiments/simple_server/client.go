@@ -17,7 +17,7 @@ var wg sync.WaitGroup
 var msg = []byte("h\n")
 
 func main() {
-	for i := 0; i < 50; i++ {
+	for i := 0; i < 75; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
