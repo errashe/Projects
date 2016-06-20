@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	CONN_HOST = "localhost"
+	CONN_HOST = "192.168.1.31"
 	CONN_PORT = "3333"
 	CONN_TYPE = "tcp"
 )
@@ -44,7 +44,7 @@ func handleRequest(conn net.Conn) {
 		fmt.Println("Error reading:", err.Error())
 	}
 
-	req := string(buf[:l-1])
+	req := string(buf[4 : l-1])
 	reqA := strings.Split(req, "|")
 
 	if functions[reqA[0]] != nil {

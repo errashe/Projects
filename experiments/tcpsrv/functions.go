@@ -8,8 +8,9 @@ import (
 
 func fillFunctions() map[string]interface{} {
 	functions := make(map[string]interface{})
-	functions["WAR"] = func(conn net.Conn, params []string) {
-		conn.Write([]byte(fmt.Sprintf("Test message with params: %s\n", strings.Join(params, "|"))))
+	functions["QWE"] = func(conn net.Conn, params []string) {
+		add := append([]byte{17, 0, 0, 0}, []byte(fmt.Sprintf("Test message with params: %s\n", strings.Join(params, "|")))...)
+		conn.Write(add)
 	}
 	return functions
 }
