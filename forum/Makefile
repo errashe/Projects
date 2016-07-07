@@ -1,13 +1,13 @@
 all: run
 
 delete:
-	@rm -rf main main.exe
+	@rm -rf main
 
 run: delete
-	@go run *.go
+	@go run src/*.go
 
 build: delete
-	@go build -ldflags="-w -s" -o main *.go
+	@go build -ldflags="-w -s" -o main src/*.go
 
 hardbuild: build
 	@strip -x main
