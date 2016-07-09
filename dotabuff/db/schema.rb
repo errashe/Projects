@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709135346) do
+ActiveRecord::Schema.define(version: 20160709160506) do
 
   create_table "gamers", force: :cascade do |t|
     t.string   "nick"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160709135346) do
     t.datetime "updated_at",           null: false
     t.string   "uhash"
     t.datetime "match_time"
+    t.integer  "puid",       limit: 8
     t.index ["uhash"], name: "index_matches_on_uhash", unique: true
   end
 

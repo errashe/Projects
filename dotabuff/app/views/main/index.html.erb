@@ -1,2 +1,16 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<h2>List of matches!</h2>
+
+<% @matches.each do |m| %>
+<div>
+	<a target="blank" style="color: grey;" href="http://www.dotabuff.com/matches/<%= m.uid %>">
+	<span style="background-color: #<%=m.uid%1000000%>;">
+			<%= m.hero %> -
+		</span>
+		<span style="background-color: <%= m.stats == true ? "green" : "red" %>;">
+			<%= m.stats == true ? "Победа" : "Поражение" %> -
+		</span>
+		<%= m.gamer.nick %> -
+		<%= time_ago_in_words m.match_time %><br />
+	</a>
+</div>
+<% end %>

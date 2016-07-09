@@ -1,10 +1,12 @@
 class Match < ApplicationRecord
+	belongs_to :gamer, foreign_key: "puid", primary_key: "uid"
 	validates :uhash, presence: true, uniqueness: true
 	after_create_commit { BroadcastChangesJob.perform_later }
 
 	def self.parse_dotabuff
 		players = Gamer.all
 		work(players)
+		Match.count
 	end
 
 	private
@@ -22,7 +24,14 @@ class Match < ApplicationRecord
 				stats = info[1].text
 				uid = row.attr("data-link-to").split("/")[2]
 
-				Match.create(hero: hero, stats: (stats =~ /Won/).nil?, uid: uid, uhash: "#{p.uid}:#{uid}", match_time: time)
+				Match.create(
+					hero: hero,
+					stats: (stats =~ /Lost/).nil?,
+					uid: uid,
+					puid: p.uid,
+					uhash: "#{p.uid}:#{uid}",
+					match_time: time
+					)
 			end
 		end
 	end
