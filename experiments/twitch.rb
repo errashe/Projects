@@ -1,7 +1,6 @@
 require 'socket'
 
 name = "nalcs1"
-
 s = TCPSocket.open "irc.chat.twitch.tv", 6667
 s.puts "PASS oauth:7mlkb36s7gtzyycdsfo45ydsr4ltqf"
 s.puts "NICK e4stw00d"
