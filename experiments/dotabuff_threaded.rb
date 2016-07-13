@@ -7,14 +7,14 @@ require 'thread'
 require 'thwait'
 require 'json'
 
-Game = Struct.new(:hero, :stats, :link)
+Game = Struct.new(:hero, :stats, :link, :time)
 
 def constructor
 	@threads = []
 	@return = []
 	@list = []
 
-	File.delete("test.txt")
+	File.delete("test.txt") if File.exists?("test.txt")
 	@file = File.open("test.txt", "a+")
 
 	@list << "http://www.dotabuff.com/players/92413647"
@@ -25,6 +25,8 @@ def constructor
 	@list << "http://www.dotabuff.com/players/98900816"
 	@list << "http://www.dotabuff.com/players/23509620"
 	@list << "http://www.dotabuff.com/players/149733512"
+	@list << "http://www.dotabuff.com/players/241084305"
+	@list << "http://www.dotabuff.com/players/92033022"
 end
 
 def destructor
@@ -44,8 +46,9 @@ def parse
 			hero = info[0].text
 			stats = info[1].text
 			link = info[0].attr("href")
+			time = row.search("time").attr("datetime").text
 
-			game = Game.new(hero, stats, link)
+			game = Game.new(hero, stats, link, time)
 			@file.write("#{game.to_h.to_json}\n")
 			@return << game
 		end
