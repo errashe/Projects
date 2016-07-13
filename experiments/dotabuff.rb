@@ -33,4 +33,4 @@ list << "http://www.dotabuff.com/players/98900816"
 list << "http://www.dotabuff.com/players/23509620"
 list << "http://www.dotabuff.com/players/149733512"
 
-p parse(list).length
+p parse(list)
