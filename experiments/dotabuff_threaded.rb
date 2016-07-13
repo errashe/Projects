@@ -9,10 +9,13 @@ require 'json'
 
 Game = Struct.new(:hero, :stats, :link)
 
-def fill_list
+def constructor
 	@threads = []
 	@return = []
 	@list = []
+
+	File.delete("test.txt")
+	@file = File.open("test.txt", "a+")
 
 	@list << "http://www.dotabuff.com/players/92413647"
 	@list << "http://www.dotabuff.com/players/261384156"
@@ -22,6 +25,12 @@ def fill_list
 	@list << "http://www.dotabuff.com/players/98900816"
 	@list << "http://www.dotabuff.com/players/23509620"
 	@list << "http://www.dotabuff.com/players/149733512"
+end
+
+def destructor
+	ThreadsWait.all_waits(*@threads)
+	@file.close
+	p @return.count
 end
 
 def parse
@@ -37,6 +46,7 @@ def parse
 			link = info[0].attr("href")
 
 			game = Game.new(hero, stats, link)
+			@file.write("#{game.to_h.to_json}\n")
 			@return << game
 		end
 	end
@@ -44,11 +54,11 @@ def parse
 end
 
 while true
-	fill_list()
+	constructor()
 	(0..5).each do |i|
 		@threads << Thread.new{ parse }
 	end
-	ThreadsWait.all_waits(*@threads)
-	p @return.count
+	destructor()
+
 	sleep 10.seconds
 end
