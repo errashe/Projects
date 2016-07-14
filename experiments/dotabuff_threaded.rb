@@ -2,10 +2,14 @@
 
 require 'active_support'
 require 'active_support/core_ext'
+require 'action_view'
+require 'action_view/helpers'
 require 'mechanize'
 require 'thread'
 require 'thwait'
 require 'json'
+
+include ActionView::Helpers::DateHelper
 
 Game = Struct.new(:hero, :stats, :link, :time)
 
@@ -13,9 +17,6 @@ def constructor
 	@threads = []
 	@return = []
 	@list = []
-
-	File.delete("test.txt") if File.exists?("test.txt")
-	@file = File.open("test.txt", "a+")
 
 	@list << "http://www.dotabuff.com/players/92413647"
 	@list << "http://www.dotabuff.com/players/261384156"
@@ -31,7 +32,9 @@ end
 
 def destructor
 	ThreadsWait.all_waits(*@threads)
-	@file.close
+
+	@new = @return.sort_by{|e| e["time"]}.each{|e| e["time"] = time_ago_in_words Time.parse(e["time"])}.reverse
+	File.write("test.txt", @new.join("\n"))
 	p @return.count
 end
 
@@ -49,7 +52,7 @@ def parse
 			time = row.search("time").attr("datetime").text
 
 			game = Game.new(hero, stats, link, time)
-			@file.write("#{game.to_h.to_json}\n")
+			# @file.write("#{game.to_h.to_json}\n")
 			@return << game
 		end
 	end

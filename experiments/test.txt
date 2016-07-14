@@ -1,0 +1,150 @@
+#<struct Game hero="Anti-Mage", stats="Abandoned", link="/matches/2502219313", time="about 17 hours">
+#<struct Game hero="Sven", stats="Lost Match", link="/matches/2501673033", time="about 22 hours">
+#<struct Game hero="Bloodseeker", stats="Lost Match", link="/matches/2500641663", time="1 day">
+#<struct Game hero="Bloodseeker", stats="Won Match", link="/matches/2500593918", time="1 day">
+#<struct Game hero="Bloodseeker", stats="Won Match", link="/matches/2500367643", time="1 day">
+#<struct Game hero="Rubick", stats="Lost Match", link="/matches/2500130492", time="1 day">
+#<struct Game hero="Wraith King", stats="Won Match", link="/matches/2500129589", time="1 day">
+#<struct Game hero="Batrider", stats="Won Match", link="/matches/2500129589", time="1 day">
+#<struct Game hero="Lich", stats="Won Match", link="/matches/2500129589", time="1 day">
+#<struct Game hero="Ancient Apparition", stats="Lost Match", link="/matches/2500056407", time="2 days">
+#<struct Game hero="Wraith King", stats="Lost Match", link="/matches/2500056407", time="2 days">
+#<struct Game hero="Riki", stats="Lost Match", link="/matches/2500056407", time="2 days">
+#<struct Game hero="Windranger", stats="Lost Match", link="/matches/2500008861", time="2 days">
+#<struct Game hero="Treant Protector", stats="Won Match", link="/matches/2499943834", time="2 days">
+#<struct Game hero="Slark", stats="Lost Match", link="/matches/2499852610", time="2 days">
+#<struct Game hero="Anti-Mage", stats="Lost Match", link="/matches/2499869339", time="2 days">
+#<struct Game hero="Storm Spirit", stats="Won Match", link="/matches/2499751466", time="2 days">
+#<struct Game hero="Chaos Knight", stats="Won Match", link="/matches/2499719267", time="2 days">
+#<struct Game hero="Anti-Mage", stats="Won Match", link="/matches/2499566684", time="2 days">
+#<struct Game hero="Anti-Mage", stats="Won Match", link="/matches/2499392179", time="2 days">
+#<struct Game hero="Doom", stats="Lost Match", link="/matches/2498904641", time="2 days">
+#<struct Game hero="Anti-Mage", stats="Lost Match", link="/matches/2498073887", time="3 days">
+#<struct Game hero="Lina", stats="Lost Match", link="/matches/2498073887", time="3 days">
+#<struct Game hero="Skywrath Mage", stats="Won Match", link="/matches/2498000082", time="3 days">
+#<struct Game hero="Lifestealer", stats="Won Match", link="/matches/2498000082", time="3 days">
+#<struct Game hero="Spirit Breaker", stats="Won Match", link="/matches/2498000082", time="3 days">
+#<struct Game hero="Riki", stats="Won Match", link="/matches/2498000082", time="3 days">
+#<struct Game hero="Anti-Mage", stats="Lost Match", link="/matches/2497996480", time="3 days">
+#<struct Game hero="Lina", stats="Abandoned", link="/matches/2497996480", time="3 days">
+#<struct Game hero="Ancient Apparition", stats="Lost Match", link="/matches/2497916393", time="3 days">
+#<struct Game hero="Zeus", stats="Lost Match", link="/matches/2497916393", time="3 days">
+#<struct Game hero="Lifestealer", stats="Lost Match", link="/matches/2497916393", time="3 days">
+#<struct Game hero="Spectre", stats="Lost Match", link="/matches/2497916393", time="3 days">
+#<struct Game hero="Medusa", stats="Lost Match", link="/matches/2497916393", time="3 days">
+#<struct Game hero="Skywrath Mage", stats="Won Match", link="/matches/2497907377", time="3 days">
+#<struct Game hero="Anti-Mage", stats="Won Match", link="/matches/2497907377", time="3 days">
+#<struct Game hero="Earthshaker", stats="Lost Match", link="/matches/2497799948", time="3 days">
+#<struct Game hero="Dazzle", stats="Won Match", link="/matches/2497446879", time="3 days">
+#<struct Game hero="Axe", stats="Won Match", link="/matches/2497446879", time="3 days">
+#<struct Game hero="Anti-Mage", stats="Lost Match", link="/matches/2497300569", time="3 days">
+#<struct Game hero="Pudge", stats="Lost Match", link="/matches/2497203492", time="3 days">
+#<struct Game hero="Lycan", stats="Won Match", link="/matches/2497194832", time="3 days">
+#<struct Game hero="Phantom Lancer", stats="Won Match", link="/matches/2497095408", time="3 days">
+#<struct Game hero="Magnus", stats="Lost Match", link="/matches/2497168905", time="3 days">
+#<struct Game hero="Omniknight", stats="Won Match", link="/matches/2495926459", time="4 days">
+#<struct Game hero="Invoker", stats="Won Match", link="/matches/2495926459", time="4 days">
+#<struct Game hero="Medusa", stats="Won Match", link="/matches/2495926459", time="4 days">
+#<struct Game hero="Centaur Warrunner", stats="Lost Match", link="/matches/2495855307", time="4 days">
+#<struct Game hero="Sniper", stats="Lost Match", link="/matches/2495855307", time="4 days">
+#<struct Game hero="Spectre", stats="Lost Match", link="/matches/2495875034", time="4 days">
+#<struct Game hero="Silencer", stats="Lost Match", link="/matches/2495875034", time="4 days">
+#<struct Game hero="Viper", stats="Lost Match", link="/matches/2495875034", time="4 days">
+#<struct Game hero="Necrophos", stats="Lost Match", link="/matches/2495825161", time="4 days">
+#<struct Game hero="Faceless Void", stats="Lost Match", link="/matches/2495825161", time="4 days">
+#<struct Game hero="Lifestealer", stats="Lost Match", link="/matches/2495825161", time="4 days">
+#<struct Game hero="Necrophos", stats="Won Match", link="/matches/2495765205", time="4 days">
+#<struct Game hero="Bane", stats="Won Match", link="/matches/2495582960", time="4 days">
+#<struct Game hero="Ancient Apparition", stats="Won Match", link="/matches/2493709392", time="5 days">
+#<struct Game hero="Wraith King", stats="Won Match", link="/matches/2493709392", time="5 days">
+#<struct Game hero="Huskar", stats="Won Match", link="/matches/2493709392", time="5 days">
+#<struct Game hero="Phantom Assassin", stats="Won Match", link="/matches/2493709392", time="5 days">
+#<struct Game hero="Wraith King", stats="Won Match", link="/matches/2493660738", time="5 days">
+#<struct Game hero="Bloodseeker", stats="Won Match", link="/matches/2493660738", time="5 days">
+#<struct Game hero="Shadow Shaman", stats="Won Match", link="/matches/2493660738", time="5 days">
+#<struct Game hero="Death Prophet", stats="Won Match", link="/matches/2493660738", time="5 days">
+#<struct Game hero="Winter Wyvern", stats="Lost Match", link="/matches/2493553703", time="5 days">
+#<struct Game hero="Bane", stats="Lost Match", link="/matches/2493553703", time="5 days">
+#<struct Game hero="Terrorblade", stats="Lost Match", link="/matches/2493553703", time="5 days">
+#<struct Game hero="Wraith King", stats="Lost Match", link="/matches/2493553703", time="5 days">
+#<struct Game hero="Viper", stats="Won Match", link="/matches/2493465989", time="5 days">
+#<struct Game hero="Techies", stats="Won Match", link="/matches/2493465989", time="5 days">
+#<struct Game hero="Mirana", stats="Won Match", link="/matches/2493465989", time="5 days">
+#<struct Game hero="Bounty Hunter", stats="Won Match", link="/matches/2493465989", time="5 days">
+#<struct Game hero="Batrider", stats="Lost Match", link="/matches/2493392427", time="5 days">
+#<struct Game hero="Ember Spirit", stats="Lost Match", link="/matches/2493392427", time="5 days">
+#<struct Game hero="Timbersaw", stats="Lost Match", link="/matches/2493392427", time="5 days">
+#<struct Game hero="Necrophos", stats="Lost Match", link="/matches/2493392427", time="5 days">
+#<struct Game hero="Omniknight", stats="Lost Match", link="/matches/2491296037", time="6 days">
+#<struct Game hero="Disruptor", stats="Lost Match", link="/matches/2491296037", time="6 days">
+#<struct Game hero="Batrider", stats="Lost Match", link="/matches/2491214938", time="6 days">
+#<struct Game hero="Bristleback", stats="Lost Match", link="/matches/2491214938", time="6 days">
+#<struct Game hero="Silencer", stats="Lost Match", link="/matches/2491157914", time="6 days">
+#<struct Game hero="Riki", stats="Lost Match", link="/matches/2491157914", time="6 days">
+#<struct Game hero="Luna", stats="Won Match", link="/matches/2491038950", time="6 days">
+#<struct Game hero="Weaver", stats="Won Match", link="/matches/2491038950", time="6 days">
+#<struct Game hero="Shadow Shaman", stats="Won Match", link="/matches/2488761731", time="7 days">
+#<struct Game hero="Windranger", stats="Won Match", link="/matches/2488761731", time="7 days">
+#<struct Game hero="Wraith King", stats="Lost Match", link="/matches/2488712873", time="7 days">
+#<struct Game hero="Bristleback", stats="Won Match", link="/matches/2488480938", time="7 days">
+#<struct Game hero="Bloodseeker", stats="Won Match", link="/matches/2488480938", time="7 days">
+#<struct Game hero="Lifestealer", stats="Won Match", link="/matches/2488480938", time="7 days">
+#<struct Game hero="Centaur Warrunner", stats="Lost Match", link="/matches/2488373076", time="7 days">
+#<struct Game hero="Timbersaw", stats="Lost Match", link="/matches/2488373076", time="7 days">
+#<struct Game hero="Centaur Warrunner", stats="Lost Match", link="/matches/2488273121", time="7 days">
+#<struct Game hero="Luna", stats="Lost Match", link="/matches/2488273121", time="7 days">
+#<struct Game hero="Timbersaw", stats="Lost Match", link="/matches/2484416203", time="9 days">
+#<struct Game hero="Windranger", stats="Lost Match", link="/matches/2484416203", time="9 days">
+#<struct Game hero="Tusk", stats="Lost Match", link="/matches/2484182108", time="9 days">
+#<struct Game hero="Juggernaut", stats="Won Match", link="/matches/2484181925", time="9 days">
+#<struct Game hero="Vengeful Spirit", stats="Won Match", link="/matches/2484181925", time="9 days">
+#<struct Game hero="Lich", stats="Won Match", link="/matches/2484181925", time="9 days">
+#<struct Game hero="Centaur Warrunner", stats="Won Match", link="/matches/2484181925", time="9 days">
+#<struct Game hero="Drow Ranger", stats="Lost Match", link="/matches/2484091984", time="9 days">
+#<struct Game hero="Beastmaster", stats="Lost Match", link="/matches/2484091984", time="9 days">
+#<struct Game hero="Omniknight", stats="Lost Match", link="/matches/2484091984", time="9 days">
+#<struct Game hero="Vengeful Spirit", stats="Lost Match", link="/matches/2484091984", time="9 days">
+#<struct Game hero="Timbersaw", stats="Lost Match", link="/matches/2482385176", time="10 days">
+#<struct Game hero="Sven", stats="Lost Match", link="/matches/2482196237", time="10 days">
+#<struct Game hero="Beastmaster", stats="Lost Match", link="/matches/2482196237", time="10 days">
+#<struct Game hero="Rubick", stats="Won Match", link="/matches/2482089378", time="10 days">
+#<struct Game hero="Clinkz", stats="Won Match", link="/matches/2482089378", time="10 days">
+#<struct Game hero="Disruptor", stats="Lost Match", link="/matches/2481993876", time="10 days">
+#<struct Game hero="Axe", stats="Won Match", link="/matches/2481858569", time="10 days">
+#<struct Game hero="Lycan", stats="Won Match", link="/matches/2481858569", time="10 days">
+#<struct Game hero="Nature's Prophet", stats="Lost Match", link="/matches/2481731261", time="10 days">
+#<struct Game hero="Axe", stats="Lost Match", link="/matches/2481731261", time="10 days">
+#<struct Game hero="Rubick", stats="Lost Match", link="/matches/2479946693", time="11 days">
+#<struct Game hero="Windranger", stats="Won Match", link="/matches/2479633442", time="11 days">
+#<struct Game hero="Beastmaster", stats="Won Match", link="/matches/2479519349", time="11 days">
+#<struct Game hero="Invoker", stats="Lost Match", link="/matches/2477361383", time="12 days">
+#<struct Game hero="Legion Commander", stats="Lost Match", link="/matches/2477233767", time="12 days">
+#<struct Game hero="Omniknight", stats="Lost Match", link="/matches/2477233767", time="12 days">
+#<struct Game hero="Crystal Maiden", stats="Lost Match", link="/matches/2475060957", time="13 days">
+#<struct Game hero="Clinkz", stats="Won Match", link="/matches/2474987783", time="13 days">
+#<struct Game hero="Clinkz", stats="Lost Match", link="/matches/2474887609", time="13 days">
+#<struct Game hero="Gyrocopter", stats="Lost Match", link="/matches/2474755579", time="13 days">
+#<struct Game hero="Lone Druid", stats="Won Match", link="/matches/2468460045", time="16 days">
+#<struct Game hero="Juggernaut", stats="Won Match", link="/matches/2458311502", time="20 days">
+#<struct Game hero="Juggernaut", stats="Won Match", link="/matches/2445748317", time="26 days">
+#<struct Game hero="Sniper", stats="Lost Match", link="/matches/2445627571", time="26 days">
+#<struct Game hero="Juggernaut", stats="Won Match", link="/matches/2443286833", time="27 days">
+#<struct Game hero="Necrophos", stats="Won Match", link="/matches/2443224880", time="27 days">
+#<struct Game hero="Mirana", stats="Won Match", link="/matches/2443141497", time="27 days">
+#<struct Game hero="Death Prophet", stats="Lost Match", link="/matches/2440977974", time="28 days">
+#<struct Game hero="Sven", stats="Lost Match", link="/matches/2440882263", time="28 days">
+#<struct Game hero="Invoker", stats="Lost Match", link="/matches/2440882263", time="28 days">
+#<struct Game hero="Slark", stats="Won Match", link="/matches/2440430043", time="28 days">
+#<struct Game hero="Slark", stats="Won Match", link="/matches/2440318635", time="28 days">
+#<struct Game hero="Ember Spirit", stats="Won Match", link="/matches/2409742967", time="about 1 month">
+#<struct Game hero="Tinker", stats="Won Match", link="/matches/2409548975", time="about 1 month">
+#<struct Game hero="Zeus", stats="Lost Match", link="/matches/2395686176", time="about 2 months">
+#<struct Game hero="Windranger", stats="Won Match", link="/matches/2395393620", time="about 2 months">
+#<struct Game hero="Rubick", stats="Won Match", link="/matches/2384335874", time="about 2 months">
+#<struct Game hero="Rubick", stats="Lost Match", link="/matches/2379255633", time="about 2 months">
+#<struct Game hero="Lone Druid", stats="Lost Match", link="/matches/2379136845", time="about 2 months">
+#<struct Game hero="Riki", stats="Lost Match", link="/matches/2379029697", time="about 2 months">
+#<struct Game hero="Io", stats="Lost Match", link="/matches/2378944495", time="about 2 months">
+#<struct Game hero="Death Prophet", stats="Won Match", link="/matches/2376437696", time="about 2 months">
+#<struct Game hero="Arc Warden", stats="Lost Match", link="/matches/2365820102", time="about 2 months">
+#<struct Game hero="Medusa", stats="Lost Match", link="/matches/2365708991", time="about 2 months">
