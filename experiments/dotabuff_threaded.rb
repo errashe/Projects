@@ -11,7 +11,7 @@ require 'json'
 
 include ActionView::Helpers::DateHelper
 
-Game = Struct.new(:hero, :stats, :link, :time)
+Game = Struct.new(:user, :hero, :stats, :link, :time)
 
 def constructor
 	@threads = []
@@ -34,6 +34,7 @@ def destructor
 	ThreadsWait.all_waits(*@threads)
 
 	@new = @return.sort_by{|e| e["time"]}.each{|e| e["time"] = time_ago_in_words Time.parse(e["time"])}.reverse
+	@new = @new.map{|e| e.to_h.to_json }
 	File.write("test.txt", @new.join("\n"))
 	p @return.count
 end
@@ -42,6 +43,7 @@ def parse
 	while !@list.nil?
 		a = Mechanize.new
 		a.get(@list.pop)
+		user = a.page.title.split(" - ").first
 		rows = a.page.search("div.r-row[data-link-to*='/matches/']")
 		rows.each do |row|
 			info = row.search("div.r-body>a")
@@ -51,7 +53,7 @@ def parse
 			link = info[0].attr("href")
 			time = row.search("time").attr("datetime").text
 
-			game = Game.new(hero, stats, link, time)
+			game = Game.new(user, hero, stats, link, time)
 			# @file.write("#{game.to_h.to_json}\n")
 			@return << game
 		end
