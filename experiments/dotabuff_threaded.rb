@@ -33,7 +33,7 @@ end
 def destructor
 	ThreadsWait.all_waits(*@threads)
 
-	@new = @return.sort_by{|e| e["time"]}.each{|e| e["time"] = time_ago_in_words Time.parse(e["time"])}.reverse
+	@new = @return.sort_by{|e| [e["time"], e["user"]]}.each{|e| e["time"] = time_ago_in_words Time.parse(e["time"])}.reverse
 	@new = @new.map{|e| e.to_h.to_json }
 	File.write("test.txt", @new.join("\n"))
 	p @return.count
