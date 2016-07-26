@@ -2,6 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.container {
-	margin-top: 2em;
+div#main {
+	padding-top: 1em;
+}
+
+div#main div.panel-body {
+	margin: 30px;
+}
+
+body {
+	background-image: url("/o.jpg");
+	background-repeat: repeat-x;
+	background-size: cover;
+}
+
+nav.navbar-default {
+	background-color: rgba(129, 153, 187, 0.3);
+	border-color: rgba(129, 153, 187, 0.3);
+	background-image: none;
+
+	.navbar-nav>.open>a {
+		background-color: rgba(129, 153, 207, 1) !important;
+		background-image: none;
+	}
+
+	a:hover {
+		background-color: rgba(129, 153, 187, 0.7) !important;
+	}
+	ul.dropdown-menu {
+		background-color: rgba(129, 153, 187, 0.8);
+		border-color: rgba(129, 153, 187, 0.8);
+		background-image: none;
+		li>a:hover {
+			color: black !important;
+		}
+	}
+
+	a {
+		color: white !important;
+	}
 }

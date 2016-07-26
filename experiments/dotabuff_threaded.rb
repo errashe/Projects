@@ -11,32 +11,33 @@ require 'json'
 
 include ActionView::Helpers::DateHelper
 
-Game = Struct.new(:user, :hero, :stats, :link, :time)
+Game = Struct.new(:user, :skill, :hero, :stats, :link)
 
 def constructor
 	@threads = []
 	@return = []
 	@list = []
 
-	@list << "http://www.dotabuff.com/players/92413647"
-	@list << "http://www.dotabuff.com/players/261384156"
-	@list << "http://www.dotabuff.com/players/138747075"
-	@list << "http://www.dotabuff.com/players/130181018"
-	@list << "http://www.dotabuff.com/players/87094975"
-	@list << "http://www.dotabuff.com/players/98900816"
-	@list << "http://www.dotabuff.com/players/23509620"
-	@list << "http://www.dotabuff.com/players/149733512"
-	@list << "http://www.dotabuff.com/players/241084305"
-	@list << "http://www.dotabuff.com/players/92033022"
+	@list << "http://www.dotabuff.com/players/92413647/matches"
+	@list << "http://www.dotabuff.com/players/261384156/matches"
+	@list << "http://www.dotabuff.com/players/138747075/matches"
+	@list << "http://www.dotabuff.com/players/130181018/matches"
+	@list << "http://www.dotabuff.com/players/87094975/matches"
+	@list << "http://www.dotabuff.com/players/98900816/matches"
+	@list << "http://www.dotabuff.com/players/23509620/matches"
+	@list << "http://www.dotabuff.com/players/149733512/matches"
+	@list << "http://www.dotabuff.com/players/241084305/matches"
+	@list << "http://www.dotabuff.com/players/92033022/matches"
 end
 
 def destructor
 	ThreadsWait.all_waits(*@threads)
 
-	@new = @return.sort_by{|e| [e["time"], e["user"]]}.each{|e| e["time"] = time_ago_in_words Time.parse(e["time"])}.reverse
+	# @new = @return.sort_by{|e| [e["time"], e["user"]]}.each{|e| e["time"] = time_ago_in_words Time.parse(e["time"])}.reverse
+	@new = @return
 	@new = @new.map{|e| e.to_h.to_json }
 	File.write("test.txt", @new.join("\n"))
-	p @return.count
+	p @new.count
 end
 
 def parse
@@ -44,16 +45,17 @@ def parse
 		a = Mechanize.new
 		a.get(@list.pop)
 		user = a.page.title.split(" - ").first
-		rows = a.page.search("div.r-row[data-link-to*='/matches/']")
+		rows = a.page.search("tbody>tr")
 		rows.each do |row|
-			info = row.search("div.r-body>a")
+			td = row.search("td")
 
-			hero = info[0].text
-			stats = info[1].text
-			link = info[0].attr("href")
-			time = row.search("time").attr("datetime").text
+			hero = td[1].search("a").text
+			skill = td[1].search("div").text
+			link = td[1].search("a").attr("href").value
+			stats = td[2].search("a").attr("class").value
+			# time = row.search("time").attr("datetime").text
 
-			game = Game.new(user, hero, stats, link, time)
+			game = Game.new(user, skill, hero, stats, link)
 			# @file.write("#{game.to_h.to_json}\n")
 			@return << game
 		end

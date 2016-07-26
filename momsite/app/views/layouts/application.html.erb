@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Momsite</title>
+	<title>Персональный сайт - Главная страница</title>
 	<%= csrf_meta_tags %>
 
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 	<!-- Latest compiled and minified CSS -->
@@ -15,14 +14,51 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container"></div>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand">Главная</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+							Все для студентов
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Основы электротехники</a></li>
+							<li><a href="#">Электроснабжение</a></li>
+							<li><a href="#">Электрические машины</a></li>
+							<li><a href="#">Электрические измерения</a></li>
+							<li><a href="#">МДК 02.01</a></li>
+							<li><a href="#">МДК 02.02</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Классное руководство</a></li>
+					<li><a href="#">Каталог файлов</a></li>
+					<li><a href="#">Фотоальбом</a></li>
+					<li><a href="#">Обратная связь</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Профиль</a></li>
+					<li><a href="#">Авторизоваться</a></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
-	<div class="container">
-		<%= yield %>
+	<div id="main" class="container">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<%= yield %>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
