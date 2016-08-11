@@ -10,15 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726135959) do
+ActiveRecord::Schema.define(version: 20160808091827) do
 
   create_table "pages", force: :cascade do |t|
-    t.string   "label"
-    t.string   "doctype"
+    t.string   "title"
+    t.boolean  "show_title", default: true
     t.text     "text"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "mark"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text     "path"
   end
 
 end

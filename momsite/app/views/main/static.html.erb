@@ -1,1 +1,8 @@
-Hello, world!
+<% if @page.show_title %>
+<h2><%= @page.title %></h2>
+<% end %>
+
+<div id="main_text">
+	<%= @page.text.html_safe %>
+</div>
+<input type="hidden" name="mark" value="<%= @page.mark %>">
