@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808091827) do
+ActiveRecord::Schema.define(version: 20160813134508) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"
-    t.boolean  "show_title", default: true
+    t.boolean  "show_title", default: false
     t.text     "text"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "mark"
   end
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160808091827) do
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "role"
   end
 
 end

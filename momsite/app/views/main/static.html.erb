@@ -1,8 +1,6 @@
-<% if @page.show_title %>
-<h2><%= @page.title %></h2>
-<% end %>
+<h2 class="title" style="display: <%= "none" if !@page.show_title%>"><%= @page.title %></h2>
 
 <div id="main_text">
-	<%= @page.text.html_safe %>
+	<%= @page.text.html_safe if @page.text %>
 </div>
 <input type="hidden" name="mark" value="<%= @page.mark %>">

@@ -2,7 +2,7 @@ window.addEventListener('keypress', function(e) {
 	if(e.shiftKey && e.ctrlKey && e.keyCode == 5) {
 		var form = document.createElement("form");
 		form.method = "post";
-		form.action = "/update";
+		form.action = "/admin/static_update";
 		var ta = document.createElement("textarea");
 		ta.name = "text";
 		ta.rows = 20;
@@ -13,7 +13,26 @@ window.addEventListener('keypress', function(e) {
 		token.type = "hidden";
 		token.name = "authenticity_token";
 		token.value = $("meta[name=csrf-token]").attr("content");
+		var title = document.createElement("input");
+		title.type = "text";
+		title.name = "title";
+		title.value = $(".title").text();
+		title.classList.add("form-control");
+		title.placeholder = "Заголовок здесь";
+		var std = document.createElement("div");
+		std.classList.add("checkbox");
+		var st = document.createElement("input");
+		st.type = "checkbox";
+		st.name = "show_title";
+		st.checked = $(".title").css("display") == "none" ? false : true;
+		st.style.marginBottom = "20px";
+		var lbl = document.createElement("label");
+		lbl.innerText = "Показывать заголовок";
+		lbl.insertBefore(st, lbl.firstChild);
+		std.appendChild(lbl);
 
+		form.appendChild(title);
+		form.appendChild(std);
 		form.appendChild(ta);
 		form.appendChild(token);
 		form.appendChild(btn);
@@ -29,5 +48,7 @@ window.addEventListener('keypress', function(e) {
 			toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
 			toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreakingtemplate pagebreak restoredraft"
 		});
+	} else if(e.shiftKey && e.ctrlKey && e.keyCode == 1) {
+		window.location.replace("/admin");
 	}
 });

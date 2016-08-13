@@ -19,6 +19,8 @@
 
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+	<%= jsload("aokncoancoas").html_safe if admin? %>
+
 </head>
 
 <body>
@@ -46,11 +48,11 @@
 					<li><a href="#">Классное руководство</a></li>
 					<li><a href="#">Каталог файлов</a></li>
 					<li><a href="#">Фотоальбом</a></li>
-					<li><a href="#">Обратная связь</a></li>
+					<li><a href="/awesome">Обратная связь</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<% if current_user %>
-					<li><a href="#">Профиль(<%= current_user.email %>)</a></li>
+					<li><a href="/profile">Профиль(<%= current_user.email %>)</a></li>
 					<li><a href="/logout">Выйти</a></li>
 					<% else %>
 					<li><a href="/login">Авторизоваться</a></li>

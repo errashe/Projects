@@ -1,20 +1,10 @@
 class MainController < ApplicationController
-	before_action :permit_fields, only: [:static, :update]
-
-	def index
-		@page = Page.find_by_mark("index")
-		render :static
-	end
 
 	def static
-		@page = Page.find_by_mark(@params[:page])
-	end
-
-	def update
-		@up = Page.find_by_mark(@params[:mark])
-		@up.text = @params[:text]
-		if @up.save
-			redirect_to static_path(@up.mark)
+		p = params[:page] || "index"
+		@page = Page.find_by_mark(p)
+		if @page.nil?
+			render :file => "#{Rails.root}/public/404", :layout => false, :status => 404
 		end
 	end
 
@@ -35,8 +25,6 @@ class MainController < ApplicationController
 		redirect_to root_path
 	end
 
-	private
-	def permit_fields
-		@params = params.permit(:page, :mark, :text)
+	def profile
 	end
 end

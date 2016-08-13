@@ -1,0 +1,6 @@
+<%= link_to "Создать страницу", static_create_path, :class => "btn btn-default margin-button" %>
+<% @pages.each do |page| %>
+<p>
+<%= link_to page.title, static_path(page.mark) %> - <%= link_to "Удалить", static_delete_path(page.mark) %>
+</p>
+<% end %>
