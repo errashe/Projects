@@ -6,6 +6,7 @@ clean:
 
 define buildProject
 	$(1) go build -ldflags "-s -w" -o main *.go
+	strip -x main
 	upx -9 main
 endef
 
