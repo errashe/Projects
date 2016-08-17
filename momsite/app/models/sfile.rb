@@ -1,0 +1,2 @@
+class Sfile < ApplicationRecord
+end

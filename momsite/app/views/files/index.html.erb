@@ -1,0 +1,5 @@
+<% @files.each do |file| %>
+
+	<p><%= link_to "#{file.title} (#{time_ago_in_words file.updated_at})", "files/#{file.mark}" %></p>
+
+<% end %>

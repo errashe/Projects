@@ -1,13 +1,27 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/Jeffail/gabs"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 )
+
+type Resp struct {
+	Response []interface{} `json:"response"`
+}
+
+type Audio struct {
+	Aid      int    `json:"aid"`
+	Artist   string `json:"artist"`
+	Duration int    `json:"duration"`
+	Genre    int    `json:"genre"`
+	OwnerID  int    `json:"owner_id"`
+	Title    string `json:"title"`
+	URL      string `json:"url"`
+}
 
 func downloadFromUrl(url, fileName string) {
 	fmt.Println("Downloading", fileName)
@@ -38,25 +52,23 @@ func downloadFromUrl(url, fileName string) {
 
 var token string = "18125f3dea048c0dfc3b75b906691ee20a603e56ba0cdaaefcdca43733602d1e96b07c7a199e3077a175f"
 
-func VK(method, params string) []byte {
-	resp, _ := http.Get(fmt.Sprintf("https://api.vk.com/method/%s?%s&access_token=%s", method, params, token))
+func VK(method, params string) *Resp {
+	url := fmt.Sprintf("https://api.vk.com/method/%s?%s&access_token=%s", method, params, token)
+	resp, _ := http.Get(url)
 	defer resp.Body.Close()
 
 	str, _ := ioutil.ReadAll(resp.Body)
 
-	return str
+	ret := &Resp{}
+	json.Unmarshal(str, ret)
+	return ret
 }
 
 func main() {
-	jsonParsed, _ := gabs.ParseJSON(VK("audio.get", "owner_id=76822135&count=404"))
+	resp := VK("audio.get", "owner_id=76822135&count=1000")
+	// count := resp.Response[0].(float64)
+	audios := resp.Response[1:10].([]Audio)
 
-	ser := jsonParsed.S("response")
-	k, _ := ser.Children()
+	fmt.Println(audios)
 
-	for _, song := range k[1:] {
-		artist := song.Search("artist")
-		title := song.Search("title")
-		url := song.Search("url")
-		downloadFromUrl(url.Data().(string), fmt.Sprintf("music/%s - %s.mp3", artist.Data(), title.Data()))
-	}
 }

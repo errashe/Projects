@@ -1,0 +1,8 @@
+<h1><%= @file.title %></h1>
+
+<div>
+	<%= @file.text.html_safe %><br />
+</div>
+<div style="clear: both; margin-top: 20px;" class="center">
+	<%= link_to "Загрузить файл (#{@file.name})", file_download_path(@file.mark), :class => "btn btn-default" %>
+</div>

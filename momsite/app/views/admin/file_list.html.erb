@@ -1,0 +1,6 @@
+<%= link_to "Создать файл", file_create_path, :class => "btn btn-default margin-button" %>
+<% @files.each do |file| %>
+<p>
+	<%= link_to "#{file.name} - #{file.title}", file_link_path(file.mark) %> - <%= link_to "Удалить файл", file_delete_path(file.mark) %><br />
+</p>
+<% end %>
