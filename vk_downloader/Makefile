@@ -1,2 +1,4 @@
-all:
-	@ruby main.rb
+all: parser
+
+parser:
+	@go run parser.go
