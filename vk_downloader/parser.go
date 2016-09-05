@@ -28,6 +28,8 @@ func main() {
 	form.Input("pass", "the{}Pre4cher")
 	form.Submit()
 
+	raudios := []map[string]string{}
+
 	work := true
 	i := 0
 	for work {
@@ -54,14 +56,15 @@ func main() {
 			title := el.Text()
 
 			if e {
-				table.Insert(map[string]string{
+				raudios = append(raudios, map[string]string{
 					"url":    url,
 					"artist": artist,
 					"title":  title,
-				}).Exec(s)
+				})
 			}
 		})
-
 	}
+
+	table.Insert(raudios).Exec(s)
 
 }
