@@ -37,5 +37,5 @@ func main() {
 		c.Render("theme.html", map[string]interface{}{"messages": messages})
 	})
 
-	a.Listen(":8080")
+	a.Listen(":3000")
 }

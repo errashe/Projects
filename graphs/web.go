@@ -36,5 +36,5 @@ func StartServer() {
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/graph", ghandler)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8090", nil))
 }

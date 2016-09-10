@@ -96,8 +96,8 @@ func StartSearch(searchs []string) []string {
 
 func main() {
 	go delaySecond(1, func() {
-		start("http://localhost:8080/")
-		fmt.Println("Served on 8080")
+		start("http://localhost:8090/")
+		fmt.Println("Served on 8090")
 	})
 	StartServer()
 }
