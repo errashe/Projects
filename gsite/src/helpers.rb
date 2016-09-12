@@ -3,12 +3,12 @@ helpers do
 		settings.db
 	end
 
-	def check_user(login, password)
-		r.table("users").filter{ |user| user["email"].eq(login) && user["password"].eq(password) }.run(db)
+	def check_user(email, password)
+		db[:users].find({ email: email, password: password })
 	end
 
 	def current_user
-		r.table("users").get(session[:id] || "").run(db)
+		db[:users].find({ _id: session[:_id] || 0}).first
 	end
 
 	def partial(name)

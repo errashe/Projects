@@ -1,5 +1,3 @@
-include RethinkDB::Shortcuts
-
 enable :sessions
 
 configure do
@@ -9,6 +7,7 @@ configure do
 
 	set :session_secret, '*&(^B234'
 
-	set :db, r.connect(:host=>"localhost", :port=>28015)
-	settings.db.use("momsite")
+	set :bind, "192.168.1.31"
+
+	set :db, Mongo::Client.new('mongodb://127.0.0.1:27017/momsite')
 end

@@ -1,6 +1,8 @@
 require "sinatra"
 require "sinatra/reloader" if development?
-require "rethinkdb"
+require "sinatra/flash"
+
+require "mongo"
 
 require "./src/helpers.rb"
 require "./src/config.rb"
