@@ -1,9 +1,13 @@
 get "/" do
-	erb :main
+	get_check_page("main")
+end
+
+get "/profile" do
+	current_user.inspect
 end
 
 post "/login" do
-	user = check_user(params["email"], params["password"]).first
+	user = check_user(params["email"], params["password"])
 
 	if user
 		session[:_id] = user["_id"]
@@ -49,4 +53,42 @@ end
 get "/logout" do
 	session[:_id] = nil
 	redirect to("/")
+end
+
+namespace "/pages" do
+
+	before do
+		pass if !%w{post put delete}.include? request.request_method
+		authorize_admin!
+	end
+
+	get "/:name" do
+		get_check_page(params[:name])
+	end
+
+	post do
+
+	end
+
+	put "/:name" do
+	end
+
+	delete "/:name" do
+	end
+
+end
+
+namespace "/admin" do
+	before do
+		authorize_admin!
+	end
+
+	get do
+		erb :"admin/main"
+	end
+
+	get "/pages" do
+		@pages = db[:pages].find()
+		erb :"admin/pages"
+	end
 end

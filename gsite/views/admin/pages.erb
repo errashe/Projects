@@ -1,0 +1,17 @@
+<table class="table text-center">
+	<tr>
+		<th class="text-center">Имя</th>
+		<th class="text-center">Заголовок</th>
+		<th class="text-center">Управляющие ссылки</th>
+	</tr>
+	<% @pages.each do |page| %>
+	<tr>
+		<td><%= page[:name] %></td>
+		<td><%= page[:title] %></td>
+		<td>
+			<a href="/admin/pages/edit">Изменить</a> -
+			<a data-method="delete" rel="nofollow" href="/pages/<%= page[:name] %>">Удалить</a>
+		</td>
+	</tr>
+	<% end %>
+</table>

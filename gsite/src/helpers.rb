@@ -4,15 +4,35 @@ helpers do
 	end
 
 	def check_user(email, password)
-		db[:users].find({ email: email, password: password })
+		db[:users].find({ email: email, password: password }).first
 	end
 
 	def current_user
 		db[:users].find({ _id: session[:_id] || 0}).first
 	end
 
+	def admin?
+		current_user && current_user[:role] == "admin"
+	end
+
+	def authorize_admin!
+		pass if admin?
+		flash[:error] = "Нужно авторизоваться"
+		redirect to("/")
+	end
+
 	def partial(name)
 		erb name, :layout => false
+	end
+
+	def get_check_page(name)
+		@page = db[:pages].find({name: name}).first
+		if @page
+			erb :"pages/page"
+		else
+			flash[:error] = "Страница не найдена"
+			redirect to("/")
+		end
 	end
 
 	def styles

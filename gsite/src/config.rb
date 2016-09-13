@@ -9,5 +9,7 @@ configure do
 
 	set :bind, "192.168.1.31"
 
-	set :db, Mongo::Client.new('mongodb://127.0.0.1:27017/momsite')
+	set :db, Mongo::Client.new('mongodb://localhost:27017/momsite')
 end
+
+Mongo::Logger.logger.level = Logger::WARN
