@@ -3,6 +3,16 @@
 require 'sinatra'
 require 'sinatra-websocket'
 
+require 'json'
+
+def rand_nick
+	(0...10).map { ('a'..'z').to_a[rand(26)] }.join
+end
+
+set :sessions, :enable
+set :session_secret, '*&(^B234'
+
+set :bind, '192.168.1.140'
 set :sockets, []
 
 get '/' do
@@ -11,13 +21,15 @@ get '/' do
 	else
 		request.websocket do |ws|
 			ws.onopen do
+				session[:nick] = rand_nick
 				settings.sockets << ws
 			end
 			ws.onmessage do |msg|
 				# EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
-				settings.sockets.each{|s| s.send(msg) }
+				settings.sockets.each{|s| s.send([session[:nick], msg].to_json) }
 			end
 			ws.onclose do
+				# settings.sockets.each_with_index{|s, i| settings.sockets.delete(i) if settings.sockets[i][1] == ws}
 				settings.sockets.delete(ws)
 			end
 		end
@@ -25,10 +37,11 @@ get '/' do
 end
 
 __END__
+
 @@ index
 <html>
 <body>
-	<h1>Simple Echo & Chat Server</h1>
+	<h1>Chat</h1>
 	<form id="form">
 		<input type="text" id="input" placeholder="Print here!"/>
 	</form>
@@ -45,7 +58,7 @@ __END__
 			var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
 			// ws.onopen    = function()  { show('websocket opened'); };
 			// ws.onclose   = function()  { show('websocket closed'); }
-			ws.onmessage = function(m) { show(m.data); };
+			ws.onmessage = function(m) { let msg = JSON.parse(m.data); show(`<b>${msg[0]}</b> - ${msg[1]}`); };
 
 			var sender = function(f){
 				var input     = document.getElementById('input');

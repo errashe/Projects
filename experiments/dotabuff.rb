@@ -30,15 +30,15 @@ end
 list = []
 list << "http://www.dotabuff.com/players/92413647"
 list << "http://www.dotabuff.com/players/261384156"
-# list << "http://www.dotabuff.com/players/138747075"
-# list << "http://www.dotabuff.com/players/130181018"
-# list << "http://www.dotabuff.com/players/87094975"
-# list << "http://www.dotabuff.com/players/98900816"
-# list << "http://www.dotabuff.com/players/23509620"
-# list << "http://www.dotabuff.com/players/149733512"
+list << "http://www.dotabuff.com/players/138747075"
+list << "http://www.dotabuff.com/players/130181018"
+list << "http://www.dotabuff.com/players/87094975"
+list << "http://www.dotabuff.com/players/98900816"
+list << "http://www.dotabuff.com/players/23509620"
+list << "http://www.dotabuff.com/players/149733512"
 
 while true
-	p parse(list).count
+	p parse(list)
 	sleep 5.seconds
 end
 
