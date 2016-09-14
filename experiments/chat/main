@@ -9,10 +9,15 @@ def rand_nick
 	(0...10).map { ('a'..'z').to_a[rand(26)] }.join
 end
 
+set :server, :thin
+
 set :sessions, :enable
 set :session_secret, '*&(^B234'
 
 set :bind, '192.168.1.140'
+# set :port, '80'
+# set :environment, :production
+
 set :sockets, []
 
 get '/' do
@@ -43,7 +48,7 @@ __END__
 <body>
 	<h1>Chat</h1>
 	<form id="form">
-		<input type="text" id="input" placeholder="Print here!"/>
+		<input type="text" id="input" placeholder="Print here!" autocomplete="off" />
 	</form>
 	<div id="msgs"></div>
 </body>
