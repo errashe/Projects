@@ -14,7 +14,7 @@ set :server, :thin
 set :sessions, :enable
 set :session_secret, '*&(^B234'
 
-set :bind, '192.168.1.140'
+# set :bind, '192.168.1.140' # Здесь внешний адрес
 # set :port, '80'
 # set :environment, :production
 
@@ -22,11 +22,11 @@ set :sockets, []
 
 get '/' do
 	if !request.websocket?
+		session[:nick] ||= rand_nick
 		erb :index
 	else
 		request.websocket do |ws|
 			ws.onopen do
-				session[:nick] = rand_nick
 				settings.sockets << ws
 			end
 			ws.onmessage do |msg|
@@ -51,29 +51,27 @@ __END__
 		<input type="text" id="input" placeholder="Print here!" autocomplete="off" />
 	</form>
 	<div id="msgs"></div>
+	<script type="text/javascript">
+		window.onload = function(){
+			(function(){
+				var show = function(el){
+					return function(msg){ el.innerHTML = msg + '<br />' + el.innerHTML; }
+				}(document.getElementById('msgs'));
+
+				var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
+				// ws.onopen    = function()  { show('websocket opened'); };
+				// ws.onclose   = function()  { show('websocket closed'); }
+				ws.onmessage = function(m) { let msg = JSON.parse(m.data); show(`<b>${msg[0]}</b> - ${msg[1]}`); };
+
+				var sender = function(f){
+					var input     = document.getElementById('input');
+					f.onsubmit    = function(){
+						if (input.value != "") { ws.send(input.value); f.reset(); }
+						return false;
+					}
+				}(document.getElementById('form'));
+			})();
+		}
+	</script>
 </body>
-
-<script type="text/javascript">
-	window.onload = function(){
-		(function(){
-			var show = function(el){
-				return function(msg){ el.innerHTML = msg + '<br />' + el.innerHTML; }
-			}(document.getElementById('msgs'));
-
-			var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
-			// ws.onopen    = function()  { show('websocket opened'); };
-			// ws.onclose   = function()  { show('websocket closed'); }
-			ws.onmessage = function(m) { let msg = JSON.parse(m.data); show(`<b>${msg[0]}</b> - ${msg[1]}`); };
-
-			var sender = function(f){
-				var input     = document.getElementById('input');
-				f.onsubmit    = function(){
-					ws.send(input.value);
-					f.reset();
-					return false;
-				}
-			}(document.getElementById('form'));
-		})();
-	}
-</script>
 </html>
