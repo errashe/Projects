@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require "sinatra"
+require "sinatra-websocket"
+
+require "unirest"
+require "json"
+
+$token = "47abf57c8340fc7903ddfc858c976b9be22c8c10d8808a77d63253318ae58b7d7aa7a5c3112b0b1829ed6"
+
+configure do
+	set :session, :enable
+	set :server, :thin
+end
+
+def VK(method, params)
+	Unirest.get("https://api.vk.com/method/%s?%s&fields=bdate&v=5.53&access_token=#{$token}" % [method, params]).body["response"]
+end
+
+get "/" do
+	msgs = VK("messages.get", "count=100")["items"]
+
+	msgs = msgs.select do |msg|
+		msg["chat_id"] == 19
+	end
+	msgs = msgs.map do |msg|
+		[msg["id"], msg["user_id"], msg["body"]]
+	end
+
+	msgs.inspect
+end
