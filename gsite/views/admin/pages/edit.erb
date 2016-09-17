@@ -1,0 +1,12 @@
+<form action="/admin/pages/<%= @page[:_id] %>/edit" method="POST">
+	<input type="text" name="title" value="<%= @page[:title] %>">
+	<input type="text" name="name" value="<%= @page[:name] %>"><br />
+	<textarea id="editor" name="body" cols="30" rows="10"><%= @page[:body] %></textarea>
+	<input type="hidden" name="_method" value="PUT">
+	<input type="submit" value="Сохранить">
+</form>
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script type="text/javascript">
+	tinymce.init({ selector: "#editor" });
+</script>

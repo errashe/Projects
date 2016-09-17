@@ -26,11 +26,11 @@ post "/registration" do
 	if params["password"] == params["password-conf"]
 		begin
 			ins = db[:users].insert_one(
-			{
-				email: params["email"],
-				password: params["password"],
-				fio: params["fio"]
-			}
+				{
+					email: params["email"],
+					password: params["password"],
+					fio: params["fio"]
+				}
 			)
 
 			if ins
@@ -57,23 +57,8 @@ end
 
 namespace "/pages" do
 
-	before do
-		pass if !%w{post put delete}.include? request.request_method
-		authorize_admin!
-	end
-
 	get "/:name" do
 		get_check_page(params[:name])
-	end
-
-	post do
-
-	end
-
-	put "/:name" do
-	end
-
-	delete "/:name" do
 	end
 
 end
@@ -89,6 +74,45 @@ namespace "/admin" do
 
 	get "/pages" do
 		@pages = db[:pages].find()
-		erb :"admin/pages"
+		erb :"admin/pages/list"
+	end
+
+	get "/pages/new" do
+		erb :"admin/pages/new"
+	end
+
+	get "/pages/:id/edit" do
+		# "Edit this - %s (Show form here)" % params[:id]
+		@page = db[:pages].find({:_id => BSON::ObjectId(params[:id])}).first
+		erb :"admin/pages/edit"
+	end
+
+	put "/pages/:id/edit" do
+		ins = db[:pages].update_one({:_id => BSON::ObjectId(params[:id])}, {'$set' => {
+			:title => params[:title],
+			:name => params[:name],
+			:body => params[:body]
+		}})
+
+		if ins
+			flash[:success] = "Успешно сохранено"
+		else
+			flash[:error] = "Что-то произошло"
+		end
+
+		redirect to("/admin/pages")
+	end
+
+	get "/pages/:id/delete" do
+		# "Delete this - %s" % params[:id]
+		ins = db[:pages].delete_one(:_id => BSON::ObjectId(params[:id]))
+
+		if ins
+			flash[:success] = "Успешно удалено"
+		else
+			flash[:error] = "Что-то произошло"
+		end
+
+		redirect to("/admin/pages")
 	end
 end

@@ -1,3 +1,5 @@
+<a href="/admin/pages/new" class="btn btn-default" style="width: 100%; margin-bottom: 20px;">Создать страницу</a>
+
 <table class="table text-center">
 	<tr>
 		<th class="text-center">Имя</th>
@@ -9,8 +11,8 @@
 		<td><%= page[:name] %></td>
 		<td><%= page[:title] %></td>
 		<td>
-			<a href="/admin/pages/edit">Изменить</a> -
-			<a data-method="delete" rel="nofollow" href="/pages/<%= page[:name] %>">Удалить</a>
+			<a href="/admin/pages/<%= page[:_id] %>/edit">Изменить</a> -
+			<a href="/admin/pages/<%= page[:_id] %>/delete">Удалить</a>
 		</td>
 	</tr>
 	<% end %>
