@@ -82,7 +82,6 @@ namespace "/admin" do
 	end
 
 	get "/pages/:id/edit" do
-		# "Edit this - %s (Show form here)" % params[:id]
 		@page = db[:pages].find({:_id => BSON::ObjectId(params[:id])}).first
 		erb :"admin/pages/edit"
 	end
@@ -104,7 +103,6 @@ namespace "/admin" do
 	end
 
 	get "/pages/:id/delete" do
-		# "Delete this - %s" % params[:id]
 		ins = db[:pages].delete_one(:_id => BSON::ObjectId(params[:id]))
 
 		if ins
