@@ -1,0 +1,11 @@
+<form action="/admin/files" method="POST" enctype="multipart/form-data">
+
+	<input type="text" name="name" placeholder="Имя (Заголовок файла)"><br />
+	<textarea id="editor" name="description" cols="30" rows="10"></textarea><br />
+	<input type="file" name="file"><br />
+
+	<input type="hidden" name="_method" value="PUT">
+
+	<input type="submit" value="Создать">
+
+</form>

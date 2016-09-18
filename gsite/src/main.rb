@@ -4,6 +4,8 @@ require "sinatra/flash"
 require "sinatra/namespace"
 
 require "mongo"
+require "digest"
+require "pony"
 
 require "./src/helpers.rb"
 require "./src/config.rb"

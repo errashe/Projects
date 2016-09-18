@@ -1,0 +1,10 @@
+task default: %w[main]
+
+task :main do
+	ruby "src/main.rb"
+end
+
+task :production do
+	ENV["RACK_ENV"] = "production"
+	ruby "src/main.rb"
+end

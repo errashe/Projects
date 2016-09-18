@@ -1,0 +1,12 @@
+<table class="table text-center">
+	<tr>
+		<th class="text-center">Почта</th>
+		<th class="text-center">ФИО</th>
+	</tr>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= user[:email] %></td>
+		<td><%= user[:fio] %></td>
+	</tr>
+	<% end %>
+</table>

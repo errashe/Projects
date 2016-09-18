@@ -1,1 +1,11 @@
-<h1>Form for creating new here!</h1>
+<form action="/admin/pages" method="POST">
+
+	<input type="text" name="title" placeholder="Заголовок">
+	<input type="text" name="name" placeholder="Имя (в адресной строке)"><br />
+	<textarea id="editor" name="body" cols="30" rows="10"></textarea>
+
+	<input type="hidden" name="_method" value="PUT">
+
+	<input type="submit" value="Создать">
+
+</form>

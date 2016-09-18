@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-title"><%= @file[:name] %></div>
+	</div>
+	<div class="panel-body">
+		<%= @file[:description] %>
+		<hr>
+		<a href="/files/<%= @file[:_id] %>/get" class="btn btn-default">Скачать файл</a>
+	</div>
+</div>

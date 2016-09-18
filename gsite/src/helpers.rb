@@ -11,6 +11,10 @@ helpers do
 		db[:users].find({ _id: session[:_id] || 0}).first
 	end
 
+	def user?
+		!!current_user
+	end
+
 	def admin?
 		current_user && current_user[:role] == "admin"
 	end
@@ -23,6 +27,12 @@ helpers do
 
 	def partial(name)
 		erb name, :layout => false
+	end
+
+	def hash_date
+		md5 = Digest::MD5.new
+		md5.update(Time.now.to_f.to_s)
+		md5.hexdigest
 	end
 
 	def get_check_page(name)
