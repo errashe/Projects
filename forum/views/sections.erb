@@ -1,0 +1,7 @@
+<% @sections.each do |section| %>
+
+<div class="panel panel-default">
+	<div class="panel-body"><a href="/section/<%= section[:id] %>"><%= section[:name] %> (<%= section.user[:login] %>)</a></div>
+</div>
+
+<% end %>

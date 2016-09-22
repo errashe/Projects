@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><%= @theme.user[:login] %></div>
+	<div class="panel-body"><%= @theme[:text] %></div>
+</div>
+
+<% @messages.each do |message| %>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<%= "<b>%s</b>: %s" % [message.user[:login], message[:text]] %>
+	</div>
+</div>
+
+<% end %>

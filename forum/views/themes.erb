@@ -1,0 +1,7 @@
+<% @themes.each do |theme| %>
+
+<div class="panel panel-default">
+	<div class="panel-body"><a href="/theme/<%= theme[:id] %>"><%= theme[:name] %> (<%= theme.user[:login] %>)</a></div>
+</div>
+
+<% end %>
