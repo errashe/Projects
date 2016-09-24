@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+(0..100).each do |i|
+	if i % 3 == 0; puts "fizz"; next; end
+	if i % 5 == 0; puts "buzz"; next; end
+	if i % 15 == 0; puts "fizzbuzz"; next; end
+	puts i
+end
