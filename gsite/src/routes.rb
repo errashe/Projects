@@ -23,7 +23,9 @@ get "/registration" do
 end
 
 post "/registration" do
-	if params["password"] == params["password-conf"]
+	if params["email"].empty? || params["password"].empty? || params["password-conf"].empty? || params["fio"].empty?
+		flash[:error] = "Заполните все поля"
+	elsif params["password"] == params["password-conf"]
 		begin
 			ins = db[:users].insert_one(
 			{
@@ -71,7 +73,7 @@ namespace "/guestbook" do
 		Pony.mail(
 		{
 			:subject => "Сообщение из гостевой книги",
-			:html_body => params[:body],
+			:html_body => "%s<br/><br/>%s" % [current_user, params[:body]],
 			:to => 'but3nko@gmail.com',
 			:via => :smtp,
 			:via_options => {

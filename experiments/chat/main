@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require 'sinatra'
-require 'sinatra/reloader' if development?
 
 set :server, :thin
 set :connections, []

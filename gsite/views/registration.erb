@@ -2,20 +2,20 @@
 	<form id="registration-form" class="col-md-6 col-md-offset-3" method="POST" action>
 		<div class="form-group">
 			<label for="email-input">Адрес электронной почты</label>
-			<input type="email" class="form-control" name="email" id="email-input" placeholder="Адрес электронной почты">
+			<input type="email" class="form-control" name="email" id="email-input" placeholder="Адрес электронной почты" required>
 		</div>
 		<div class="form-group">
 			<label for="password-input">Пароль</label>
-			<input type="password" class="form-control" name="password" id="password-input" placeholder="Пароль">
+			<input type="password" class="form-control" name="password" id="password-input" placeholder="Пароль" required>
 		</div>
 		<div class="form-group">
 			<label for="password-input-confirmation">Подтверждение пароля</label>
-			<input type="password" class="form-control" name="password-conf" id="password-input-confirmation" placeholder="Подтверждение пароля">
+			<input type="password" class="form-control" name="password-conf" id="password-input-confirmation" placeholder="Подтверждение пароля" required>
 		</div>
 		<div class="form-group">
 			<label for="fio-input">ФИО</label>
-			<input type="text" class="form-control" name="fio" id="fio-input" placeholder="ФИО">
+			<input type="text" class="form-control" name="fio" id="fio-input" placeholder="ФИО" required>
 		</div>
-		<button type="submit" class="btn btn-default">Зарегистрироваться</button>
+		<input type="submit" class="btn btn-default" value="Зарегистрироваться" >
 	</form>
 </div>
