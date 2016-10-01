@@ -1,5 +1,23 @@
 #!/usr/bin/env ruby
 require 'sinatra'
+require 'data_mapper'
+require 'dm-migrations' if development?
+
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/dev.db")
+
+class Message
+	include DataMapper::Resource
+
+	property :id, Serial
+	property :message, Text
+
+	before :save do |msg|
+		Sinatra::Application.settings.connections.each { |out| out << "data: #{msg[:message]}\n\n" }
+	end
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade! if development?
 
 set :server, :thin
 set :connections, []
@@ -12,7 +30,8 @@ helpers do
 end
 
 get '/' do
-	halt erb(:login) unless !session[:user].nil?
+	halt erb(:login) unless !user.nil?
+	@messages = Message.all(:limit => 5, :order => [:id.desc])
 	erb :chat
 end
 
@@ -29,8 +48,8 @@ get '/stream', provides: 'text/event-stream' do
 end
 
 post '/' do
-	settings.connections.each { |out| out << "data: #{params[:msg]}\n\n" }
-	204 # response without entity body
+	Message.create(:message => params[:msg])
+	204
 end
 
 __END__
@@ -53,7 +72,11 @@ __END__
 </form>
 
 @@ chat
-<pre id='chat'></pre>
+<div id='chat'>
+	<% @messages.each do |msg| %>
+		<%= "#{msg[:message]}" %><br />
+	<% end %>
+</div>
 
 <form>
 	<input id='msg' placeholder='type message here...' />
@@ -62,7 +85,7 @@ __END__
 <script>
 	// reading
 	var es = new EventSource('/stream');
-	es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
+	es.onmessage = function(e) { $('#chat').prepend(e.data + `<br />`) };
 	// writing
 	$("form").on("submit", function(e) {
 		e.preventDefault();
