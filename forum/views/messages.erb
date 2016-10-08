@@ -1,9 +1,11 @@
+<a href="/subsection/<%=@theme.subsection.id%>" class="btn btn-default binp">Back</a>
+
 <div class="panel panel-default">
 	<div class="panel-heading"><%= @theme.user[:login] %></div>
 	<div class="panel-body"><%= @theme[:text] %></div>
 </div>
 
-<% @messages.each do |message| %>
+<% @theme.messages.each do |message| %>
 
 <div class="panel panel-default">
 	<div class="panel-body">
@@ -11,4 +13,13 @@
 	</div>
 </div>
 
+<% end %>
+
+<% if user %>
+	<form action="/theme/<%=params[:id]%>" method="POST">
+		<input type="hidden" name="_method" value="PUT" />
+
+		<textarea class="form-control" name="text" cols="30" rows="5"></textarea>
+		<input type="submit" class="btn btn-default" style="margin-top: 10px;">
+	</form>
 <% end %>

@@ -1,7 +1,16 @@
 <% @sections.each do |section| %>
 
 <div class="panel panel-default">
-	<div class="panel-body"><a href="/section/<%= section[:id] %>"><%= section[:name] %> (<%= section.user[:login] %>)</a></div>
+	<div class="panel-heading"><%= section[:name] %></div>
+	<div class="panel-body">
+		<% section.subsections.each do |subsec| %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="/subsection/<%= subsec.id %>"><%= subsec.name %></a>
+				</div>
+			</div>
+		<% end %>
+	</div>
 </div>
 
 <% end %>
