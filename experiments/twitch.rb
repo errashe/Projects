@@ -8,6 +8,8 @@ s.puts "PASS oauth:7mlkb36s7gtzyycdsfo45ydsr4ltqf"
 s.puts "NICK e4stw00d"
 s.puts "JOIN ##{name}"
 
+puts "Move on"
+
 begin
 	while line = s.gets
 		temp = line.split("PRIVMSG ##{name} :")
