@@ -1,14 +1,5 @@
-require "sinatra"
-require "sinatra/reloader" if development?
-require "sinatra/flash"
+# This file is used by Rack-based servers to start the application.
 
-require "sqlite3"
-require "require_all"
+require_relative 'config/environment'
 
-require_all "./src/*.rb"
-# require "./src/models.rb"
-# require "./src/main.rb"
-
-use Rack::MethodOverride
-
-run App
+run Rails.application
