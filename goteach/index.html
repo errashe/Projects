@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TEST</title>
+	<script>
+		function work() {
+			var input = document.querySelector("input[type=text]");
+			var div = document.querySelector("div.msgs");
+			var ws = new WebSocket("ws://localhost:8080/ws");
+
+			input.focus();
+
+			ws.onmessage = function(e) {
+				var p = document.createElement("p");
+				p.innerText = e.data;
+				div.insertBefore(p, div.firstChild);
+			}
+
+			input.onkeypress = function(e) {
+				if(e.keyCode == 13 && e.target.value.trim() != "") {
+					ws.send(e.target.value);
+					e.target.value = null;
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="work()">
+	<input type="text"><br />
+	<div class="msgs"><span></span></div>
+</body>
+</html>
