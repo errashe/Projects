@@ -5,7 +5,19 @@ import (
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
+	"math/rand"
+	"time"
 )
+
+var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func RandStringRunes(n int) string {
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letterRunes[rand.Intn(len(letterRunes))]
+	}
+	return string(b)
+}
 
 var wsupgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
@@ -22,15 +34,17 @@ func wshandler(c *gin.Context) {
 	}
 
 	for {
-		t, _, err := conn.ReadMessage()
+		t, msg, err := conn.ReadMessage()
 		if err != nil {
 			break
 		}
-		conn.WriteMessage(t, []byte(session.Get("test").(string)))
+		conn.WriteMessage(t, []byte(fmt.Sprintf("%s:%s", session.Get("nick"), msg)))
 	}
 }
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+
 	r := gin.Default()
 
 	store := sessions.NewCookieStore([]byte("secret"))
@@ -40,14 +54,19 @@ func main() {
 
 	r.GET("/", func(c *gin.Context) {
 		session := sessions.Default(c)
-		session.Set("test", "SOMEVALUEHERE")
-		session.Save()
+		if session.Get("nick") == nil {
+			session.Set("nick", RandStringRunes(8))
+			session.Save()
+		}
 		c.HTML(200, "index.html", nil)
 	})
 
-	r.GET("/test", func(c *gin.Context) {
+	r.GET("/logout", func(c *gin.Context) {
 		session := sessions.Default(c)
-		c.String(200, "%s - is a fuckin string", session.Get("test").(string))
+
+		session.Delete("nick")
+		session.Save()
+		c.Redirect(302, "/")
 	})
 
 	r.GET("/ws", func(c *gin.Context) {
