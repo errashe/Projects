@@ -4,14 +4,19 @@ import (
 	"fmt"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/render"
 	"github.com/gorilla/websocket"
+	"html/template"
 	"math/rand"
 	"time"
 )
 
-var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var (
+	conns []*websocket.Conn
+)
 
 func RandStringRunes(n int) string {
+	var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789")
 	b := make([]rune, n)
 	for i := range b {
 		b[i] = letterRunes[rand.Intn(len(letterRunes))]
@@ -19,59 +24,85 @@ func RandStringRunes(n int) string {
 	return string(b)
 }
 
-var wsupgrader = websocket.Upgrader{
-	ReadBufferSize:  1024,
-	WriteBufferSize: 1024,
+func index(c *gin.Context) {
+	session := sessions.Default(c)
+	if session.Get("nick") == nil {
+		session.Set("nick", RandStringRunes(8))
+		session.Save()
+	}
+
+	rows, err := AllMessages()
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	c.HTML(200, "data/index.html", gin.H{"messages": rows})
 }
 
-func wshandler(c *gin.Context) {
+func logout(c *gin.Context) {
 	session := sessions.Default(c)
 
-	conn, err := wsupgrader.Upgrade(c.Writer, c.Request, nil)
+	session.Delete("nick")
+	session.Save()
+	c.Redirect(302, "/")
+}
+
+func ws(c *gin.Context) {
+	session := sessions.Default(c)
+
+	conn, err := websocket.Upgrade(c.Writer, c.Request, nil, 1024, 1024)
 	if err != nil {
 		fmt.Println("Failed to set websocket upgrade: %+v", err)
 		return
 	}
 
-	for {
-		t, msg, err := conn.ReadMessage()
-		if err != nil {
-			break
+	conns = append(conns, conn)
+
+	go func() {
+		for {
+			t, msg, err := conn.ReadMessage()
+			if err != nil {
+				break
+			}
+
+			nick := session.Get("nick")
+
+			Insert(nick.(string), string(msg), time.Now().String())
+
+			for _, c := range conns {
+				c.WriteMessage(t, []byte(fmt.Sprintf("%s:%s", nick, msg)))
+			}
 		}
-		conn.WriteMessage(t, []byte(fmt.Sprintf("%s:%s", session.Get("nick"), msg)))
+	}()
+}
+
+type MyHTMLRender struct{}
+
+func (r *MyHTMLRender) Instance(name string, data interface{}) render.Render {
+	tmpl, _ := Asset(name)
+	t := template.New(name)
+	t.Parse(string(tmpl))
+	return render.HTML{
+		Template: t,
+		Data:     data,
 	}
 }
 
 func main() {
+	Init()
 	rand.Seed(time.Now().UnixNano())
 
 	r := gin.Default()
+	render := &MyHTMLRender{}
 
 	store := sessions.NewCookieStore([]byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
 
-	r.LoadHTMLFiles("index.html")
+	r.HTMLRender = render
 
-	r.GET("/", func(c *gin.Context) {
-		session := sessions.Default(c)
-		if session.Get("nick") == nil {
-			session.Set("nick", RandStringRunes(8))
-			session.Save()
-		}
-		c.HTML(200, "index.html", nil)
-	})
-
-	r.GET("/logout", func(c *gin.Context) {
-		session := sessions.Default(c)
-
-		session.Delete("nick")
-		session.Save()
-		c.Redirect(302, "/")
-	})
-
-	r.GET("/ws", func(c *gin.Context) {
-		wshandler(c)
-	})
+	r.GET("/", index)
+	r.GET("/logout", logout)
+	r.GET("/ws", ws)
 
 	r.Run(":8080")
 }
