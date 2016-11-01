@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HELLO!</title>
+	<script type="text/javascript">
+		function work() {
+
+			let ws = new WebSocket(`ws:\/\/${window.location.host}\/ws`);
+			let form = document.querySelector("form#cform");
+			let input = document.querySelector("input[name=textinputter]");
+			let div = document.querySelector("div#chat");
+
+			// ws.onopen = function(e) {
+			// 	ws.send("OPENED");
+			// }
+
+			ws.onmessage = function(e) {
+				let p = document.createElement("p");
+				p.innerText = e.data;
+				div.insertBefore(p, div.firstChild);
+
+				let msgs = document.querySelectorAll("div#chat p");
+				if(msgs.length > 15) {
+					msgs[msgs.length-1].remove();
+				}
+			}
+
+			input.focus();
+
+			form.onsubmit = function(e) {
+				e.preventDefault();
+
+				ws.send(input.value);
+				form.reset();
+			}
+
+		}
+	</script>
+</head>
+<body onload="work()">
+	<a href="/logout">Logout</a><br /><br />
+
+	<form id="cform"><input type="text" name="textinputter" autocomplete="off"></form>
+	<div id="chat"></div>
+</body>
+</html>
