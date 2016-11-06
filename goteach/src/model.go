@@ -4,7 +4,7 @@ import (
 	"crypto/md5"
 	"fmt"
 	"github.com/asdine/storm"
-	"github.com/asdine/storm/q"
+	// "github.com/asdine/storm/q"
 	"github.com/gorilla/websocket"
 )
 
@@ -64,7 +64,7 @@ func addMessage(username, body string) {
 		Body:     body,
 	}
 
-	broadcast([]byte(fmt.Sprintf("%s: %s", username, body)))
+	broadcastAll([]byte(fmt.Sprintf("%s: %s", username, body)))
 
 	err := db.Save(&message)
 	error_handler(err)
@@ -72,8 +72,8 @@ func addMessage(username, body string) {
 
 func getLastFifteenMessages(conn *websocket.Conn) {
 	var messages []Message
-	// error_handler(db.AllByIndex("ID", &messages, storm.Limit(15), storm.Reverse()))
-	error_handler(db.Select(q.True()).Reverse().Limit(14).OrderBy("ID").Find(&messages))
+	error_handler(db.AllByIndex("ID", &messages, storm.Limit(15), storm.Reverse()))
+	// error_handler(db.Select(q.True()).Reverse().Limit(14).OrderBy("ID").Find(&messages))
 
 	// for _, msg := range messages {
 	// 	broadcastOne(conn, []byte(fmt.Sprintf("%s: %s", msg.Username, msg.Body)))
