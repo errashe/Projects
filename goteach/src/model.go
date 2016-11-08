@@ -4,7 +4,6 @@ import (
 	"crypto/md5"
 	"fmt"
 	"github.com/asdine/storm"
-	// "github.com/asdine/storm/q"
 	"github.com/gorilla/websocket"
 )
 
@@ -80,7 +79,6 @@ func getLastFifteenMessages(conn *websocket.Conn) {
 	// }
 
 	for i := len(messages) - 1; i >= 0; i-- {
-		msg := messages[i]
-		broadcastOne(conn, []byte(fmt.Sprintf("%s: %s", msg.Username, msg.Body)))
+		broadcastOne(conn, []byte(fmt.Sprintf("%s: %s", messages[i].Username, messages[i].Body)))
 	}
 }

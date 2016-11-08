@@ -8,7 +8,7 @@
 
 #include <omp.h>
 
-#define N 1e7
+#define N 1e8
 #define THREADS 4
 
 using namespace std;
@@ -78,6 +78,8 @@ int main(int argc, char* argv[]) {
 	std::chrono::duration<double, std::milli> fp_ms = (t2 - t1);
 
 	printf("f() took %f ms\n", fp_ms.count());
+
+	printf("%.5f\n", N);
 
 	printf("%d\n", res);
 	printf("%f\n", 4.0f*res/N);

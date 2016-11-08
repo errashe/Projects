@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
+	"os"
 	"runtime"
+	"strconv"
 	"time"
 )
 
@@ -58,11 +61,25 @@ func init() {
 }
 
 func main() {
-	fmt.Println("Running Monte Carlo simulations ...\n")
+	if len(os.Args) < 2 {
+		fmt.Printf("Using: ./pigo [num of iterations]\n")
+		fmt.Printf("Not enough arguments, exiting...\n")
+		os.Exit(0)
+	}
+
+	count, _ := strconv.Atoi(os.Args[1])
+
+	fmt.Printf("Running Monte-Carlo simulations on %d iterations...\n\n", count)
+
 	t1 := time.Now()
-	fmt.Println("Our value of Pi after 1,000,000 runs:\t\t", PI(1e6))
-	fmt.Println(time.Since(t1).String())
+	fmt.Printf("Our value of Pi after \t\t [%d] runs: \t [%.10f] And time: \t [%.5fs] \n",
+		count, PI(count), time.Since(t1).Seconds(),
+	)
+
 	t2 := time.Now()
-	fmt.Println("Our value of Pi after 1,000,000 runs (MT):\t", MultiPI(1e6))
-	fmt.Println(time.Since(t2).String())
+	fmt.Printf("Our value of MultiPi after \t [%d] runs: \t [%.10f] And time: \t [%.5fs] \n",
+		count, MultiPI(count), time.Since(t2).Seconds(),
+	)
+
+	fmt.Printf("Real value of PI: %.10f\n", math.Pi)
 }

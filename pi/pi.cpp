@@ -8,7 +8,7 @@ float sync_func() {
 	float res = 0;
 	float mark = -1;
 
-	for(float i=3; i<=10e6; i+=2) {
+	for(float i=3; i<=1e6; i+=2) {
 		res += mark * 4.0/i;
 		mark = -mark;
 	}
@@ -19,7 +19,7 @@ float sync_func() {
 float async_func(float start_point, float mark) {
 	float res = 0;
 
-	for(float i=start_point; i<=10e6; i+=4) {
+	for(float i=start_point; i<=1e6; i+=4) {
 		res += mark * 4.0/i;
 	}
 
