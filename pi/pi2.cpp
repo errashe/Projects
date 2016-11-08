@@ -8,7 +8,7 @@
 
 #include <omp.h>
 
-#define N 1e8
+#define N 5e6
 #define THREADS 4
 
 using namespace std;
