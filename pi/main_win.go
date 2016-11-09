@@ -49,8 +49,8 @@ func init() {
 }
 
 func RunMultiPI(count int) {
-	cores := []int{1, 2, 3, 4, 5, 6, 7, 8}
-	threads := []int{1, 2, 3, 4, 5, 6, 7, 8}
+	cores := []int{1, 2, 3, 4}
+	threads := []int{1, 2, 3, 4}
 
 	t := time.Time{}
 
