@@ -7,3 +7,5 @@ convert img.jpg -fill black -fuzz 80% +opaque $Code_color img2.jpg
 convert img2.jpg -fill white -fuzz 20% +opaque "#000000" img3.jpg
 
 # convert img3.jpg -blur 0x2 -level 40%,80% img4.jpg
+
+convert img3.jpg -fill white -draw 'color 40,40 floodfill' img4.jpg

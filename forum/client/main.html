@@ -1,0 +1,24 @@
+<head>
+	<title>forum</title>
+	<style>
+		tab1 { padding-left: 4em; }
+	</style>
+</head>
+
+<template name="App_body">
+	<a href="/">Home</a><hr />
+	{{> Template.dynamic template=main}}
+</template>
+
+<template name="root">
+	{{#each sections}}
+		{{ name }}<hr />
+		{{#each subsections }}
+			<tab1><a href="/subsection/{{ _id }}">{{ name }}</a></tab1><hr />
+		{{/each}}
+	{{/each}}
+</template>
+
+<template name="subsection">
+	{{ id }}
+</template>
