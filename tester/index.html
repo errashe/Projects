@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test example</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<style>
+		html, body { height: 100%; background-color: gray; }
+		.main { margin-top: 48px; padding: 50px; }
+		.text { padding: 20px; }
+		.unselectable {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-hktml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+	</style>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var clog = console.log;
+			$.fn.randomize = function() {
+				var allElems = this.get(),
+				getRandom = function(max) {
+					return Math.floor(Math.random() * max);
+				},
+				shuffled = $.map(allElems, function() {
+					var random = getRandom(allElems.length),
+					randEl = $(allElems[random]).clone(true)[0];
+					allElems.splice(random, 1);
+					return randEl;
+				});
+
+				this.each(function(i) {
+					$(this).replaceWith($(shuffled[i]));
+				});
+
+				return $(shuffled);
+			}
+
+			function renderQuestion() {
+				$.ajax("/question").done(function(msg) {
+					$("div.text").text(msg.Text);
+					$("div.text").attr("_id", msg.id);
+
+					$("div.question div.answers").empty();
+
+					$.each(msg.Variances, function(key, value) {
+						var input = document.createElement("div");
+						input.setAttribute("name", "answer");
+						input.setAttribute("key", key);
+						input.innerText = value;
+						input.classList.add("unselectable");
+						input.classList.add("alert");
+						input.classList.add("alert-warning");
+						$("div.question div.answers").append(input);
+					});
+
+					$("div.question div.answers div[name=answer]").randomize();
+
+					$("div[name=answer]").click(function(e) {
+						if (e.target.classList.contains("alert-danger"))
+							e.target.classList.remove("alert-danger")
+						else
+							e.target.classList.add("alert-danger");
+					});
+				});
+			}
+
+			$("div.send-answers").click(function(e) {
+				var answers = $("div.alert-danger");
+				answers = $.map(answers, function(val, i) {
+					return $(val).attr("key");
+				});
+
+				// clog(answers);
+				$.ajax("/answer", {method: "POST", data: {
+					id: $("div.text").attr("_id"),
+					variance: JSON.stringify(answers)
+				}}).done(function(msg) {
+					// clog(msg.message);
+					var at = msg.message == "RIGHT" ? "alert-success" : "alert-danger";
+					var el = $(`<div style='display: none;' class="alert ${at}">${msg.message}</div>`);
+					$("div.alerts").prepend(el);
+					el.fadeIn("slow");
+					setTimeout(function() { el.fadeOut("slow", function() { el.remove(); }); }, 3000);
+					renderProfile();
+					renderQuestion();
+				});
+			});
+
+			function renderProfile() {
+				$.ajax("/user").done(function(msg) {
+					if(msg.message != "ERROR") {
+						$("form").hide();
+						$("[name=profile]").show();
+						$("a[name=username]").text(msg.Username);
+						var percentage = 100*msg.Ranswers/msg.Answers || 0;
+						// clog(percentage);
+						$(".success-p").css("width", `${percentage}%`);
+						$(".success-p-text").text(`${msg.Ranswers} of ${msg.Answers} correct`)
+					} else {
+						$("[name=profile]").hide();
+						$("form").show();
+						$(".success-p").css("width", "50%");
+						$(".success-p-text").text(`0 of 0 correct (cuz u unregistered)`)
+					}
+				});
+			}
+
+			$("form").submit(function(e) {
+				e.preventDefault();
+				var username = $("input[name=username]").val();
+				var password = $("input[name=password]").val();
+
+				$.ajax("/login", {method: "POST", crossDomain: true,
+					data: { username: username, password: password }
+				}).done(function(msg) {
+					// clog(msg);
+					renderProfile();
+				});
+				$(this).trigger("reset");
+			});
+
+			$("a[href='/user'").click(function(e) {
+				e.preventDefault();
+				$.ajax("/user").done(function(msg) { clog(msg); });
+			});
+
+			$("a[href='/logout']").click(function(e) {
+				e.preventDefault();
+				$.ajax("/logout", { method: "POST", crossDomain: true}).done(function(msg) {
+					renderProfile();
+				});
+			});
+
+			renderProfile();
+			renderQuestion();
+		});
+	</script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Tester</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right" name="profile" style="display: none;">
+					<li><a href="/user" name="username">22</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+				<form action="/auth" method="POST" class="navbar-form navbar-right">
+					<div class="form-group"><input type="text" name="username" class="form-control"></div>
+					<div class="form-group"><input type="password" name="password" class="form-control"></div>
+					<button type="submit" class="btn btn-default">Sign in</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="main">
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="progress" style="margin-bottom: 0px;">
+					<div class="success-p progress-bar progress-bar-success" role="progressbar">
+						<span class="sr-only">Complete</span>
+					</div>
+				</div>
+				<div class="panel-body success-p-text text-center" style="font-size: 20px; background-color: lightgray;"></div>
+			</div>
+
+			<div class="question">
+				<div class="panel panel-default">
+					<div class="panel-heading text" style="font-size: 16px;"></div>
+					<div class="panel-body" style="text-align: center; background-color: lightgray;">
+						<div class="answers" style="float: left; width: 79%;"></div>
+						<div class="send-answers unselectable alert alert-success" style="float: right; width: 19%; height: 100%;">send</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="alerts"></div>
+		</div>
+	</div>
+</body>
+</html>
