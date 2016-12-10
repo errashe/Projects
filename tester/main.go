@@ -10,6 +10,7 @@ import (
 	"math/rand"
 	"reflect"
 	"sort"
+	"time"
 )
 
 func index(c *gin.Context) {
@@ -63,13 +64,10 @@ func currentUser(c *gin.Context) {
 }
 
 func question(c *gin.Context) {
-	session := sessions.Default(c)
-	uid := session.Get("userID")
-
 	q := QuestionSet{}
 	n, _ := questions.Count()
+	rand.Seed(time.Now().UnixNano())
 	questions.Find(bson.M{}).Limit(-1).Skip(rand.Intn(n)).One(&q)
-	users.Update(bson.M{"username": uid}, bson.M{"$inc": bson.M{"answers": 1}})
 
 	c.JSON(200, q)
 }
@@ -86,34 +84,22 @@ func answer(c *gin.Context) {
 	sort.Strings(variance)
 
 	var message string
+	var answers int = 1
+	var ranswers int = 0
 	if reflect.DeepEqual(variance, q.RVariance) {
-		if uid != nil {
-			users.Update(bson.M{"username": uid}, bson.M{"$inc": bson.M{"ranswers": 1}})
-		}
+		ranswers = 1
 		message = "RIGHT"
 	} else {
 		message = "WRONG"
 	}
+	if uid != nil {
+		users.Update(bson.M{"username": uid}, bson.M{"$inc": bson.M{"answers": answers, "ranswers": ranswers}})
+	}
 	c.JSON(200, gin.H{"message": message})
-}
-
-func test(c *gin.Context) {
-	q := QuestionInsert{}
-	q.Text = "OAMSG)IASNP AS A"
-	q.Variances = make(map[string]string)
-	q.Variances["v1"] = "v11"
-	q.Variances["v2"] = "v22"
-	q.Variances["v3"] = "v33"
-	q.Variances["v4"] = "v44"
-	q.RVariance = []string{"v2"}
-
-	questions.Insert(q)
-	c.String(200, "DONE")
 }
 
 func main() {
 	dbInit()
-	defer s.Close()
 
 	store := sessions.NewCookieStore([]byte("secret_word"))
 
@@ -127,7 +113,6 @@ func main() {
 	r.GET("/user", currentUser)
 	r.GET("/question", question)
 	r.POST("/answer", answer)
-	r.GET("/test", test)
 
 	r.Run(":3000")
 }
