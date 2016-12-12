@@ -65,16 +65,19 @@
 					$("div.question div.answers div[name=answer]").randomize();
 
 					$("div[name=answer]").click(function(e) {
-						if (e.target.classList.contains("alert-danger"))
-							e.target.classList.remove("alert-danger")
-						else
-							e.target.classList.add("alert-danger");
+						if (e.target.classList.contains("alert-info")) {
+							e.target.classList.remove("alert-info");
+							e.target.classList.add("alert-warning");
+						} else {
+							e.target.classList.add("alert-info");
+							e.target.classList.remove("alert-warning");
+						}
 					});
 				});
 			}
 
 			$("div.send-answers").click(function(e) {
-				var answers = $("div.alert-danger");
+				var answers = $("div.alert-info");
 				answers = $.map(answers, function(val, i) {
 					return $(val).attr("key");
 				});
@@ -84,14 +87,25 @@
 					id: $("div.text").attr("_id"),
 					variance: JSON.stringify(answers)
 				}}).done(function(msg) {
-					// clog(msg.message);
-					var at = msg.message == "RIGHT" ? "alert-success" : "alert-danger";
-					var el = $(`<div style='display: none;' class="alert ${at}">${msg.message}</div>`);
-					$("div.alerts").prepend(el);
-					el.fadeIn("slow");
-					setTimeout(function() { el.fadeOut("slow", function() { el.remove(); }); }, 3000);
-					renderProfile();
-					renderQuestion();
+					var intervals = [];
+					$.each(msg.ranswers, function(i, ans) {
+						var was = $(`div[key=${ans}`).hasClass("alert-warning") ? "alert-warning" : "alert-info";
+						var i = setInterval(function() {
+							if ($(`div[key=${ans}`).hasClass("alert-success")) {
+								$(`div[key=${ans}`).addClass(was);
+								$(`div[key=${ans}`).removeClass("alert-success");
+							} else {
+								$(`div[key=${ans}`).removeClass(was);
+								$(`div[key=${ans}`).addClass("alert-success");
+							}
+						}, 300);
+						intervals.push(i);
+					});
+					setTimeout(function() {
+						$.map(intervals, clearInterval);
+						renderProfile();
+						renderQuestion();
+					}, 5000);
 				});
 			});
 
@@ -144,7 +158,7 @@
 			renderQuestion();
 
 			setInterval(function() {
-				$(".date_to_exam").text(`${countdown( new Date(), new Date(2016, 11, 17, 8, 0, 0) ).toString()} to exam`);
+				$(".date_to_exam").text(`${countdown( new Date(), new Date(2016, 11, 17, 8, 0, 0) ).toString()} until exam`);
 			}, 1000);
 		});
 	</script>

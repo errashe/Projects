@@ -14,7 +14,8 @@ type User struct {
 }
 
 type QuestionSet struct {
-	Id        bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	Id bson.ObjectId `json:"id" bson:"_id,omitempty"`
+	// Count     int
 	Text      string
 	Variances map[string]string
 }

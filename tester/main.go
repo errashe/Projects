@@ -66,8 +66,10 @@ func currentUser(c *gin.Context) {
 func question(c *gin.Context) {
 	q := QuestionSet{}
 	n, _ := questions.Count()
+
 	rand.Seed(time.Now().UnixNano())
-	questions.Find(bson.M{}).Limit(-1).Skip(rand.Intn(n)).One(&q)
+	questions.Find(bson.M{}).Sort("count").Limit(-1).Skip(rand.Intn(n / 4)).One(&q)
+	questions.UpdateId(q.Id, bson.M{"$inc": bson.M{"count": 1}})
 
 	c.JSON(200, q)
 }
@@ -95,7 +97,7 @@ func answer(c *gin.Context) {
 	if uid != nil {
 		users.Update(bson.M{"username": uid}, bson.M{"$inc": bson.M{"answers": answers, "ranswers": ranswers}})
 	}
-	c.JSON(200, gin.H{"message": message})
+	c.JSON(200, gin.H{"message": message, "ranswers": q.RVariance})
 }
 
 func main() {
