@@ -1,6 +1,8 @@
 package database
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Something() {
 	fmt.Println("SOMETHING")
