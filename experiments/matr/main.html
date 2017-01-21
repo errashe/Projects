@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<h2>Hello, world!</h2>
+	<output class="out"></output><br />
+	<input type="text" class="in" style="width: 400px;">
+
+	<script src="/m.js"></script>
+	<script>
+		const app = new Matreshka();
+		app.bindNode('x', '.in, .out');
+		app.x = 'Самый простой фреймворк во Вселенной';
+	</script>
+</body>
+</html>

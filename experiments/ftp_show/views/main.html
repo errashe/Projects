@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TEST</title>
+	<style>
+		ul {
+			list-style: none;
+		}
+		ul li a {
+			font-size: 16pt;
+			position: relative;
+			top: -10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function loaded() {
+			document.querySelector("#back").onclick = function(e) {
+				e.preventDefault();
+				if(window.location.pathname != encodeURI({{ .Root }})) window.history.back();
+			}
+		}
+	</script>
+</head>
+<body onload="loaded()">
+	<a id="back" href="#">Назад</a>
+
+	<ul>
+
+		{{range .files}}
+		<li>
+			<img src="/pic/{{ .Ext }}.png" width="30">
+			<a href="/{{ $.root }}{{ .Link }}">
+				{{ .Name }}
+			</a>
+		</li>
+		{{end}}
+
+	</ul>
+</body>
+</html>
