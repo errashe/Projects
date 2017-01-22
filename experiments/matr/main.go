@@ -18,5 +18,5 @@ func main() {
 		c.File("./matreshka.min.js")
 	})
 
-	r.Run()
+	r.Run(":8000")
 }
