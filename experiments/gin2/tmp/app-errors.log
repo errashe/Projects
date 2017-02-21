@@ -1,0 +1,8 @@
+# _/Users/e4stw00d/Projects/experiments/gin2/src
+src/main.go:21: undefined: render in render.HTML
+src/main.go:25: undefined: s
+src/main.go:26: undefined: s
+src/render.go:5: imported and not used: "github.com/unrolled/render"
+src/render.go:10: undefined: rnd in rnd.Render
+src/render.go:16: undefined: rnd in rnd.New
+src/session.go:19: undefined: router in router.Use

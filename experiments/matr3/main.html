@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.js</title>
+</head>
+<body>
+
+	<div id="app">
+		<input type="text" v-model="message" v-on:keyup.13="send" ref="input" autofocus>
+		<div v-for="msg of messages">
+			${ msg }
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/assets/vue.js"></script>
+	<script type="text/javascript" src="/assets/main.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 $ = (selector, el) => { if (!el) {el = document;} return el.querySelector(selector); }
 
-app = new Vue({
+const app = new Vue({
 	delimiters: ['${', '}'], el: '#tags',
 	data: {
 		messages: []
