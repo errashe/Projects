@@ -35,7 +35,7 @@ func init() {
 	r = echo.New()
 
 	r.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format: "${time_rfc3339} |${status}| ${latency_human} | ${method} ${path}",
+		Format: "${time_rfc3339} |${status}| ${latency_human} | ${method} ${path}\n",
 	}))
 
 	html = render.New(render.Options{
