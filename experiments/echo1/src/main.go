@@ -94,7 +94,7 @@ func main() {
 	adminpages.POST("/:id/save", func(c echo.Context) error { return c.String(200, "admin/save page") })
 	adminpages.GET("/:id/delete", func(c echo.Context) error { return c.String(200, "admin/delete page") })
 
-	r.Start(":8000")
+	r.Start(":55555")
 }
 
 func rootPath(c echo.Context) error {
