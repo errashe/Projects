@@ -10,7 +10,7 @@ func connect(login, password string) bool {
 		},
 	}
 
-	_, err := ssh.Dial("tcp", "138.68.108.233:22", sshConfig)
+	_, err := ssh.Dial("tcp", "95.213.195.96:22", sshConfig)
 	if err == nil {
 		return true
 	}

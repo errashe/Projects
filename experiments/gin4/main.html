@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(() => {
+			$("button").click(() => {
+				$.ajax({
+					url: "/some",
+					method: "post",
+					data: JSON.stringify({a: 2, b: 5}),
+					success: (data) => { console.log(data); }
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<button>Something</button>
+</body>
+</html>
