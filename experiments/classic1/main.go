@@ -23,6 +23,6 @@ func main() {
 		defer wg.Done()
 		Println(http.ListenAndServe(port, nil))
 	}()
-	Printf("Server started at %s port\n", port)
+	Printf("#1Server started at %s port\n", port)
 	wg.Wait()
 }
