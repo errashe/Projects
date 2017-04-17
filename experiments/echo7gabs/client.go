@@ -1,18 +1,45 @@
 package main
 
 import (
-	"github.com/Jeffail/gabs"
+	"encoding/json"
+	. "fmt"
+	"io/ioutil"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 func main() {
-	j := gabs.New()
+	s := Settings{2, 2}
 
-	j.SetP(2, "settings.cores")
-	j.SetP(2, "settings.threads")
+	m := Module1{}
 
-	j.SetP(3, "work")
+	a, b := Matrix{}, Matrix{}
+	a.Fill(300)
+	b.Fill(300)
 
-	http.PostForm("http://localhost:1323/", url.Values{"payload": {j.String()}})
+	t := time.Now()
+	a.MulBy(&b)
+	Println(time.Since(t))
+	// Println(ss.PP())
+
+	m.A = a
+	m.B = b
+
+	data, _ := json.Marshal(m)
+	data2, _ := json.Marshal(s)
+
+	resp, _ := http.PostForm("http://localhost:1323/work?uid=1", url.Values{
+		"payload":  {string(data)},
+		"settings": {string(data2)},
+	})
+
+	rdata, _ := ioutil.ReadAll(resp.Body)
+	var temp interface{}
+	json.Unmarshal(rdata, &temp)
+
+	// Println()
+	// for _, row := range temp.([]interface{}) {
+	// 	Printf("%s", row)
+	// }
 }
