@@ -5,11 +5,6 @@ import (
 	"strings"
 )
 
-type Vector interface {
-	String()
-	NewVector()
-}
-
 type VerticalVector []Cell
 type HorizontalVector []Cell
 
