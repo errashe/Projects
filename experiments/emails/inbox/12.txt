@@ -1,0 +1,189 @@
+Delivered-To: defensuer@gmail.com
+Received: by 10.129.160.210 with SMTP id x201csp128818ywg;
+        Sat, 25 Feb 2017 03:10:17 -0800 (PST)
+X-Received: by 10.223.135.215 with SMTP id c23mr5430319wrc.135.1488021017921;
+        Sat, 25 Feb 2017 03:10:17 -0800 (PST)
+Return-Path: <noreply@blizzard.com>
+Received: from ext-smtp12.eu.battle.net (ext-smtp12.eu.battle.net. [80.239.186.48])
+        by mx.google.com with ESMTP id y190si6087363wmy.7.2017.02.25.03.10.17
+        for <DEFENSUER@gmail.com>;
+        Sat, 25 Feb 2017 03:10:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@blizzard.com designates 80.239.186.48 as permitted sender) client-ip=80.239.186.48;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@blizzard.com;
+       spf=pass (google.com: domain of noreply@blizzard.com designates 80.239.186.48 as permitted sender) smtp.mailfrom=noreply@blizzard.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=blizzard.com
+Received: from ew2-web-13-blade05.wowadmin.net (ew2-web-13-blade05.wowadmin.net [10.51.72.55])
+	by ext-smtp12.eu.battle.net (Postfix) with ESMTP id 7208E160508
+	for <DEFENSUER@GMAIL.COM>; Sat, 25 Feb 2017 11:10:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ext-smtp12.eu.battle.net 7208E160508
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=blizzard.com;
+	s=mail; t=1488021017;
+	bh=tpVyRypc+eQd7ucRRoVyQWdIVcYUdHdMOm4dM3WNnyg=;
+	h=Date:From:To:Subject:From;
+	b=QHoNbAXF6b7o9TvvjRo7ZVY2F/n0JRtoVj8rERQ4nP6bgdIusF36yi47+HyqmZfAN
+	 A1t4Uvg78PZhBZfYFExmU4N3OcDgMFxm0Epzs/8wnfzD0Wxl8KX/CXocl6z9L7hyEl
+	 3lNB2QavXxH7cOGZgbciGcu7LeE1IrZ3+EDs+hbE=
+Date: Sat, 25 Feb 2017 11:10:17 +0000 (UTC)
+From: Blizzard Entertainment <noreply@blizzard.com>
+To: DEFENSUER@GMAIL.COM
+Message-ID: <455181964.9851591488021017466.JavaMail.tomcat@ew2-web-13-blade05.wowadmin.net>
+Subject: =?UTF-8?B?0J/RgNC+0LLQtdGA0LrQsCDQt9Cw0L/QuNGB0LggQmF0dGxlLm5ldA==?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1970241_797166169.1488021017463"
+
+------=_Part_1970241_797166169.1488021017463
+Content-Type: multipart/related; 
+	boundary="----=_Part_1970242_1381917777.1488021017463"
+
+------=_Part_1970242_1381917777.1488021017463
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd"> <html xmlns=3D"http://www.w3.org/1999/xh=
+tml"> <head> <meta http-equiv=3D"Content-Type" content=3D"text/html; charse=
+t=3DUTF-8" /> <title>=D0=9F=D1=80=D0=BE=D0=B2=D0=B5=D1=80=D0=BA=D0=B0 =D0=
+=B7=D0=B0=D0=BF=D0=B8=D1=81=D0=B8 Battle.net</title> </head> <body> <style>=
+ /**This is to overwrite Outlook.com=E2=80=99s Embedded CSS************/ ta=
+ble {border-collapse:separate;} a, a:link, a:visited {text-decoration: none=
+; color: #00AEFF} a:hover {text-decoration: none;} h2,h2 a,h2 a:visited,h3,=
+h3 a,h3 a:visited,h4,h5,h6,.t_cht {color:#000 !important} p {margin-bottom:=
+ 0} .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalCl=
+ass td {line-height: 100%} /**This is to center your email in Outlook.com**=
+**********/ .ExternalClass {width: 100%;} a { color: #00AEFF; text-decorati=
+on: none; } * { font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'De=
+javu Sans', 'Helvetica Neue', Arial, sans-serif; } </style> <div align=3D"c=
+enter" id=3D"email-content"> <table id=3D"" class=3D"" style=3D"" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" height=3D""> <tr> <t=
+d align=3D"center"> <table id=3D"outerTable" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" width=3D"720" style=3D"font-family: 'Segoe UI', Frutiger=
+, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;f=
+ont-size: 14px; font-weight: 400;text-align: left; background-color: #20283=
+5; color:#BFC1C5;-webkit-font-smoothing: antialiased;"> <tr> <td id=3D"batt=
+leTagWarning" style=3D"background-color: #324E8d; font-size: 10pt; border: =
+1px solid #4A609A; height: 28px;" height=3D"40" valign=3D"middle"> <table i=
+d=3D"" class=3D"" style=3D"" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" width=3D"100%" height=3D""> <tr> <td valign=3D"middle" width=3D"38"> <im=
+g src=3D"http://media.blizzard.com/emails/2014-account/lock.png" width=3D"3=
+8" height=3D"17" style=3D"display: block; border: none;" alt=3D"This is an =
+image"/> </td> <td height=3D"17"> <div style=3D"font-family: 'Segoe UI', Fr=
+utiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-s=
+erif;font-size:10pt; color: #FFFFFF; -webkit-font-smoothing: antialiased;">=
+=D0=95=D1=81=D0=BB=D0=B8 <strong style=3D"font-family: 'Segoe UI', Frutiger=
+, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;f=
+ont-weight: 300; color: white;">defensuer#2895</strong> =E2=80=94 =D0=BD=D0=
+=B5 =D0=92=D0=B0=D1=88 BattleTag, =D1=82=D0=BE =D0=BD=D0=B5 =D0=BF=D0=B5=D1=
+=80=D0=B5=D1=85=D0=BE=D0=B4=D0=B8=D1=82=D0=B5 =D0=BD=D0=B8 =D0=BF=D0=BE =D0=
+=BA=D0=B0=D0=BA=D0=B8=D0=BC =D1=81=D1=81=D1=8B=D0=BB=D0=BA=D0=B0=D0=BC =D0=
+=B2 =D1=8D=D1=82=D0=BE=D0=BC =D0=BF=D0=B8=D1=81=D1=8C=D0=BC=D0=B5!</div> </=
+td> </tr> </table> </td> </tr> <tr> <td id=3D"header" align=3D"left" width=
+=3D"720" height=3D"60"> <img src=3D"http://media.blizzard.com/emails/2014-a=
+ccount/battlenet_logo.jpg" width=3D"187" height=3D"60" style=3D"display: bl=
+ock; border: none;padding-left: 24px;" alt=3D"Battle.net Logo"/> </td> </tr=
+> <tr> <td style=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype',=
+ 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;text-align: left; backg=
+round-color: #242D3D; border-top-width: 1px; border-top-style: solid; borde=
+r-top-color: #3E424E; color: #BFC1C5; padding: 0 30px 0 30px;"> <table id=
+=3D"" class=3D"" style=3D"" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" height=3D""><tr><td style=3D"font-family: 'Segoe UI', Frut=
+iger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-ser=
+if;font-weight: 200; font-size: 28px; color: #FFFFFF; padding: 40px 0; marg=
+in: 0px 0px 0px 0px; display: block;">=D0=92=D0=B0=D1=88 =D0=B7=D0=B0=D1=89=
+=D0=B8=D1=82=D0=BD=D1=8B=D0=B9 =D0=BA=D0=BE=D0=B4: </td></tr></table> <tabl=
+e id=3D"" class=3D"" style=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger =
+Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;padding-botto=
+m: 20px;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" h=
+eight=3D""> <tr><td><em style=3D"font-family: 'Segoe UI', Frutiger, 'Frutig=
+er Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;font-size:=
+ 28px; font-weight: 300; color: #3ed500; font-style: normal;">BJ9M8F</em></=
+td></tr> </table> <table id=3D"" class=3D"" style=3D"" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"100%" height=3D""><tr><td style=3D"fo=
+nt-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helve=
+tica Neue', Arial, sans-serif;padding: 0 0 20px 0; margin: 0px 0px 0px 0px;=
+ color: #BFC1C5; display: inline-block; -webkit-font-smoothing: antialiased=
+;"> =D0=97=D0=B4=D1=80=D0=B0=D0=B2=D1=81=D1=82=D0=B2=D1=83=D0=B9=D1=82=D0=
+=B5, =D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80! </td></tr></ta=
+ble> <table id=3D"" class=3D"" style=3D"" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" width=3D"100%" height=3D""><tr><td style=3D"font-family: 'S=
+egoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', A=
+rial, sans-serif;padding: 0 0 20px 0; margin: 0px 0px 0px 0px; color: #BFC1=
+C5; display: inline-block; -webkit-font-smoothing: antialiased;"> =D0=9D=D0=
+=B0=D0=BC =D0=BF=D1=80=D0=B8=D1=88=D0=B5=D0=BB =D0=B7=D0=B0=D0=BF=D1=80=D0=
+=BE=D1=81 =D0=BD=D0=B0 =D0=BF=D1=80=D0=BE=D0=B2=D0=B5=D1=80=D0=BA=D1=83 =D0=
+=B1=D0=B5=D0=B7=D0=BE=D0=BF=D0=B0=D1=81=D0=BD=D0=BE=D1=81=D1=82=D0=B8 =D0=
+=92=D0=B0=D1=88=D0=B5=D0=B9 =D0=B7=D0=B0=D0=BF=D0=B8=D1=81=D0=B8 Battle.net=
+=C2=AE. =D0=9F=D0=BE=D0=B6=D0=B0=D0=BB=D1=83=D0=B9=D1=81=D1=82=D0=B0, =D0=
+=B2=D0=B2=D0=B5=D0=B4=D0=B8=D1=82=D0=B5 =D1=83=D0=BA=D0=B0=D0=B7=D0=B0=D0=
+=BD=D0=BD=D1=8B=D0=B9 =D0=B2=D1=8B=D1=88=D0=B5 =D0=BA=D0=BE=D0=B4, =D1=87=
+=D1=82=D0=BE=D0=B1=D1=8B =D0=BF=D0=BE=D0=B4=D1=82=D0=B2=D0=B5=D1=80=D0=B4=
+=D0=B8=D1=82=D1=8C =D0=BF=D1=80=D0=B0=D0=B2=D0=BE =D0=B2=D0=BB=D0=B0=D0=B4=
+=D0=B5=D0=BD=D0=B8=D1=8F =D0=B4=D0=B0=D0=BD=D0=BD=D0=BE=D0=B9 =D1=83=D1=87=
+=D0=B5=D1=82=D0=BD=D0=BE=D0=B9 =D0=B7=D0=B0=D0=BF=D0=B8=D1=81=D1=8C=D1=8E. =
+</td></tr></table> <table id=3D"" class=3D"" style=3D"" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" width=3D"100%" height=3D""><tr><td style=3D"f=
+ont-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helv=
+etica Neue', Arial, sans-serif;padding: 0 0 20px 0; margin: 0px 0px 0px 0px=
+; color: #BFC1C5; display: inline-block; -webkit-font-smoothing: antialiase=
+d;"> <i><b>=D0=92=D0=BD=D0=B8=D0=BC=D0=B0=D0=BD=D0=B8=D0=B5!</b> =D0=94=D0=
+=B0=D0=BD=D0=BD=D1=8B=D0=B9 =D0=BA=D0=BE=D0=B4 =D0=B4=D0=B5=D0=B9=D1=81=D1=
+=82=D0=B2=D0=B8=D1=82=D0=B5=D0=BB=D0=B5=D0=BD =D0=B2 =D1=82=D0=B5=D1=87=D0=
+=B5=D0=BD=D0=B8=D0=B5 =D0=B2=D1=81=D0=B5=D0=B3=D0=BE 10 =D0=BC=D0=B8=D0=BD=
+=D1=83=D1=82. =D0=A0=D0=B5=D0=BA=D0=BE=D0=BC=D0=B5=D0=BD=D0=B4=D1=83=D0=B5=
+=D0=BC =D0=B2=D0=B2=D0=B5=D1=81=D1=82=D0=B8 =D0=B5=D0=B3=D0=BE =D0=BA=D0=B0=
+=D0=BA =D0=BC=D0=BE=D0=B6=D0=BD=D0=BE =D1=81=D0=BA=D0=BE=D1=80=D0=B5=D0=B5.=
+</i> </td></tr></table> <table id=3D"" class=3D"" style=3D"" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"100%" height=3D""><tr><td style=
+=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', =
+'Helvetica Neue', Arial, sans-serif;padding: 0 0 20px 0; margin: 0px 0px 0p=
+x 0px; color: #BFC1C5; display: inline-block; -webkit-font-smoothing: antia=
+liased;">=D0=A3=D0=B4=D0=B0=D1=87=D0=B8 =D0=B2 =D0=B8=D0=B3=D1=80=D0=B5!<br=
+/> =D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=D0=BC, <br/>Bliz=
+zard Entertainment=C2=AE</td></tr></table> </td> </tr> <tr> <td style=3D"fo=
+nt-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helve=
+tica Neue', Arial, sans-serif;font-size: 12px; color: #757B90; border-top: =
+1px solid #3E424E; padding: 30px;"> <table id=3D"" class=3D"" style=3D"font=
+-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helveti=
+ca Neue', Arial, sans-serif;" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" width=3D"100%" height=3D""> <tr> <td width=3D"112" valign=3D"top"> <img=
+ src=3D"http://media.blizzard.com/emails/2014-account/blizzard-logo.png" wi=
+dth=3D"106" height=3D"56" style=3D"display: block; border: none;" alt=3D"Bl=
+izzard Logo"/> </td> <td width=3D"100%" id=3D"footer" valign=3D"top" style=
+=3D"padding-left: 30px;"> <table id=3D"" class=3D"" style=3D"" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" height=3D""><tr><td sty=
+le=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans'=
+, 'Helvetica Neue', Arial, sans-serif;font-size: 12px; color: #757B90; marg=
+in: 0px 0px 0px 0px; padding-bottom: 5px; color: #757B90; display: block; -=
+webkit-font-smoothing: antialiased;"> =D0=A1=D0=BE =D0=B2=D1=81=D0=B5=D0=BC=
+=D0=B8 =D0=B2=D0=BE=D0=BF=D1=80=D0=BE=D1=81=D0=B0=D0=BC=D0=B8 =D0=BF=D1=80=
+=D0=B8=D0=B3=D0=BB=D0=B0=D1=88=D0=B0=D0=B5=D0=BC =D0=92=D0=B0=D1=81 =D0=BE=
+=D0=B1=D1=80=D0=B0=D1=82=D0=B8=D1=82=D1=8C=D1=81=D1=8F =D0=BD=D0=B0 <a styl=
+e=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans',=
+ 'Helvetica Neue', Arial, sans-serif;color: #00AEFF; text-decoration: none;=
+" href=3D"http://eu.battle.net/support/">=D1=81=D0=B0=D0=B9=D1=82 =D0=BF=D0=
+=BE=D0=B4=D0=B4=D0=B5=D1=80=D0=B6=D0=BA=D0=B8 Battle.net</a>. </td></tr></t=
+able> <table id=3D"" class=3D"" style=3D"" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" width=3D"100%" height=3D""><tr><td style=3D"font-family: '=
+Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', =
+Arial, sans-serif;font-size: 12px; color: #757B90; margin: 0px 0px 0px 0px;=
+ padding-bottom: 5px; color: #757B90; display: block; -webkit-font-smoothin=
+g: antialiased;"> <a style=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger =
+Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;color: #00AEF=
+F; text-decoration: none;" href=3D"http://eu.blizzard.com/company/about/pri=
+vacy.html">=D0=9F=D0=BE=D0=BB=D0=B8=D1=82=D0=B8=D0=BA=D0=B0 =D0=BA=D0=BE=D0=
+=BD=D1=84=D0=B8=D0=B4=D0=B5=D0=BD=D1=86=D0=B8=D0=B0=D0=BB=D1=8C=D0=BD=D0=BE=
+=D1=81=D1=82=D0=B8</a> </td></tr></table> <table id=3D"" class=3D"" style=
+=3D"" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" heigh=
+t=3D""><tr><td style=3D"font-family: 'Segoe UI', Frutiger, 'Frutiger Linoty=
+pe', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;font-size: 12px; co=
+lor: #757B90; margin: 0px 0px 0px 0px; padding-bottom: 5px; color: #757B90;=
+ display: block; -webkit-font-smoothing: antialiased;"> Blizzard Entertainm=
+ent SAS, TSA 60001, 78008 Versailles CEDEX, France </td></tr></table> </td>=
+ </tr> </table> </td> </tr> </table> </td> </tr> </table> </div> </body> </=
+html>
+------=_Part_1970242_1381917777.1488021017463--
+
+------=_Part_1970241_797166169.1488021017463--
+

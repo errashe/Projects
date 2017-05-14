@@ -1,0 +1,154 @@
+Delivered-To: defensuer@gmail.com
+Received: by 10.129.160.66 with SMTP id x63csp2499120ywg;
+        Thu, 16 Feb 2017 01:20:54 -0800 (PST)
+X-Received: by 10.200.52.105 with SMTP id v38mr998085qtb.227.1487236854664;
+        Thu, 16 Feb 2017 01:20:54 -0800 (PST)
+Return-Path: <no-reply@google.com>
+Received: from mail-qt0-x263.google.com (mail-qt0-x263.google.com. [2607:f8b0:400d:c0d::263])
+        by mx.google.com with ESMTPS id a197si1975142qkc.54.2017.02.16.01.20.54
+        for <defensuer@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 16 Feb 2017 01:20:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of no-reply@google.com designates 2607:f8b0:400d:c0d::263 as permitted sender) client-ip=2607:f8b0:400d:c0d::263;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com;
+       spf=pass (google.com: domain of no-reply@google.com designates 2607:f8b0:400d:c0d::263 as permitted sender) smtp.mailfrom=no-reply@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: by mail-qt0-x263.google.com with SMTP id w20so7qtb.1
+        for <defensuer@gmail.com>; Thu, 16 Feb 2017 01:20:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20161025;
+        h=date:from:sender:reply-to:to:message-id:subject:mime-version
+         :list-unsubscribe;
+        bh=Lk9ovXDxQoPVIERnH5DSE9rr8FUvWPyEorJ7tqFtkYY=;
+        b=MvSQg8WtAuvs4ZeA4pahoAIdx9s+g5QQOArj28s4ekvrkzBS2E7V2SxqDv4cBVUXJ6
+         s765aLSAZHZkoJfkDgj+bYz+k0dklwrUMqCKQst88+7gaLMq6VSliaAUPYoiv6SgGTwQ
+         7Jl+XVIF06Pu5NP73mZcGbprD208QNbxRsPOdBV0syANsN9BJN+WqjNqePqrxEoPniRF
+         tYhrdjGiTBMQ3PEtWOAEoEmddu5GFVwkpa1xoSmfSyAEwdEVH0bXNNQQyfp0Y/SlqzHK
+         KPkybALvH0seukIlpv9XwXxC1hvt532rHVRyKTf8JNv0/aUCqwM+3gm5YzhDfG5dr85n
+         5y9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:sender:reply-to:to:message-id:subject
+         :mime-version:list-unsubscribe;
+        bh=Lk9ovXDxQoPVIERnH5DSE9rr8FUvWPyEorJ7tqFtkYY=;
+        b=X7/xBQKm0EXFosA6H4zD17zmXv3wRkQJjxInV+8sJRFTDbWtLVgiEXFNeFcn4ulOGO
+         YbdTpkIbCqU0Q5uT4KnjG/Kyo9MRoM2fD1LY/b+pTc0Jnwl/CFkLciZ5ZyJFw3WAuiNG
+         izM69TVlTeW55X+pHXTxynjnsRuM/aa4cZY4uy23uvWpRz4eCwnSoftYGfmVvo5hnWh0
+         YAAk9CS1DWeMBd0WfT7rT4No+BapML0A7W/RrOkQ8JWTKZAW6gQX5g1MxOUwCT7K6Pic
+         AJhEN0OETz3d2kvBtfJ2xPNW2GcGGrFvzX3Ynj3+DTz6t+xTJei2XtUexcx6CeRfn+8s
+         o9iw==
+X-Gm-Message-State: AMke39kOX9Pqk3jZjUi+3U4Sb2tmsUYjLFeE4E59hTSeKGiKvmwJuuJQgFBofSB9HzIEc03OhR7pmuQwFNndMqhDL7VEsCol6nFaKyHbEylJLRSpgkJrbWveZkidwipT0hpqCWmDpNrPfC/05o5g
+X-Received: by 10.129.85.68 with SMTP id j65mr853693ywb.123.1487236854272;
+        Thu, 16 Feb 2017 01:20:54 -0800 (PST)
+Return-Path: <no-reply@google.com>
+Received: from jwm2-app.co1.qprod.net (mailer.co1.qemailserver.com. [162.247.217.50])
+        by smtp-relay.gmail.com with ESMTPS id d206sm409615ywe.3.2017.02.16.01.20.54
+        for <defensuer@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 16 Feb 2017 01:20:54 -0800 (PST)
+X-Relaying-Domain: google.com
+Date: Thu, 16 Feb 2017 02:20:54 -0700 (MST)
+From: "no-reply@google.com" <no-reply@google.com>
+Sender: "no-reply@google.com" <no-reply@google.com>
+Reply-To: "no-reply@google.com" <no-reply@google.com>
+To: =?UTF-8?Q?=10=3B5=3AA0=3D4=40_=11CB5=3D=3A=3E?= <defensuer@gmail.com>
+Message-ID: <1408585513.8621577.1487236854230.JavaMail.default@jwm2-app.co1.qprod.net>
+Subject: =?UTF-8?B?0KPRh9Cw0YHRgtC40LUg0LIg0LjRgdGB0LvQtdC00L7QstCw0L3QuA==?=
+ =?UTF-8?B?0Y/RhSDQv9C+INC40LfRg9GH0LXQvdC40Y4g0LLQt9Cw0LjQvNC+?=
+ =?UTF-8?B?0LTQtdC50YHRgtCy0LjRjyDQv9C+0LvRjNC30L7QstCw0YLQtdC70LU=?=
+ =?UTF-8?B?0Lkg0YEg0YHQtdGA0LLQuNGB0LDQvNC4IEdvb2dsZSE=?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_8621574_1133521864.1487236854005"
+X-QUMID: UR_7UNVYSld53HKM4t-EMD_5d2nlW9ffbalCBv-MLRP_blWlL7qR1aa37KZ-SV_ewWXIoEVLBcyp7f
+List-Unsubscribe: <mailto:abuse@qemailserver.com>
+
+------=_Part_8621574_1133521864.1487236854005
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_8621575_1369099523.1487236854005"
+
+------=_Part_8621575_1369099523.1487236854005
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+=D0=97=D0=B4=D1=80=D0=B0=D0=B2=D1=81=D1=82=D0=B2=D1=83=D0=B9=D1=82=D0=B5,=
+=C2=A0=10;5:A0=3D4@=C2=A0=11CB5=3D:>,
+
+=D0=92=D1=8B =D0=BF=D1=80=D0=BE=D1=88=D0=BB=D0=B8 =D1=80=D0=B5=D0=B3=D0=B8=
+=D1=81=D1=82=D1=80=D0=B0=D1=86=D0=B8=D1=8E =D0=B8 =D0=B1=D1=83=D0=B4=D0=B5=
+=D1=82=D0=B5 =D0=BF=D0=BE=D0=BB=D1=83=D1=87=D0=B0=D1=82=D1=8C =D0=BF=D1=80=
+=D0=B8=D0=B3=D0=BB=D0=B0=D1=88=D0=B5=D0=BD=D0=B8=D1=8F =D0=BA =D1=83=D1=87=
+=D0=B0=D1=81=D1=82=D0=B8=D1=8E =D0=B2 =D0=B8=D1=81=D1=81=D0=BB=D0=B5=D0=B4=
+=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F=D1=85
+=D0=BD=D0=B0 =D0=B0=D0=B4=D1=80=D0=B5=D1=81 =D1=8D=D0=BB=D0=B5=D0=BA=D1=82=
+=D1=80=D0=BE=D0=BD=D0=BD=D0=BE=D0=B9 =D0=BF=D0=BE=D1=87=D1=82=D1=8B:=C2=A0d=
+efensuer@gmail.com
+
+=D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=D0=BC, =D0=BA=D0=BE=
+=D0=BC=D0=B0=D0=BD=D0=B4=D0=B0 Google =D0=BF=D0=BE =D0=B8=D0=B7=D1=83=D1=87=
+=D0=B5=D0=BD=D0=B8=D1=8E =D0=B2=D0=B7=D0=B0=D0=B8=D0=BC=D0=BE=D0=B4=D0=B5=
+=D0=B9=D1=81=D1=82=D0=B2=D0=B8=D1=8F =D0=BF=D0=BE=D0=BB=D1=8C=D0=B7=D0=BE=
+=D0=B2=D0=B0=D1=82=D0=B5=D0=BB=D0=B5=D0=B9 =D1=81
+=D1=81=D0=B5=D1=80=D0=B2=D0=B8=D1=81=D0=B0=D0=BC=D0=B8
+
+Common questions about the program are answered at
+http://www.google.com/intl/ru/usability/faq
+<https://www.google.com/usability/faq/> If you did not register or no longe=
+r
+want to participate, you may unsubscribe at
+https://uxr-optout.withgoogle.com/?lang=3Dru
+<https://uxr-optout.withgoogle.com/?lang=3Dru>
+------=_Part_8621575_1369099523.1487236854005
+Content-Type: multipart/related; 
+	boundary="----=_Part_8621576_1342774562.1487236854005"
+
+------=_Part_8621576_1342774562.1487236854005
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+ <head></head>=20
+ <body>=20
+  <span style=3D"color: rgb(34, 34, 34); font-family: arial, sans-serif; fo=
+nt-size: 12.8px;">=D0=97=D0=B4=D1=80=D0=B0=D0=B2=D1=81=D1=82=D0=B2=D1=83=D0=
+=B9=D1=82=D0=B5,</span>&nbsp;=10;5:A0=3D4@&nbsp;=11CB5=3D:&gt;,=20
+  <br>=20
+  <br>=20
+  <span style=3D"color: rgb(34, 34, 34); font-family: arial, sans-serif; fo=
+nt-size: 12.8px;">=D0=92=D1=8B =D0=BF=D1=80=D0=BE=D1=88=D0=BB=D0=B8 =D1=80=
+=D0=B5=D0=B3=D0=B8=D1=81=D1=82=D1=80=D0=B0=D1=86=D0=B8=D1=8E =D0=B8 =D0=B1=
+=D1=83=D0=B4=D0=B5=D1=82=D0=B5 =D0=BF=D0=BE=D0=BB=D1=83=D1=87=D0=B0=D1=82=
+=D1=8C =D0=BF=D1=80=D0=B8=D0=B3=D0=BB=D0=B0=D1=88=D0=B5=D0=BD=D0=B8=D1=8F =
+=D0=BA =D1=83=D1=87=D0=B0=D1=81=D1=82=D0=B8=D1=8E =D0=B2 =D0=B8=D1=81=D1=81=
+=D0=BB=D0=B5=D0=B4=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F=D1=85 =D0=BD=D0=B0 =
+=D0=B0=D0=B4=D1=80=D0=B5=D1=81 =D1=8D=D0=BB=D0=B5=D0=BA=D1=82=D1=80=D0=BE=
+=D0=BD=D0=BD=D0=BE=D0=B9 =D0=BF=D0=BE=D1=87=D1=82=D1=8B</span>:&nbsp;defens=
+uer@gmail.com=20
+  <br>=20
+  <br>=20
+  <span style=3D"color: rgb(34, 34, 34); font-family: arial, sans-serif; fo=
+nt-size: 12.8px;">=D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=
+=D0=BC, =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=B0 Google =D0=BF=D0=BE =D0=
+=B8=D0=B7=D1=83=D1=87=D0=B5=D0=BD=D0=B8=D1=8E =D0=B2=D0=B7=D0=B0=D0=B8=D0=
+=BC=D0=BE=D0=B4=D0=B5=D0=B9=D1=81=D1=82=D0=B2=D0=B8=D1=8F =D0=BF=D0=BE=D0=
+=BB=D1=8C=D0=B7=D0=BE=D0=B2=D0=B0=D1=82=D0=B5=D0=BB=D0=B5=D0=B9 =D1=81 =D1=
+=81=D0=B5=D1=80=D0=B2=D0=B8=D1=81=D0=B0=D0=BC=D0=B8</span>=20
+  <br>=20
+  <br>=20
+  <span style=3D"color: rgb(0, 0, 0); font-family: Arial; white-space: pre-=
+wrap;">Common questions about the program are answered at <a href=3D"https:=
+//www.google.com/usability/faq/">http://www.google.com/intl/ru/usability/fa=
+q</a> If you did not register or no longer want to participate, you may uns=
+ubscribe at <a href=3D"https://uxr-optout.withgoogle.com/?lang=3Dru">https:=
+//uxr-optout.withgoogle.com/?lang=3Dru</a></span>=20
+  <img width=3D"1" height=3D"1" alt=3D"" src=3D"https://google.qualtrics.co=
+m/WRQualtricsContacts/Watermark.php?UID=3DUR_7UNVYSld53HKM4t&amp;EMD=3DEMD_=
+5d2nlW9ffbalCBv&amp;CGC=3DMLRP_blWlL7qR1aa37KZ"> =20
+ </body>
+</html>
+------=_Part_8621576_1342774562.1487236854005--
+
+------=_Part_8621575_1369099523.1487236854005--
+
+------=_Part_8621574_1133521864.1487236854005--

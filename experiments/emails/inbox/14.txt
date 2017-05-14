@@ -1,0 +1,2082 @@
+Delivered-To: defensuer@gmail.com
+Received: by 10.129.79.87 with SMTP id d84csp335898ywb;
+        Fri, 14 Apr 2017 10:10:39 -0700 (PDT)
+X-Received: by 10.84.236.8 with SMTP id q8mr9993599plk.104.1492189839580;
+        Fri, 14 Apr 2017 10:10:39 -0700 (PDT)
+Return-Path: <QuakeChampions-uhottd1cijttvud1i@cmail20.com>
+Received: from mx107.g.outbound.createsend.com (mx107.g.outbound.createsend.com. [103.28.42.107])
+        by mx.google.com with ESMTPS id k65si2799738pfj.246.2017.04.14.10.10.39
+        for <defensuer@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 14 Apr 2017 10:10:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of quakechampions-uhottd1cijttvud1i@cmail20.com designates 103.28.42.107 as permitted sender) client-ip=103.28.42.107;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bethesda.net;
+       dkim=pass header.i=@cmail2.com;
+       spf=pass (google.com: domain of quakechampions-uhottd1cijttvud1i@cmail20.com designates 103.28.42.107 as permitted sender) smtp.mailfrom=QuakeChampions-uhottd1cijttvud1i@cmail20.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=cm; d=bethesda.net;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:X-Feedback-ID:List-Unsubscribe:Message-ID; i=quake@bethesda.net;
+ bh=rKfS5AdtZdUwAAE/+nA47DKuMEM=;
+ b=mOb9S39GiUs3eWX7WNaX+VeOup9jxtmO62MtWOL3hIpq2E4VFpSmkoMUwtD+p8XATPifgY44nIGP
+   uMPAyr8hn4UGYjNTXeDiW2nur8Mq9yJctqynPdvA3Iut6cCAX5iRgjjfTvdKHVv5jXbXzU10PhNx
+   Y+4Dr7IEsXjaLT+g1Hg=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=cs2013; d=cmail2.com;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:X-Feedback-ID:List-Unsubscribe:Message-ID;
+ bh=rKfS5AdtZdUwAAE/+nA47DKuMEM=;
+ b=l07KHoTbn+uiXvjF5c0ZXopVLMcIW6HSBQ0DzMn+EGx0aRbiJWC9bVVXVxNvGRmzaawiSG67CpHT
+   dhedq35FHWBIZ7xl3iV1jmDb1OZYwEMNFwphD6OEy2H0z1f/Tbdk8cGDOZ7z//nZYsEubPIUZzf1
+   XLNEhyloYDhr7pVV5/8=
+Subject: Welcome to the Quake Champions Closed Beta Test!
+From: "Quake Champions" <quake@bethesda.net> 
+To: "defensuer@gmail.com" <defensuer@gmail.com>
+Reply-To: quake@bethesda.net
+Date: Sat, 15 Apr 2017 03:06:24 +1000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_f8902207-c452-407d-96a2-f03d0a69b373_"; charset=utf-8
+X-Mailer: Create Send
+X-Complaints-To: abuse@cmail20.com
+X-Feedback-ID: CA1-i-uhottd:LI1-i-mkifl:CL1-i-jhnz:createSEND
+List-Unsubscribe: <http://unsub.cmail20.com/t/i-u-uhottd-cijttvud/>,
+ <mailto:unsubscribe-uhottd2cijttvud2i-D0DCC84C@cmail20.com?subject=Unsubscribe>
+Message-ID: <cm.0306241400791.uhottd.cijttvud.i@cmail20.com>
+
+--_f8902207-c452-407d-96a2-f03d0a69b373_
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+The first Closed Beta Weekend starts April 6.                    =
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=D0=94=D0=BE=D0=B1=D1=80=D0=BE =D0=BF=D0=BE=D0=B6=D0=B0=D0=BB=D0=BE=D0=B2=
+=D0=B0=D1=82=D1=8C =D0=BD=D0=B0 =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D0=BE=
+=D0=B5 =D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=
+=D0=B5 Quake Champions!
+
+=D0=9F=D1=80=D0=B8=D0=B2=D0=B5=D1=82=D1=81=D1=82=D0=B2=D1=83=D0=B5=D0=BC,=
+ =D1=87=D0=B5=D0=BC=D0=BF=D0=B8=D0=BE=D0=BD!
+
+=D0=9C=D1=8B =D1=80=D0=B0=D0=B4=D1=8B =D0=BF=D1=80=D0=B8=D0=B3=D0=BB=D0=B0=
+=D1=81=D0=B8=D1=82=D1=8C =D0=B2=D0=B0=D1=81 =D0=BD=D0=B0 =D0=B7=D0=B0=D0=BA=
+=D1=80=D1=8B=D1=82=D0=BE=D0=B5 =D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=
+=D0=B2=D0=B0=D0=BD=D0=B8=D0=B5 Quake Champions! =D0=92=D1=8B =D0=B3=D0=BE=
+=D1=82=D0=BE=D0=B2=D1=8B =D0=BF=D0=BE=D0=BA=D0=B0=D0=B7=D0=B0=D1=82=D1=8C=
+ =D0=B2=D1=81=D0=B5 =D1=81=D0=B2=D0=BE=D0=B8 =D1=83=D0=BC=D0=B5=D0=BD=D0=B8=
+=D1=8F =D0=B8 =D1=81 =D0=B3=D0=BE=D0=BB=D0=BE=D0=B2=D0=BE=D0=B9 =D1=80=D0=
+=B8=D0=BD=D1=83=D1=82=D1=8C=D1=81=D1=8F =D0=B2 =D0=B1=D0=BE=D0=B9?
+
+=D0=9F=D0=BE=D0=BC=D0=BE=D0=B3=D0=B8=D1=82=D0=B5 =D0=BD=D0=B0=D0=BC =D1=81=
+=D0=B4=D0=B5=D0=BB=D0=B0=D1=82=D1=8C Quake Champions =D0=BF=D0=BE-=D0=BD=D0=
+=B0=D1=81=D1=82=D0=BE=D1=8F=D1=89=D0=B5=D0=BC=D1=83 =D0=B2=D0=B5=D0=BB=D0=
+=B8=D0=BA=D0=B8=D0=BC =D0=BC=D0=BD=D0=BE=D0=B3=D0=BE=D0=BF=D0=BE=D0=BB=D1=
+=8C=D0=B7=D0=BE=D0=B2=D0=B0=D1=82=D0=B5=D0=BB=D1=8C=D1=81=D0=BA=D0=B8=D0=BC=
+ =D1=88=D1=83=D1=82=D0=B5=D1=80=D0=BE=D0=BC. =D0=9D=D0=B5 =D0=B7=D0=B0=D0=
+=B1=D1=8B=D0=B2=D0=B0=D0=B9=D1=82=D0=B5, =D1=87=D1=82=D0=BE =D1=8D=D1=82=D0=
+=BE =D0=B1=D0=B5=D1=82=D0=B0-=D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=
+=B2=D0=B0=D0=BD=D0=B8=D0=B5, =D0=B8 =D0=BC=D1=8B =D0=BF=D0=BE=D0=BA=D0=B0=
+ =D1=82=D0=BE=D0=BB=D1=8C=D0=BA=D0=BE =D0=BF=D1=80=D0=BE=D0=B2=D0=B5=D1=80=
+=D1=8F=D0=B5=D0=BC =D1=80=D0=B0=D0=B1=D0=BE=D1=82=D1=83 =D0=BD=D0=B0=D1=88=
+=D0=B8=D1=85 =D1=81=D0=B8=D1=81=D1=82=D0=B5=D0=BC, =D0=BF=D0=BE=D1=8D=D1=82=
+=D0=BE=D0=BC=D1=83 =D0=B2=D1=80=D0=B5=D0=BC=D1=8F =D0=BE=D1=82 =D0=B2=D1=80=
+=D0=B5=D0=BC=D0=B5=D0=BD=D0=B8 =D0=B1=D1=83=D0=B4=D1=83=D1=82 =D0=BF=D0=BE=
+=D1=8F=D0=B2=D0=BB=D1=8F=D1=82=D1=8C=D1=81=D1=8F =D1=81=D0=BE=D0=BE=D0=B1=
+=D1=89=D0=B5=D0=BD=D0=B8=D1=8F =D0=BE =D0=BF=D1=80=D0=BE=D0=B2=D0=B5=D0=B4=
+=D0=B5=D0=BD=D0=B8=D0=B8 =D0=BF=D1=80=D0=BE=D1=84=D0=B8=D0=BB=D0=B0=D0=BA=
+=D1=82=D0=B8=D1=87=D0=B5=D1=81=D0=BA=D0=B8=D1=85 =D1=80=D0=B0=D0=B1=D0=BE=
+=D1=82, =D0=B0 =D0=BF=D1=80=D0=B5=D0=B6=D0=B4=D0=B5 =D1=87=D0=B5=D0=BC =D0=
+=B2=D1=81=D1=82=D1=83=D0=BF=D0=B8=D1=82=D1=8C =D0=B2 =D0=B1=D0=BE=D0=B9, =
+=D0=BF=D1=80=D0=B8=D0=B4=D0=B5=D1=82=D1=81=D1=8F =D0=BD=D0=B5=D0=BC=D0=BD=
+=D0=BE=D0=B3=D0=BE =D0=BF=D0=BE=D0=B4=D0=BE=D0=B6=D0=B4=D0=B0=D1=82=D1=8C=
+. =D0=92=D0=B0=D1=88=D0=B5 =D0=BC=D0=BD=D0=B5=D0=BD=D0=B8=D0=B5 =D0=BE=D1=
+=87=D0=B5=D0=BD=D1=8C =D0=B2=D0=B0=D0=B6=D0=BD=D0=BE =D0=B4=D0=BB=D1=8F =D0=
+=BD=D0=B0=D1=81, =D1=82=D0=B0=D0=BA =D1=87=D1=82=D0=BE =D0=BD=D0=B5 =D0=B7=
+=D0=B0=D0=B1=D1=8B=D0=B2=D0=B0=D0=B9=D1=82=D0=B5 =D0=BE=D0=B1=D1=81=D1=83=
+=D0=B6=D0=B4=D0=B0=D1=82=D1=8C Quake Champions =D0=BD=D0=B0 =D0=BD=D0=B0=D1=
+=88=D0=B8=D1=85  =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D1=8B=D1=85 =D1=84=D0=
+=BE=D1=80=D1=83=D0=BC=D0=B0=D1=85 [https://bethesda.net/community/catego=
+ry/153/quake-champions-closed-beta].
+
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+=D0=92=D0=B0=D1=88 =D0=BA=D0=BE=D0=B4 =D0=BD=D0=B0 =D1=83=D1=87=D0=B0=D1=81=
+=D1=82=D0=B8=D0=B5 =D0=B2 =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D0=BE=D0=BC=
+ =D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=B8=
+:
+
+=
+RGK7-X73C-U4RF-9Y3A-G96F=
+=
+
+
+=
+=D0=90=D0=BA=D1=82=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D1=82=D1=8C =
+=D0=BA=D0=BE=D0=B4 [https://account.bethesda.net/ru/settings/redeem-code=
+]
+
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+=D0=98=D0=BD=D1=81=D1=82=D1=80=D1=83=D0=BA=D1=86=D0=B8=D0=B8 =D0=B4=D0=BB=
+=D1=8F =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D0=BE=D0=B3=D0=BE =D1=82=D0=B5=
+=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F
+
+=D0=A7=D1=82=D0=BE=D0=B1=D1=8B =D0=BF=D0=BE=D0=B4=D0=B3=D0=BE=D1=82=D0=BE=
+=D0=B2=D0=B8=D1=82=D1=8C=D1=81=D1=8F =D0=BA =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=
+=D1=82=D0=BE=D0=BC=D1=83 =D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=
+=D0=B0=D0=BD=D0=B8=D1=8E, =D0=B7=D0=B0=D0=B3=D1=80=D1=83=D0=B7=D0=B8=D1=82=
+=D0=B5 =D0=B8 =D1=83=D1=81=D1=82=D0=B0=D0=BD=D0=BE=D0=B2=D0=B8=D1=82=D0=B5=
+ =D0=B8=D0=B3=D1=80=D1=83:
+
+=D0=92=D0=BE=D0=B9=D0=B4=D0=B8=D1=82=D0=B5 =D0=B2 =D1=81=D0=B2=D0=BE=D1=8E=
+ =D1=83=D1=87=D0=B5=D1=82=D0=BD=D1=83=D1=8E =D0=B7=D0=B0=D0=BF=D0=B8=D1=81=
+=D1=8C Bethesda.net.=D0=90=D0=BA=D1=82=D0=B8=D0=B2=D0=B8=D1=80=D1=83=D0=B9=
+=D1=82=D0=B5 =D0=BA=D0=BE=D0=B4.=D0=97=D0=B0=D0=B3=D1=80=D1=83=D0=B7=D0=B8=
+=D1=82=D0=B5 =D0=BF=D1=80=D0=BE=D0=B3=D1=80=D0=B0=D0=BC=D0=BC=D1=83 =D0=B7=
+=D0=B0=D0=BF=D1=83=D1=81=D0=BA=D0=B0 Bethesda.net =D0=B8 =D0=B2=D0=B2=D0=B5=
+=D0=B4=D0=B8=D1=82=D0=B5 =D1=81=D0=B2=D0=BE=D0=B8 =D0=B4=D0=B0=D0=BD=D0=BD=
+=D1=8B=D0=B5.=D0=97=D0=B0=D0=B3=D1=80=D1=83=D0=B7=D0=B8=D1=82=D0=B5 Quake=
+ Champions =D0=B8 =D0=B3=D0=BE=D1=82=D0=BE=D0=B2=D1=8C=D1=82=D0=B5=D1=81=D1=
+=8C =D0=BA =D1=81=D0=BB=D0=B5=D0=B4=D1=83=D1=8E=D1=89=D0=B5=D0=BC=D1=83 =D1=
+=8D=D1=82=D0=B0=D0=BF=D1=83 =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D0=BE=D0=
+=B3=D0=BE =D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=
+=B8=D1=8F.
+
+=D0=A1=D0=BB=D0=B5=D0=B4=D1=83=D1=8E=D1=89=D0=B8=D0=B9 =D1=8D=D1=82=D0=B0=
+=D0=BF =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D0=BE=D0=B3=D0=BE =D1=82=D0=B5=
+=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F =D0=BD=D0=B0=
+=D1=87=D0=BD=D0=B5=D1=82=D1=81=D1=8F 13 =D0=B0=D0=BF=D1=80=D0=B5=D0=BB=D1=
+=8F =D0=B2 17:00 =D0=B8 =D0=B7=D0=B0=D0=BA=D0=BE=D0=BD=D1=87=D0=B8=D1=82=D1=
+=81=D1=8F 16 =D0=B0=D0=BF=D1=80=D0=B5=D0=BB=D1=8F =D0=B2 23:00 (=D0=9C=D0=
+=A1=D0=9A). =D0=A1=D0=BB=D0=B5=D0=B4=D0=B8=D1=82=D0=B5 =D0=B7=D0=B0 =D0=BD=
+=D0=BE=D0=B2=D0=BE=D1=81=D1=82=D1=8F=D0=BC=D0=B8 =D0=BE =D0=B1=D1=83=D0=B4=
+=D1=83=D1=89=D0=B8=D1=85 =D1=82=D0=B5=D1=81=D1=82=D0=B0=D1=85.
+
+=D0=9F=D0=9E=D0=96=D0=90=D0=9B=D0=A3=D0=99=D0=A1=D0=A2=D0=90, =D0=9F=D0=A0=
+=D0=9E=D0=A7=D0=A2=D0=98=D0=A2=D0=95: =D1=83=D1=87=D0=B0=D1=81=D1=82=D0=B2=
+=D1=83=D1=8F =D0=B2 =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D0=BE=D0=BC =D1=82=
+=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=B8, =D0=B2=
+=D1=8B =D0=BE=D0=B1=D1=8F=D0=B7=D1=83=D0=B5=D1=82=D0=B5=D1=81=D1=8C =D1=81=
+=D0=BE=D0=B1=D0=BB=D1=8E=D0=B4=D0=B0=D1=82=D1=8C =D0=BF=D1=80=D0=B0=D0=B2=
+=D0=B8=D0=BB=D0=B0 =D0=BA=D0=BE=D0=BD=D1=84=D0=B8=D0=B4=D0=B5=D0=BD=D1=86=
+=D0=B8=D0=B0=D0=BB=D1=8C=D0=BD=D0=BE=D1=81=D1=82=D0=B8, =D0=BF=D1=80=D0=B8=
+=D0=B2=D0=B5=D0=B4=D0=B5=D0=BD=D0=BD=D1=8B=D0=B5 =D0=B2 =D1=81=D0=BE=D0=B3=
+=D0=BB=D0=B0=D1=88=D0=B5=D0=BD=D0=B8=D0=B8 =D1=83=D1=87=D0=B0=D1=81=D1=82=
+=D0=BD=D0=B8=D0=BA=D0=B0 =D0=B1=D0=B5=D1=82=D0=B0-=D1=82=D0=B5=D1=81=D1=82=
+=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F. =D0=9F=D0=BE=D0=B6=D0=B0=
+=D0=BB=D1=83=D0=B9=D1=81=D1=82=D0=B0, =D0=BD=D0=B5 =D0=BF=D1=80=D0=BE=D0=B8=
+=D0=B7=D0=B2=D0=BE=D0=B4=D0=B8=D1=82=D0=B5 =D1=82=D1=80=D0=B0=D0=BD=D1=81=
+=D0=BB=D1=8F=D1=86=D0=B8=D1=8E =D0=B8=D0=BB=D0=B8 =D0=B7=D0=B0=D0=BF=D0=B8=
+=D1=81=D1=8C =D0=B8=D0=B3=D1=80=D1=8B, =D0=B0 =D1=82=D0=B0=D0=BA=D0=B6=D0=
+=B5 =D0=B2=D0=BE=D0=B7=D0=B4=D0=B5=D1=80=D0=B6=D0=B8=D1=82=D0=B5=D1=81=D1=
+=8C =D0=BE=D1=82 =D0=BE=D0=B1=D1=81=D1=83=D0=B6=D0=B4=D0=B5=D0=BD=D0=B8=D1=
+=8F =D0=B2=D0=B0=D1=88=D0=B5=D0=B3=D0=BE =D0=B8=D0=B3=D1=80=D0=BE=D0=B2=D0=
+=BE=D0=B3=D0=BE =D0=BE=D0=BF=D1=8B=D1=82=D0=B0 =D0=B7=D0=B0 =D0=BF=D1=80=D0=
+=B5=D0=B4=D0=B5=D0=BB=D0=B0=D0=BC=D0=B8 =D0=BD=D0=B0=D1=88=D0=B8=D1=85  =D0=
+=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D1=8B=D1=85 =D1=84=D0=BE=D1=80=D1=83=D0=
+=BC=D0=BE=D0=B2, =D0=BF=D0=BE=D1=81=D0=B2=D1=8F=D1=89=D0=B5=D0=BD=D0=BD=D1=
+=8B=D1=85 =D1=82=D0=B5=D1=81=D1=82=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=
+=B8=D1=8E =D0=B8=D0=B3=D1=80=D1=8B [https://bethesda.net/community/categ=
+ory/153/quake-champions-closed-beta].
+
+=D0=92=D0=B0=D1=88=D0=B5 =D0=BC=D0=BD=D0=B5=D0=BD=D0=B8=D0=B5 =D0=BE=D1=87=
+=D0=B5=D0=BD=D1=8C =D0=B2=D0=B0=D0=B6=D0=BD=D0=BE =D0=B4=D0=BB=D1=8F =D0=BD=
+=D0=B0=D1=81, =D1=82=D0=B0=D0=BA =D1=87=D1=82=D0=BE =D0=BD=D0=B5 =D0=B7=D0=
+=B0=D0=B1=D1=83=D0=B4=D1=8C=D1=82=D0=B5 =D0=B7=D0=B0=D0=B9=D1=82=D0=B8 =D0=
+=BD=D0=B0 =D0=BD=D0=B0=D1=88=D0=B8 =D0=B7=D0=B0=D0=BA=D1=80=D1=8B=D1=82=D1=
+=8B=D0=B5 =D1=84=D0=BE=D1=80=D1=83=D0=BC=D1=8B =D0=B8 =D0=BD=D0=B0 =D0=BD=
+=D0=B0=D1=88 =D1=81=D0=B0=D0=B9=D1=82  [http://help.bethesda.net].
+
+- =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=B0 =D1=80=D0=B0=D0=B7=D1=80=D0=B0=
+=D0=B1=D0=BE=D1=82=D1=87=D0=B8=D0=BA=D0=BE=D0=B2 Quake Champions
+
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+Follow Quake Champions
+
+Facebook [https://www.facebook.com/Quake/]      YouTube [https://www.yo=
+utube.com/watch?v=3DIMAtZNi1sPM&list=3DPLSHdOA4o6T_dX-mv4ClIKdINFoPjAqd8G=
+]        Twitter [https://twitter.com/quakechampions]      Twitch.tv [h=
+ttps://www.twitch.tv/bethesda]        Instagram [https://www.instagram.c=
+om/quakechampions/]      Bethesda.net [https://quake.bethesda.net/]     =
+   =
+=
+=
+=
+=
+=
+=
+=
+=
+            =
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+=D0=94=D0=B0=D0=BD=D0=BD=D0=BE=D0=B5 =D1=8D=D0=BB=D0=B5=D0=BA=D1=82=D1=80=
+=D0=BE=D0=BD=D0=BD=D0=BE=D0=B5 =D0=BF=D0=B8=D1=81=D1=8C=D0=BC=D0=BE =D0=B1=
+=D1=8B=D0=BB=D0=BE =D0=B2=D1=8B=D1=81=D0=BB=D0=B0=D0=BD=D0=BE =D0=BD=D0=B0=
+ =D0=B0=D0=B4=D1=80=D0=B5=D1=81: =
+defensuer@gmail.com.=
+
+ZeniMax Media Inc.
+
+1370 Piccard Drive, Suite 120  |  Rockville, MD, 20850, USA
+
+=C2=A92017 Bethesda Softworks, =D0=BA=D0=BE=D0=BC=D0=BF=D0=B0=D0=BD=D0=B8=
+=D1=8F ZeniMax Media. =D0=92=D1=81=D0=B5 =D0=BF=D1=80=D0=B0=D0=B2=D0=B0 =D1=
+=81=D0=BE=D1=85=D1=80=D0=B0=D0=BD=D0=B5=D0=BD=D1=8B.
+
+=D0=A3=D1=81=D0=BB=D0=BE=D0=B2=D0=B8=D1=8F =D0=BE=D0=B1=D1=81=D0=BB=D1=83=
+=D0=B6=D0=B8=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F [https://bethesda.net/en/docu=
+ment/terms-of-service]  |   =D0=9F=D0=BE=D0=BB=D0=B8=D1=82=D0=B8=D0=BA=D0=
+=B0 =D0=BA=D0=BE=D0=BD=D1=84=D0=B8=D0=B4=D0=B5=D0=BD=D1=86=D0=B8=D0=B0=D0=
+=BB=D1=8C=D0=BD=D0=BE=D1=81=D1=82=D0=B8 [https://bethesda.net/#en/privac=
+ypolicy]  |   =D0=9A=D0=BE=D0=BD=D1=82=D0=B0=D0=BA=D1=82=D1=8B [https://=
+www.zenimax.com/more]
+
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+=
+=
+=
+
+
+=
+Unsubscribe http://bethesdasoftworks.cmail20.com/t/i-u-uhottd-=
+cijttvud-dl/
+
+--_f8902207-c452-407d-96a2-f03d0a69b373_
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://w=
+ww.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--[if IE]><html xmlns=
+=3D"http://www.w3.org/1999/xhtml" class=3D"ie"><![endif]--><!--[if !IE]=
+><!--><html style=3D"margin: 0;padding: 0;" xmlns=3D"http://www.w3.org/19=
+99/xhtml"><!--<![endif]--><head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+    <title></title>
+    <!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"I=
+E=3Dedge"><!--<![endif]-->
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width"><style type=3D=
+"text/css">
+@media only screen and (min-width: 620px){.wrapper{min-width:600px !impor=
+tant}.wrapper h1{}.wrapper h1{font-size:28px !important;line-height:36px =
+!important}.wrapper h2{}.wrapper h2{font-size:24px !important;line-height=
+:32px !important}.wrapper h3{}.wrapper h3{font-size:22px !important;line-=
+height:31px !important}.column{}.wrapper .size-8{font-size:8px !important=
+;line-height:14px !important}.wrapper .size-9{font-size:9px !important;li=
+ne-height:16px !important}.wrapper .size-10{font-size:10px !important;lin=
+e-height:18px !important}.wrapper .size-11{font-size:11px !important;line=
+-height:19px !important}.wrapper .size-12{font-size:12px !important;line-=
+height:19px !important}.wrapper .size-13{font-size:13px !important;line-h=
+eight:21px !important}.wrapper .size-14{font-size:14px !important;line-he=
+ight:21px !important}.wrapper .size-15{font-size:15px !important;line-hei=
+ght:23px=20
+!important}.wrapper .size-16{font-size:16px !important;line-height:24px !=
+important}.wrapper .size-17{font-size:17px !important;line-height:26px !i=
+mportant}.wrapper .size-18{font-size:18px !important;line-height:26px !im=
+portant}.wrapper .size-20{font-size:20px !important;line-height:28px !imp=
+ortant}.wrapper .size-22{font-size:22px !important;line-height:31px !impo=
+rtant}.wrapper .size-24{font-size:24px !important;line-height:32px !impor=
+tant}.wrapper .size-26{font-size:26px !important;line-height:34px !import=
+ant}.wrapper .size-28{font-size:28px !important;line-height:36px !importa=
+nt}.wrapper .size-30{font-size:30px !important;line-height:38px !importan=
+t}.wrapper .size-32{font-size:32px !important;line-height:40px !important=
+}.wrapper .size-34{font-size:34px !important;line-height:43px !important}=
+.wrapper .size-36{font-size:36px !important;line-height:43px !important}.=
+wrapper=20
+.size-40{font-size:40px !important;line-height:47px !important}.wrapper .=
+size-44{font-size:44px !important;line-height:50px !important}.wrapper .s=
+ize-48{font-size:48px !important;line-height:54px !important}.wrapper .si=
+ze-56{font-size:56px !important;line-height:60px !important}.wrapper .siz=
+e-64{font-size:64px !important;line-height:63px !important}}
+</style>
+    <style type=3D"text/css">
+body {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+* {
+  line-height: inherit;
+}
+[x-apple-data-detectors],
+[href^=3D"tel"],
+[href^=3D"sms"] {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.wrapper .footer__share-button a:hover,
+.wrapper .footer__share-button a:focus {
+  color: #ffffff !important;
+}
+.btn a:hover,
+.btn a:focus,
+.footer__share-button a:hover,
+.footer__share-button a:focus,
+.email-footer__links a:hover,
+.email-footer__links a:focus {
+  opacity: 0.8;
+}
+.preheader,
+.header,
+.layout,
+.column {
+  transition: width 0.25s ease-in-out, max-width 0.25s ease-in-out;
+}
+.layout,
+div.header {
+  max-width: 400px !important;
+  -fallback-width: 95% !important;
+  width: calc(100% - 20px) !important;
+}
+div.preheader {
+  max-width: 360px !important;
+  -fallback-width: 90% !important;
+  width: calc(100% - 60px) !important;
+}
+.snippet,
+.webversion {
+  Float: none !important;
+}
+.column {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+.fixed-width.has-border {
+  max-width: 402px !important;
+}
+.fixed-width.has-border .layout__inner {
+  box-sizing: border-box;
+}
+.snippet,
+.webversion {
+  width: 50% !important;
+}
+.ie .btn {
+  width: 100%;
+}
+.ie .column,
+[owa] .column,
+.ie .gutter,
+[owa] .gutter {
+  display: table-cell;
+  float: none !important;
+  vertical-align: top;
+}
+.ie div.preheader,
+[owa] div.preheader,
+.ie .email-footer,
+[owa] .email-footer {
+  max-width: 560px !important;
+  width: 560px !important;
+}
+.ie .snippet,
+[owa] .snippet,
+.ie .webversion,
+[owa] .webversion {
+  width: 280px !important;
+}
+.ie div.header,
+[owa] div.header,
+.ie .layout,
+[owa] .layout,
+.ie .one-col .column,
+[owa] .one-col .column {
+  max-width: 600px !important;
+  width: 600px !important;
+}
+.ie .fixed-width.has-border,
+[owa] .fixed-width.has-border,
+.ie .has-gutter.has-border,
+[owa] .has-gutter.has-border {
+  max-width: 602px !important;
+  width: 602px !important;
+}
+.ie .two-col .column,
+[owa] .two-col .column {
+  max-width: 300px !important;
+  width: 300px !important;
+}
+.ie .three-col .column,
+[owa] .three-col .column,
+.ie .narrow,
+[owa] .narrow {
+  max-width: 200px !important;
+  width: 200px !important;
+}
+.ie .wide,
+[owa] .wide {
+  width: 400px !important;
+}
+.ie .two-col.has-gutter .column,
+[owa] .two-col.x_has-gutter .column {
+  max-width: 290px !important;
+  width: 290px !important;
+}
+.ie .three-col.has-gutter .column,
+[owa] .three-col.x_has-gutter .column,
+.ie .has-gutter .narrow,
+[owa] .has-gutter .narrow {
+  max-width: 188px !important;
+  width: 188px !important;
+}
+.ie .has-gutter .wide,
+[owa] .has-gutter .wide {
+  max-width: 394px !important;
+  width: 394px !important;
+}
+.ie .two-col.has-gutter.has-border .column,
+[owa] .two-col.x_has-gutter.x_has-border .column {
+  max-width: 292px !important;
+  width: 292px !important;
+}
+.ie .three-col.has-gutter.has-border .column,
+[owa] .three-col.x_has-gutter.x_has-border .column,
+.ie .has-gutter.has-border .narrow,
+[owa] .has-gutter.x_has-border .narrow {
+  max-width: 190px !important;
+  width: 190px !important;
+}
+.ie .has-gutter.has-border .wide,
+[owa] .has-gutter.x_has-border .wide {
+  max-width: 396px !important;
+  width: 396px !important;
+}
+.ie .fixed-width .layout__inner {
+  border-left: 0 none white !important;
+  border-right: 0 none white !important;
+}
+.ie .layout__edges {
+  display: none;
+}
+.mso .layout__edges {
+  font-size: 0;
+}
+.layout-fixed-width,
+.mso .layout-full-width {
+  background-color: #ffffff;
+}
+@media only screen and (min-width: 620px) {
+  .column,
+  .gutter {
+    display: table-cell;
+    Float: none !important;
+    vertical-align: top;
+  }
+  div.preheader,
+  .email-footer {
+    max-width: 560px !important;
+    width: 560px !important;
+  }
+  .snippet,
+  .webversion {
+    width: 280px !important;
+  }
+  div.header,
+  .layout,
+  .one-col .column {
+    max-width: 600px !important;
+    width: 600px !important;
+  }
+  .fixed-width.has-border,
+  .fixed-width.ecxhas-border,
+  .has-gutter.has-border,
+  .has-gutter.ecxhas-border {
+    max-width: 602px !important;
+    width: 602px !important;
+  }
+  .two-col .column {
+    max-width: 300px !important;
+    width: 300px !important;
+  }
+  .three-col .column,
+  .column.narrow {
+    max-width: 200px !important;
+    width: 200px !important;
+  }
+  .column.wide {
+    width: 400px !important;
+  }
+  .two-col.has-gutter .column,
+  .two-col.ecxhas-gutter .column {
+    max-width: 290px !important;
+    width: 290px !important;
+  }
+  .three-col.has-gutter .column,
+  .three-col.ecxhas-gutter .column,
+  .has-gutter .narrow {
+    max-width: 188px !important;
+    width: 188px !important;
+  }
+  .has-gutter .wide {
+    max-width: 394px !important;
+    width: 394px !important;
+  }
+  .two-col.has-gutter.has-border .column,
+  .two-col.ecxhas-gutter.ecxhas-border .column {
+    max-width: 292px !important;
+    width: 292px !important;
+  }
+  .three-col.has-gutter.has-border .column,
+  .three-col.ecxhas-gutter.ecxhas-border .column,
+  .has-gutter.has-border .narrow,
+  .has-gutter.ecxhas-border .narrow {
+    max-width: 190px !important;
+    width: 190px !important;
+  }
+  .has-gutter.has-border .wide,
+  .has-gutter.ecxhas-border .wide {
+    max-width: 396px !important;
+    width: 396px !important;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen a=
+nd (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel=
+-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen an=
+d (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .fblike {
+    background-image: url(http://i3.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/fblike@2x.png) !important;
+  }
+  .tweet {
+    background-image: url(http://i5.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/tweet@2x.png) !important;
+  }
+  .linkedinshare {
+    background-image: url(http://i4.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/lishare@2x.png) !important;
+  }
+  .forwardtoafriend {
+    background-image: url(http://i10.cmail20.com/static/eb/master/13-the-=
+blueprint-3/images/forward@2x.png) !important;
+  }
+}
+@media (max-width: 321px) {
+  .fixed-width.has-border .layout__inner {
+    border-width: 1px 0 !important;
+  }
+  .layout,
+  .column {
+    min-width: 320px !important;
+    width: 320px !important;
+  }
+  .border {
+    display: none;
+  }
+}
+.mso div {
+  border: 0 none white !important;
+}
+.mso .w560 .divider {
+  Margin-left: 260px !important;
+  Margin-right: 260px !important;
+}
+.mso .w360 .divider {
+  Margin-left: 160px !important;
+  Margin-right: 160px !important;
+}
+.mso .w260 .divider {
+  Margin-left: 110px !important;
+  Margin-right: 110px !important;
+}
+.mso .w160 .divider {
+  Margin-left: 60px !important;
+  Margin-right: 60px !important;
+}
+.mso .w354 .divider {
+  Margin-left: 157px !important;
+  Margin-right: 157px !important;
+}
+.mso .w250 .divider {
+  Margin-left: 105px !important;
+  Margin-right: 105px !important;
+}
+.mso .w148 .divider {
+  Margin-left: 54px !important;
+  Margin-right: 54px !important;
+}
+.mso .footer__share-button p {
+  margin: 0;
+}
+.mso .size-8,
+.ie .size-8 {
+  font-size: 8px !important;
+  line-height: 14px !important;
+}
+.mso .size-9,
+.ie .size-9 {
+  font-size: 9px !important;
+  line-height: 16px !important;
+}
+.mso .size-10,
+.ie .size-10 {
+  font-size: 10px !important;
+  line-height: 18px !important;
+}
+.mso .size-11,
+.ie .size-11 {
+  font-size: 11px !important;
+  line-height: 19px !important;
+}
+.mso .size-12,
+.ie .size-12 {
+  font-size: 12px !important;
+  line-height: 19px !important;
+}
+.mso .size-13,
+.ie .size-13 {
+  font-size: 13px !important;
+  line-height: 21px !important;
+}
+.mso .size-14,
+.ie .size-14 {
+  font-size: 14px !important;
+  line-height: 21px !important;
+}
+.mso .size-15,
+.ie .size-15 {
+  font-size: 15px !important;
+  line-height: 23px !important;
+}
+.mso .size-16,
+.ie .size-16 {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+.mso .size-17,
+.ie .size-17 {
+  font-size: 17px !important;
+  line-height: 26px !important;
+}
+.mso .size-18,
+.ie .size-18 {
+  font-size: 18px !important;
+  line-height: 26px !important;
+}
+.mso .size-20,
+.ie .size-20 {
+  font-size: 20px !important;
+  line-height: 28px !important;
+}
+.mso .size-22,
+.ie .size-22 {
+  font-size: 22px !important;
+  line-height: 31px !important;
+}
+.mso .size-24,
+.ie .size-24 {
+  font-size: 24px !important;
+  line-height: 32px !important;
+}
+.mso .size-26,
+.ie .size-26 {
+  font-size: 26px !important;
+  line-height: 34px !important;
+}
+.mso .size-28,
+.ie .size-28 {
+  font-size: 28px !important;
+  line-height: 36px !important;
+}
+.mso .size-30,
+.ie .size-30 {
+  font-size: 30px !important;
+  line-height: 38px !important;
+}
+.mso .size-32,
+.ie .size-32 {
+  font-size: 32px !important;
+  line-height: 40px !important;
+}
+.mso .size-34,
+.ie .size-34 {
+  font-size: 34px !important;
+  line-height: 43px !important;
+}
+.mso .size-36,
+.ie .size-36 {
+  font-size: 36px !important;
+  line-height: 43px !important;
+}
+.mso .size-40,
+.ie .size-40 {
+  font-size: 40px !important;
+  line-height: 47px !important;
+}
+.mso .size-44,
+.ie .size-44 {
+  font-size: 44px !important;
+  line-height: 50px !important;
+}
+.mso .size-48,
+.ie .size-48 {
+  font-size: 48px !important;
+  line-height: 54px !important;
+}
+.mso .size-56,
+.ie .size-56 {
+  font-size: 56px !important;
+  line-height: 60px !important;
+}
+.mso .size-64,
+.ie .size-64 {
+  font-size: 64px !important;
+  line-height: 63px !important;
+}
+.footer__share-button p {
+  margin: 0;
+}
+</style>
+   =20
+  <!--[if !mso]><!--><style type=3D"text/css">
+@import url(https://fonts.googleapis.com/css?family=3DUbuntu:400,700,400i=
+talic,700italic);
+</style><link href=3D"https://fonts.googleapis.com/css?family=3DUbuntu:40=
+0,700,400italic,700italic" rel=3D"stylesheet" type=3D"text/css"><!--<![e=
+ndif]--><style type=3D"text/css">
+body{background-color:#1a1a1a}.logo a:hover,.logo a:focus{color:#fff !imp=
+ortant}.mso .layout-has-border{border-top:1px solid #000;border-bottom:1p=
+x solid #000}.mso .layout-has-bottom-border{border-bottom:1px solid #000}=
+.mso .border,.ie .border{background-color:#000}.mso h1,.ie h1{}.mso h1,.i=
+e h1{font-size:28px !important;line-height:36px !important}.mso h2,.ie h2=
+{}.mso h2,.ie h2{font-size:24px !important;line-height:32px !important}.m=
+so h3,.ie h3{}.mso h3,.ie h3{font-size:22px !important;line-height:31px !=
+important}.mso .layout__inner,.ie .layout__inner{}
+</style></head>
+<!--[if mso]>
+  <body class=3D"mso">
+<![endif]-->
+<!--[if !mso]><!-->
+  <body class=3D"half-padding" style=3D"margin: 0;padding: 0;-webkit-text=
+-size-adjust: 100%;">
+<!--<![endif]-->
+    <table class=3D"wrapper" style=3D"border-collapse: collapse;table-lay=
+out: fixed;min-width: 320px;width: 100%;background-color: #1a1a1a;" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation"><tbody><tr><td>
+      <div role=3D"banner">
+        <div class=3D"preheader" style=3D"Margin: 0 auto;max-width: 560px=
+;min-width: 280px; width: 280px;width: calc(28000% - 167440px);">
+          <div style=3D"border-collapse: collapse;display: table;width: 1=
+00%;">
+          <!--[if (mso)|(IE)]><table align=3D"center" class=3D"preheader=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><tr><td style=
+=3D"width: 280px" valign=3D"top"><![endif]-->
+            <div class=3D"snippet" style=3D"display: table-cell;Float: le=
+ft;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 140px; w=
+idth: 140px;width: calc(14000% - 78120px);padding: 10px 0 5px 0;color: #7=
+e7e7e;font-family: Ubuntu,sans-serif;">
+              <div style=3D"mso-hide:all;position:fixed;height:0;max-heig=
+ht:0;overflow:hidden;font-size:0;">The first Closed Beta Weekend starts A=
+pril 6.</div>
+            </div>
+          <!--[if (mso)|(IE)]></td><td style=3D"width: 280px" valign=3D"=
+top"><![endif]-->
+            <div class=3D"webversion" style=3D"display: table-cell;Float:=
+ left;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 139px=
+; width: 139px;width: calc(14100% - 78680px);padding: 10px 0 5px 0;text-a=
+lign: right;color: #7e7e7e;font-family: Ubuntu,sans-serif;">
+             =20
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+          </div>
+        </div>
+        <div class=3D"header" style=3D"Margin: 0 auto;max-width: 600px;mi=
+n-width: 320px; width: 320px;width: calc(28000% - 167400px);" id=3D"emb-e=
+mail-header-container">
+        <!--[if (mso)|(IE)]><table align=3D"center" class=3D"header" cel=
+lpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><tr><td style=3D"w=
+idth: 600px"><![endif]-->
+          <div class=3D"logo emb-logo-margin-box" style=3D"font-size: 26p=
+x;line-height: 32px;Margin-top: 0px;Margin-bottom: 20px;color: #c3ced9;fo=
+nt-family: Roboto,sans-serif;" align=3D"center">
+            <div class=3D"logo-center" align=3D"center" id=3D"emb-email-h=
+eader"><img style=3D"display: block;height: auto;width: 100%;border: 0;ma=
+x-width: 310px;" src=3D"http://i1.cmail20.com/ei/i/D0/1B5/9D0/030252/csfi=
+nal/QUAKE_CHAMP_2D_CLEAN_BUILD_4K_001_WHT_RED1.png" alt=3D"" width=3D"310=
+"></div>
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+      <div role=3D"section">
+      <div class=3D"layout one-col fixed-width has-border" style=3D"Margi=
+n: 0 auto;max-width: 602px;min-width: 322px; width: 322px;width: calc(280=
+00% - 167398px);overflow-wrap: break-word;word-wrap: break-word;word-brea=
+k: break-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;max-width: 601px;bord=
+er-top: 1px solid #000;border-right: 1px solid #000;border-bottom: 1px so=
+lid #000;border-left: 1px solid #000;">
+        <!--[if (mso)|(IE)]><table class=3D"layout-has-border" align=3D"=
+center" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><tr cla=
+ss=3D"layout-fixed-width" style=3D"background-color: #ffffff;"><td class=3D=
+"border" style=3D"width: 1px;">&#8203;</td><td style=3D"width: 600px" cla=
+ss=3D"w560"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+         =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corn=
+er-image-top" style=3D"border: 0;display: block;height: auto;width: 100%;=
+max-width: 900px;" alt=3D"" width=3D"600" src=3D"http://i1.cmail20.com/ei=
+/i/D0/1B5/9D0/030253/csfinal/Quake_AllTogether_Final_TallerRanger_Small.j=
+pg">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 20px;">
+     =20
+<h1 class=3D"size-28" style=3D"Margin-top: 0;Margin-bottom: 0;font-style:=
+ normal;font-weight: normal;color: #961a1b;font-size: 24px;line-height: 3=
+2px;" lang=3D"x-size-28"><span style=3D"color:#1a1a1a">=
+=
+=
+</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">=
+=
+=
+</p><p class=3D"size-16" style=3D"Margin-top: 20px;Margin-bottom: 0;font-=
+size: 16px;line-height: 24px;" lang=3D"x-size-16">=
+=
+=
+</p><p class=3D"size-16" style=3D"Margin-top: 20px;Margin-bottom: 0;font-=
+size: 16px;line-height: 24px;" lang=3D"x-size-16">=
+=
+=
+</p><p class=3D"size-16" style=3D"Margin-top: 20px;Margin-bottom: 0;font-=
+size: 16px;line-height: 24px;" lang=3D"x-size-16">=
+=
+=
+</p><p class=3D"size-16" style=3D"Margin-top: 20px;Margin-bottom: 0;font-=
+size: 16px;line-height: 24px;" lang=3D"x-size-16">=
+=
+=
+</p><h1 class=3D"size-28" style=3D"Margin-top: 20px;Margin-bottom: 0;font=
+-style: normal;font-weight: normal;color: #961a1b;font-size: 24px;line-he=
+ight: 32px;" lang=3D"x-size-28">&#1044;&#1086;&#1073;&#1088;&#1086; &#108=
+7;&#1086;&#1078;&#1072;&#1083;&#1086;&#1074;&#1072;&#1090;&#1100; &#1085;=
+&#1072; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1086;&#1077; &#1090;&=
+#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#10=
+77; Quake Champions!</h1><p class=3D"size-16" style=3D"Margin-top: 20px;M=
+argin-bottom: 0;font-size: 16px;line-height: 24px;" lang=3D"x-size-16">&#=
+1055;&#1088;&#1080;&#1074;&#1077;&#1090;&#1089;&#1090;&#1074;&#1091;&#107=
+7;&#1084;, &#1095;&#1077;&#1084;&#1087;&#1080;&#1086;&#1085;!<br>
+&#1052;&#1099; &#1088;&#1072;&#1076;&#1099; &#1087;&#1088;&#1080;&#1075;&=
+#1083;&#1072;&#1089;&#1080;&#1090;&#1100; &#1074;&#1072;&#1089; &#1085;&#=
+1072; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1086;&#1077; &#1090;&#1=
+077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077=
+; Quake Champions! &#1042;&#1099; &#1075;&#1086;&#1090;&#1086;&#1074;&#10=
+99; &#1087;&#1086;&#1082;&#1072;&#1079;&#1072;&#1090;&#1100; &#1074;&#108=
+9;&#1077; &#1089;&#1074;&#1086;&#1080; &#1091;&#1084;&#1077;&#1085;&#1080=
+;&#1103; &#1080; &#1089; &#1075;&#1086;&#1083;&#1086;&#1074;&#1086;&#1081=
+; &#1088;&#1080;&#1085;&#1091;&#1090;&#1100;&#1089;&#1103; &#1074; &#1073=
+;&#1086;&#1081;?</p><p class=3D"size-16" style=3D"Margin-top: 20px;Margin=
+-bottom: 0;font-size: 16px;line-height: 24px;" lang=3D"x-size-16">&#1055;=
+&#1086;&#1084;&#1086;&#1075;&#1080;&#1090;&#1077; &#1085;&#1072;&#1084;=20=
+
+&#1089;&#1076;&#1077;&#1083;&#1072;&#1090;&#1100; Quake Champions &#1087;=
+&#1086;-&#1085;&#1072;&#1089;&#1090;&#1086;&#1103;&#1097;&#1077;&#1084;&#=
+1091; &#1074;&#1077;&#1083;&#1080;&#1082;&#1080;&#1084; &#1084;&#1085;&#1=
+086;&#1075;&#1086;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072=
+;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1084; &#1096;&#1091;&=
+#1090;&#1077;&#1088;&#1086;&#1084;. &#1053;&#1077; &#1079;&#1072;&#1073;&=
+#1099;&#1074;&#1072;&#1081;&#1090;&#1077;, &#1095;&#1090;&#1086; &#1101;&=
+#1090;&#1086; &#1073;&#1077;&#1090;&#1072;-&#1090;&#1077;&#1089;&#1090;&#=
+1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;, &#1080; &#1084;&#=
+1099; &#1087;&#1086;&#1082;&#1072; &#1090;&#1086;&#1083;&#1100;&#1082;&#1=
+086; &#1087;&#1088;&#1086;&#1074;&#1077;&#1088;&#1103;&#1077;&#1084; &#10=
+88;&#1072;&#1073;&#1086;&#1090;&#1091; &#1085;&#1072;&#1096;&#1080;&#1093=
+;=20
+&#1089;&#1080;&#1089;&#1090;&#1077;&#1084;, &#1087;&#1086;&#1101;&#1090;&=
+#1086;&#1084;&#1091; &#1074;&#1088;&#1077;&#1084;&#1103; &#1086;&#1090; &=
+#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1080; &#1073;&#1091;&#1076;&#1=
+091;&#1090; &#1087;&#1086;&#1103;&#1074;&#1083;&#1103;&#1090;&#1100;&#108=
+9;&#1103; &#1089;&#1086;&#1086;&#1073;&#1097;&#1077;&#1085;&#1080;&#1103;=
+ &#1086; &#1087;&#1088;&#1086;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&=
+#1080; &#1087;&#1088;&#1086;&#1092;&#1080;&#1083;&#1072;&#1082;&#1090;&#1=
+080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1093; &#1088;&#1072;&#1073;&#108=
+6;&#1090;, &#1072; &#1087;&#1088;&#1077;&#1078;&#1076;&#1077; &#1095;&#10=
+77;&#1084; &#1074;&#1089;&#1090;&#1091;&#1087;&#1080;&#1090;&#1100; &#107=
+4; &#1073;&#1086;&#1081;, &#1087;&#1088;&#1080;&#1076;&#1077;&#1090;&#108=
+9;&#1103; &#1085;&#1077;&#1084;&#1085;&#1086;&#1075;&#1086;=20
+&#1087;&#1086;&#1076;&#1086;&#1078;&#1076;&#1072;&#1090;&#1100;. &#1042;&=
+#1072;&#1096;&#1077; &#1084;&#1085;&#1077;&#1085;&#1080;&#1077; &#1086;&#=
+1095;&#1077;&#1085;&#1100; &#1074;&#1072;&#1078;&#1085;&#1086; &#1076;&#1=
+083;&#1103; &#1085;&#1072;&#1089;, &#1090;&#1072;&#1082; &#1095;&#1090;&#=
+1086; &#1085;&#1077; &#1079;&#1072;&#1073;&#1099;&#1074;&#1072;&#1081;&#1=
+090;&#1077; &#1086;&#1073;&#1089;&#1091;&#1078;&#1076;&#1072;&#1090;&#110=
+0; Quake Champions &#1085;&#1072; &#1085;&#1072;&#1096;&#1080;&#1093; <a =
+style=3D"text-decoration: underline;transition: opacity 0.1s ease-in;colo=
+r: #7e7e7e;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhottd-=
+cijttvud-d/">&#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1099;&#1=
+093; &#1092;&#1086;&#1088;&#1091;&#1084;&#1072;&#1093;</a>.<br>
+<br>
+=
+=
+=
+</p><p class=3D"size-16" style=3D"Margin-top: 20px;Margin-bottom: 0;font-=
+size: 16px;line-height: 24px;" lang=3D"x-size-16">=
+=
+=
+</p>
+    </div>
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 12px;">
+      <div style=3D"line-height:1px;font-size:1px">&nbsp;</div>
+    </div>
+         =20
+          </div>
+        <!--[if (mso)|(IE)]></td><td class=3D"border" style=3D"width: 1p=
+x;">&#8203;</td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+&#1042;&#1072;&#1096; &#1082;&#1086;&#1076; &#1085;&#1072; &#1091;&#1095;=
+&#1072;&#1089;&#1090;&#1080;&#1077; &#1074; &#1079;&#1072;&#1082;&#1088;&=
+#1099;&#1090;&#1086;&#1084; &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1=
+086;&#1074;&#1072;&#1085;&#1080;&#1080;:</h2><p class=3D"size-24" style=3D=
+"Margin-top: 16px;Margin-bottom: 20px;font-size: 20px;line-height: 28px;t=
+ext-align: center;" lang=3D"x-size-24">=
+RGK7-X73C-U4RF-9Y3A-G96F=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--flat fullwidth btn--large" style=3D"Margin-b=
+ottom: 20px;text-align: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;background-color: #961a1b;font-family: Ubun=
+tu, sans-serif;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhott=
+d-cijttvud-p/">&#1040;&#1082;&#1090;&#1080;&#1074;&#1080;&#1088=
+;&#1086;&#1074;&#1072;&#1090;&#1100; &#1082;&#1086;&#1076;</a><![endif]>=
+
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-p/" style=3D"width:5=
+60px" arcsize=3D"9%" fillcolor=3D"#961A1B" stroke=3D"f"><v:textbox style=3D=
+"mso-fit-shape-to-text:t" inset=3D"0px,11px,0px,11px"><center style=3D"fo=
+nt-size:14px;line-height:24px;color:#FFFFFF;font-family:Ubuntu,sans-serif=
+;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px">&#1040=
+;&#1082;&#1090;&#1080;&#1074;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#=
+1100; &#1082;&#1086;&#1076;</center></v:textbox></v:roundrect><![endif]-=
+-></div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <p style=3D"Margin-top: 0;Margin-bottom: 20px;">=
+=
+=
+</p>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <h2 class=3D"size-24" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #961a1b;font-size: 20px;line-hei=
+ght: 28px;text-align: center;" lang=3D"x-size-24">=
+=
+=
+</p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width has-border" style=3D"Margi=
+n: 0 auto;max-width: 602px;min-width: 322px; width: 322px;width: calc(280=
+00% - 167398px);overflow-wrap: break-word;word-wrap: break-word;word-brea=
+k: break-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;max-width: 601px;bord=
+er-top: 1px solid #000;border-right: 1px solid #000;border-bottom: 1px so=
+lid #000;border-left: 1px solid #000;">
+        <!--[if (mso)|(IE)]><table class=3D"layout-has-border" align=3D"=
+center" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><tr cla=
+ss=3D"layout-fixed-width" style=3D"background-color: #ffffff;"><td class=3D=
+"border" style=3D"width: 1px;">&#8203;</td><td style=3D"width: 600px" cla=
+ss=3D"w560"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+     =20
+<h2 style=3D"Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weigh=
+t: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+</p><h2 style=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;fon=
+t-weight: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+</p><h2 style=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;fon=
+t-weight: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+</p><h2 style=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;fon=
+t-weight: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+</p><h2 style=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;fon=
+t-weight: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+</p><h2 style=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;fon=
+t-weight: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+&#1048;&#1085;&#1089;&#1090;&#1088;&#1091;&#1082;&#1094;&#1080;&#1080; &#=
+1076;&#1083;&#1103; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1086;&#10=
+75;&#1086; &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072=
+;&#1085;&#1080;&#1103;</h2><p style=3D"Margin-top: 16px;Margin-bottom: 0;=
+">&#1063;&#1090;&#1086;&#1073;&#1099; &#1087;&#1086;&#1076;&#1075;&#1086;=
+&#1090;&#1086;&#1074;&#1080;&#1090;&#1100;&#1089;&#1103; &#1082; &#1079;&=
+#1072;&#1082;&#1088;&#1099;&#1090;&#1086;&#1084;&#1091; &#1090;&#1077;&#1=
+089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1102;, &#10=
+79;&#1072;&#1075;&#1088;&#1091;&#1079;&#1080;&#1090;&#1077; &#1080;=20
+&#1091;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1077; &#=
+1080;&#1075;&#1088;&#1091;:</p><ol style=3D"Margin-top: 20px;Margin-botto=
+m: 0;Margin-left: 24px;padding: 0;list-style-type: decimal;"><li style=3D=
+"Margin-top: 20px;Margin-bottom: 0;Margin-left: 0;">&#1042;&#1086;&#1081;=
+&#1076;&#1080;&#1090;&#1077; &#1074; &#1089;&#1074;&#1086;&#1102; &#1091;=
+&#1095;&#1077;&#1090;&#1085;&#1091;&#1102; &#1079;&#1072;&#1087;&#1080;&#=
+1089;&#1100; Bethesda.net.</li><li style=3D"Margin-top: 0;Margin-bottom: =
+0;Margin-left: 0;">&#1040;&#1082;&#1090;&#1080;&#1074;&#1080;&#1088;&#109=
+1;&#1081;&#1090;&#1077; &#1082;&#1086;&#1076;.</li><li style=3D"Margin-to=
+p: 0;Margin-bottom: 0;Margin-left: 0;">&#1047;&#1072;&#1075;&#1088;&#1091=
+;&#1079;&#1080;&#1090;&#1077; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&=
+#1084;&#1084;&#1091; &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1072; Be=
+thesda.net &#1080;=20
+&#1074;&#1074;&#1077;&#1076;&#1080;&#1090;&#1077; &#1089;&#1074;&#1086;&#=
+1080; &#1076;&#1072;&#1085;&#1085;&#1099;&#1077;.</li><li style=3D"Margin=
+-top: 0;Margin-bottom: 0;Margin-left: 0;">&#1047;&#1072;&#1075;&#1088;&#1=
+091;&#1079;&#1080;&#1090;&#1077; Quake Champions &#1080; &#1075;&#1086;&#=
+1090;&#1086;&#1074;&#1100;&#1090;&#1077;&#1089;&#1100; &#1082; &#1089;&#1=
+083;&#1077;&#1076;&#1091;&#1102;&#1097;&#1077;&#1084;&#1091; &#1101;&#109=
+0;&#1072;&#1087;&#1091; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1086;=
+&#1075;&#1086; &#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#=
+1072;&#1085;&#1080;&#1103;.</li></ol><p style=3D"Margin-top: 20px;Margin-=
+bottom: 0;">&#1057;&#1083;&#1077;&#1076;&#1091;&#1102;&#1097;&#1080;&#108=
+1; &#1101;&#1090;&#1072;&#1087; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090=
+;&#1086;&#1075;&#1086;=20
+&#1090;&#1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1=
+080;&#1103; &#1085;&#1072;&#1095;&#1085;&#1077;&#1090;&#1089;&#1103; 13 &=
+#1072;&#1087;&#1088;&#1077;&#1083;&#1103; &#1074; 17:00 &#1080; &#1079;&#=
+1072;&#1082;&#1086;&#1085;&#1095;&#1080;&#1090;&#1089;&#1103; 16 &#1072;&=
+#1087;&#1088;&#1077;&#1083;&#1103; &#1074; 23:00 (&#1052;&#1057;&#1050;).=
+ &#1057;&#1083;&#1077;&#1076;&#1080;&#1090;&#1077; &#1079;&#1072; &#1085;=
+&#1086;&#1074;&#1086;&#1089;&#1090;&#1103;&#1084;&#1080; &#1086; &#1073;&=
+#1091;&#1076;&#1091;&#1097;&#1080;&#1093; &#1090;&#1077;&#1089;&#1090;&#1=
+072;&#1093;.</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><strong>&=
+#1055;&#1054;&#1046;&#1040;&#1051;&#1059;&#1049;&#1057;&#1058;&#1040;, &#=
+1055;&#1056;&#1054;&#1063;&#1058;&#1048;&#1058;&#1045;</strong>: &#1091;&=
+#1095;&#1072;&#1089;&#1090;&#1074;&#1091;&#1103; &#1074;=20
+&#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1086;&#1084; &#1090;&#1077;&#=
+1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1080;, &#1=
+074;&#1099; &#1086;&#1073;&#1103;&#1079;&#1091;&#1077;&#1090;&#1077;&#108=
+9;&#1100; &#1089;&#1086;&#1073;&#1083;&#1102;&#1076;&#1072;&#1090;&#1100;=
+ &#1087;&#1088;&#1072;&#1074;&#1080;&#1083;&#1072; &#1082;&#1086;&#1085;&=
+#1092;&#1080;&#1076;&#1077;&#1085;&#1094;&#1080;&#1072;&#1083;&#1100;&#10=
+85;&#1086;&#1089;&#1090;&#1080;, &#1087;&#1088;&#1080;&#1074;&#1077;&#107=
+6;&#1077;&#1085;&#1085;&#1099;&#1077; &#1074; &#1089;&#1086;&#1075;&#1083=
+;&#1072;&#1096;&#1077;&#1085;&#1080;&#1080; &#1091;&#1095;&#1072;&#1089;&=
+#1090;&#1085;&#1080;&#1082;&#1072; &#1073;&#1077;&#1090;&#1072;-&#1090;&#=
+1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#110=
+3;. &#1055;&#1086;&#1078;&#1072;&#1083;&#1091;&#1081;&#1089;&#1090;&#1072=
+;, &#1085;&#1077;=20
+&#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1=
+077; &#1090;&#1088;&#1072;&#1085;&#1089;&#1083;&#1103;&#1094;&#1080;&#110=
+2; &#1080;&#1083;&#1080; &#1079;&#1072;&#1087;&#1080;&#1089;&#1100; &#108=
+0;&#1075;&#1088;&#1099;, &#1072; &#1090;&#1072;&#1082;&#1078;&#1077; &#10=
+74;&#1086;&#1079;&#1076;&#1077;&#1088;&#1078;&#1080;&#1090;&#1077;&#1089;=
+&#1100; &#1086;&#1090; &#1086;&#1073;&#1089;&#1091;&#1078;&#1076;&#1077;&=
+#1085;&#1080;&#1103; &#1074;&#1072;&#1096;&#1077;&#1075;&#1086; &#1080;&#=
+1075;&#1088;&#1086;&#1074;&#1086;&#1075;&#1086; &#1086;&#1087;&#1099;&#10=
+90;&#1072; &#1079;&#1072; &#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#107=
+2;&#1084;&#1080; &#1085;&#1072;&#1096;&#1080;&#1093;=20
+<a style=3D"text-decoration: underline;transition: opacity 0.1s ease-in;c=
+olor: #7e7e7e;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhottd=
+-cijttvud-w/">&#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#1099;=
+&#1093; &#1092;&#1086;&#1088;&#1091;&#1084;&#1086;&#1074;, &#1087;&#1086;=
+&#1089;&#1074;&#1103;&#1097;&#1077;&#1085;&#1085;&#1099;&#1093; &#1090;&#=
+1077;&#1089;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#110=
+2; &#1080;&#1075;&#1088;&#1099;</a>.</p><p style=3D"Margin-top: 20px;Marg=
+in-bottom: 0;">&#1042;&#1072;&#1096;&#1077; &#1084;&#1085;&#1077;&#1085;&=
+#1080;&#1077; &#1086;&#1095;&#1077;&#1085;&#1100; &#1074;&#1072;&#1078;&#=
+1085;&#1086; &#1076;&#1083;&#1103; &#1085;&#1072;&#1089;, &#1090;&#1072;&=
+#1082; &#1095;&#1090;&#1086; &#1085;&#1077; &#1079;&#1072;&#1073;&#1091;&=
+#1076;&#1100;&#1090;&#1077; &#1079;&#1072;&#1081;&#1090;&#1080; &#1085;&#=
+1072;=20
+&#1085;&#1072;&#1096;&#1080; &#1079;&#1072;&#1082;&#1088;&#1099;&#1090;&#=
+1099;&#1077; &#1092;&#1086;&#1088;&#1091;&#1084;&#1099; &#1080; &#1085;&#=
+1072; &#1085;&#1072;&#1096; &#1089;&#1072;&#1081;&#1090; <a style=3D"text=
+-decoration: underline;transition: opacity 0.1s ease-in;color: #7e7e7e;" =
+href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhottd-=
+cijttvud-yd/">http://help.bethesda.net</a>.</p><p style=3D"Margin-top: 20px;Ma=
+rgin-bottom: 0;">- &#1082;&#1086;&#1084;&#1072;&#1085;&#1076;&#1072; &#10=
+88;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1095;&#1080;&#1082;=
+&#1086;&#1074; Quake Champions<br>
+&nbsp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">=
+=
+=
+=
+</p><h2 style=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;fon=
+t-weight: normal;color: #961a1b;font-size: 20px;line-height: 28px;">=
+=
+=
+</p>
+    </div>
+         =20
+          </div>
+        <!--[if (mso)|(IE)]></td><td class=3D"border" style=3D"width: 1p=
+x;">&#8203;</td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout two-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 300px" valign=3D"t=
+op" class=3D"w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;Float: l=
+eft;max-width: 320px;min-width: 300px; width: 320px;width: calc(12300px -=
+ 2000%);">
+         =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 61px;" alt=3D"id Software" width=3D"61" src=3D"http://i2.cmai=
+l20.com/ei/i/D0/1B5/9D0/030253/csfinal/id-logo1.png">
+        </div>
+     =20
+          </div>
+        <!--[if (mso)|(IE)]></td><td style=3D"width: 300px" valign=3D"to=
+p" class=3D"w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;Float: l=
+eft;max-width: 320px;min-width: 300px; width: 320px;width: calc(12300px -=
+ 2000%);">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 165px;" alt=3D"Bethesda Softworks" width=3D"165" src=3D"http:=
+//i3.cmail20.com/ei/i/D0/1B5/9D0/030253/csfinal/bethesda_dish.png">
+        </div>
+      </div>
+         =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p style=3D"Margin-top: 0;Margin-bottom: 0;text-align: center;"><sp=
+an style=3D"color:#ffffff">Follow Quake Champions</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout three-col fixed-width" style=3D"Margin: 0 auto=
+;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-=
+word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 200px" valign=3D"t=
+op" class=3D"w160"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;Float: l=
+eft;max-width: 320px;min-width: 200px; width: 320px;width: calc(72200px -=
+ 12000%);">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;">
+      <div class=3D"btn fullwidth btn--ghost btn--medium" style=3D"Margin=
+-bottom: 20px;text-align: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 12px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;border: 1px solid #961a1b;font-family: Ubun=
+tu, sans-serif;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhott=
+d-cijttvud-yk/">Facebook</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-yk/" style=3D"width:=
+158px" arcsize=3D"10%" filled=3D"f" strokecolor=3D"#961A1B" strokeweight=3D=
+"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0px,9px,0px,9=
+px"><center style=3D"font-size:12px;line-height:22px;color:#FFFFFF;font-f=
+amily:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso=
+-text-raise:4px">Facebook</center></v:textbox></v:roundrect><![endif]-->=
+</div>
+    </div>
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 12px;">
+      <div class=3D"btn fullwidth btn--ghost btn--medium" style=3D"text-a=
+lign: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 12px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;border: 1px solid #961a1b;font-family: Ubun=
+tu, sans-serif;border-color: #bb0000;" href=3D"http://bethesdasoftworks.c=
+mail20.com/t/i-l-uhottd-cijttvud-yu/">YouTube</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-yu/" style=3D"width:=
+158px" arcsize=3D"10%" filled=3D"f" strokecolor=3D"#961A1B" strokeweight=3D=
+"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0px,9px,0px,9=
+px"><center style=3D"font-size:12px;line-height:22px;color:#FFFFFF;font-f=
+amily:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso=
+-text-raise:4px">YouTube</center></v:textbox></v:roundrect><![endif]--><=
+/div>
+    </div>
+         =20
+          </div>
+        <!--[if (mso)|(IE)]></td><td style=3D"width: 200px" valign=3D"to=
+p" class=3D"w160"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;Float: l=
+eft;max-width: 320px;min-width: 200px; width: 320px;width: calc(72200px -=
+ 12000%);">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;">
+      <div class=3D"btn fullwidth btn--ghost btn--medium" style=3D"Margin=
+-bottom: 20px;text-align: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 12px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;border: 1px solid #961a1b;font-family: Ubun=
+tu, sans-serif;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhott=
+d-cijttvud-jl/">Twitter</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-jl/" style=3D"width:=
+158px" arcsize=3D"10%" filled=3D"f" strokecolor=3D"#961A1B" strokeweight=3D=
+"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0px,9px,0px,9=
+px"><center style=3D"font-size:12px;line-height:22px;color:#FFFFFF;font-f=
+amily:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso=
+-text-raise:4px">Twitter</center></v:textbox></v:roundrect><![endif]--><=
+/div>
+    </div>
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 12px;">
+      <div class=3D"btn fullwidth btn--ghost btn--medium" style=3D"text-a=
+lign: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 12px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;border: 1px solid #961a1b;font-family: Ubun=
+tu, sans-serif;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhott=
+d-cijttvud-jr/">Twitch.tv</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-jr/" style=3D"width:=
+158px" arcsize=3D"10%" filled=3D"f" strokecolor=3D"#961A1B" strokeweight=3D=
+"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0px,9px,0px,9=
+px"><center style=3D"font-size:12px;line-height:22px;color:#FFFFFF;font-f=
+amily:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso=
+-text-raise:4px">Twitch.tv</center></v:textbox></v:roundrect><![endif]--=
+></div>
+    </div>
+         =20
+          </div>
+        <!--[if (mso)|(IE)]></td><td style=3D"width: 200px" valign=3D"to=
+p" class=3D"w160"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;Float: l=
+eft;max-width: 320px;min-width: 200px; width: 320px;width: calc(72200px -=
+ 12000%);">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;">
+      <div class=3D"btn fullwidth btn--ghost btn--medium" style=3D"Margin=
+-bottom: 20px;text-align: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 12px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;border: 1px solid #961a1b;font-family: Ubun=
+tu, sans-serif;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhott=
+d-cijttvud-jy/">Instagram</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-jy/" style=3D"width:=
+158px" arcsize=3D"10%" filled=3D"f" strokecolor=3D"#961A1B" strokeweight=3D=
+"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0px,9px,0px,9=
+px"><center style=3D"font-size:12px;line-height:22px;color:#FFFFFF;font-f=
+amily:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso=
+-text-raise:4px">Instagram</center></v:textbox></v:roundrect><![endif]--=
+></div>
+    </div>
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 12px;">
+      <div class=3D"btn fullwidth btn--ghost btn--medium" style=3D"text-a=
+lign: center;">
+        <![if !mso]><a style=3D"border-radius: 4px;display: block;font-s=
+ize: 12px;font-weight: bold;line-height: 22px;padding: 10px 20px;text-ali=
+gn: center;text-decoration: none !important;transition: opacity 0.1s ease=
+-in;color: #ffffff !important;border: 1px solid #961a1b;font-family: Ubun=
+tu, sans-serif;" href=3D"http://bethesdasoftworks.cmail20.com/t/i-l-uhott=
+d-cijttvud-jj/">Bethesda.net</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"http://bethesdas=
+oftworks.cmail20.com/t/i-l-uhottd-cijttvud-jj/" style=3D"width:=
+158px" arcsize=3D"10%" filled=3D"f" strokecolor=3D"#961A1B" strokeweight=3D=
+"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0px,9px,0px,9=
+px"><center style=3D"font-size:12px;line-height:22px;color:#FFFFFF;font-f=
+amily:Ubuntu,sans-serif;font-weight:bold;mso-line-height-rule:exactly;mso=
+-text-raise:4px">Bethesda.net</center></v:textbox></v:roundrect><![endif=
+]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+  =
+=
+=
+=
+=
+=
+=
+=
+=
+
+      =
+<div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 63px;" alt=3D"" width=3D"63" src=3D"http://i6.cmail20.com/ei/=
+i/D0/1B5/9D0/030253/csfinal/pegi-provisional-18-de1.jpg">
+        </div>
+     =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+  =
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+=
+
+      =
+<div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+&#1044;&#1072;&#1085;&#1085;&#1086;&#1077; &#1101;&#1083;&#1077;&#1082;&#=
+1090;&#1088;&#1086;&#1085;&#1085;&#1086;&#1077; &#1087;&#1080;&#1089;&#11=
+00;&#1084;&#1086; &#1073;&#1099;&#1083;&#1086; &#1074;&#1099;&#1089;&#108=
+3;&#1072;&#1085;&#1086; &#1085;&#1072; &#1072;&#1076;&#1088;&#1077;&#1089=
+;:&nbsp;=
+defensuer@gmail.com=
+.</span></p><p class=3D"size-12" style=3D"=
+Margin-top: 20px;Margin-bottom: 0;font-size: 12px;line-height: 19px;text-=
+align: center;" lang=3D"x-size-12"><span style=3D"color:#7e7e7e">ZeniMax =
+Media Inc.<br>
+1370 Piccard Drive, Suite 120 &nbsp;| &nbsp;Rockville, MD, 20850, USA</sp=
+an><br>
+<span style=3D"color:#7e7e7e">&#169;2017 Bethesda Softworks, &#1082;&#108=
+6;&#1084;&#1087;&#1072;&#1085;&#1080;&#1103; ZeniMax Media. &#1042;&#1089=
+;&#1077; &#1087;&#1088;&#1072;&#1074;&#1072; &#1089;&#1086;&#1093;&#1088;=
+&#1072;&#1085;&#1077;&#1085;&#1099;.</span></p><p class=3D"size-12" style=
+=3D"Margin-top: 20px;Margin-bottom: 0;font-size: 12px;line-height: 19px;t=
+ext-align: center;" lang=3D"x-size-12"><a style=3D"text-decoration: under=
+line;transition: opacity 0.1s ease-in;color: #7e7e7e;" href=3D"http://bet=
+hesdasoftworks.cmail20.com/t/i-l-uhottd-cijttvud-tr/"><span sty=
+le=3D"color:#7e7e7e">&#1059;&#1089;&#1083;&#1086;&#1074;&#1080;&#1103; &#=
+1086;&#1073;&#1089;&#1083;&#1091;&#1078;&#1080;&#1074;&#1072;&#1085;&#108=
+0;&#1103;</span></a><span style=3D"color:#7e7e7e">=20
+&nbsp;| &nbsp;</span><a style=3D"text-decoration: underline;transition: o=
+pacity 0.1s ease-in;color: #7e7e7e;" href=3D"http://bethesdasoftworks.cma=
+il20.com/t/i-l-uhottd-cijttvud-ty/"><span style=3D"color:#7e7e7=
+e">&#1055;&#1086;&#1083;&#1080;&#1090;&#1080;&#1082;&#1072; &#1082;&#1086=
+;&#1085;&#1092;&#1080;&#1076;&#1077;&#1085;&#1094;&#1080;&#1072;&#1083;&#=
+1100;&#1085;&#1086;&#1089;&#1090;&#1080;</span></a><span style=3D"color:#=
+7e7e7e">&nbsp; | &nbsp;</span><a style=3D"text-decoration: underline;tran=
+sition: opacity 0.1s ease-in;color: #7e7e7e;" href=3D"http://bethesdasoft=
+works.cmail20.com/t/i-l-uhottd-cijttvud-tj/"><span style=3D"col=
+or:#7e7e7e">&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1099;</spa=
+n></a></p><p class=3D"size-12" style=3D"Margin-top: 20px;Margin-bottom: 0=
+;font-size: 12px;line-height: 19px;text-align: center;"=20
+lang=3D"x-size-12"><span style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width" style=3D"Margin: 0 auto;m=
+ax-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16740=
+0px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #1a1a1a;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #1a1a1a;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #1a1a1a;=
+font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;max-widt=
+h: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);">=
+
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 12px;Margin-bottom: 12px;">
+      <p class=3D"size-12" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 12px;line-height: 19px;text-align: center;" lang=3D"x-size-12"><span=
+ style=3D"color:#7e7e7e">=
+=
+=
+</span></p>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"line-height:20px;font-size:20px;">&nbsp;</div>
+ =20
+     =20
+      <div role=3D"contentinfo">
+        <div class=3D"layout email-footer" style=3D"Margin: 0 auto;max-wi=
+dth: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);=
+overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">=
+
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse=
+;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation"><tr class=3D"layout-email-footer"=
+><td style=3D"width: 400px;" valign=3D"top" class=3D"w360"><![endif]-->
+            <div class=3D"column wide" style=3D"text-align: left;font-siz=
+e: 12px;line-height: 19px;color: #7e7e7e;font-family: Ubuntu,sans-serif;F=
+loat: left;max-width: 400px;min-width: 320px; width: 320px;width: calc(80=
+00% - 47600px);">
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-t=
+op: 10px;Margin-bottom: 10px;">
+               =20
+                <div style=3D"font-size: 12px;line-height: 19px;">
+                 =20
+                </div>
+                <div style=3D"font-size: 12px;line-height: 19px;Margin-to=
+p: 18px;">
+                 =20
+                </div>
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td><td style=3D"width: 200px;" valign=3D=
+"top" class=3D"w160"><![endif]-->
+            <div class=3D"column narrow" style=3D"text-align: left;font-s=
+ize: 12px;line-height: 19px;color: #7e7e7e;font-family: Ubuntu,sans-serif=
+;Float: left;max-width: 320px;min-width: 200px; width: 320px;width: calc(=
+72200px - 12000%);">
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-t=
+op: 10px;Margin-bottom: 10px;">
+               =20
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+          </div>
+        </div>
+        <div class=3D"layout one-col email-footer" style=3D"Margin: 0 aut=
+o;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16=
+7400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break=
+-word;">
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse=
+;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation"><tr class=3D"layout-email-footer"=
+><td style=3D"width: 600px;" class=3D"w560"><![endif]-->
+            <div class=3D"column" style=3D"text-align: left;font-size: 12=
+px;line-height: 19px;color: #7e7e7e;font-family: Ubuntu,sans-serif;max-wi=
+dth: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);=
+">
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-t=
+op: 10px;Margin-bottom: 10px;">
+                <div style=3D"font-size: 12px;line-height: 19px;">
+                  <a style=3D"text-decoration: underline;transition: opac=
+ity 0.1s ease-in;color: #7e7e7e;" href=3D"http://bethesdasoftworks.cmail2=
+0.com/t/i-u-uhottd-cijttvud-iu/">Unsubscribe</a>
+                </div>
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+          </div>
+        </div>
+      </div>
+      <div style=3D"line-height:40px;font-size:40px;">&nbsp;</div>
+    </div></td></tr></tbody></table>
+  <img style=3D"overflow: hidden;position: fixed;visibility: hidden !impo=
+rtant;display: block !important;height: 1px !important;width: 1px !import=
+ant;border: 0 !important;margin: 0 !important;padding: 0 !important;" src=
+=3D"https://bethesdasoftworks.cmail20.com/t/i-o-uhottd-cijttvud=
+/o.gif" width=3D"1" height=3D"1" border=3D"0" alt=3D"">
+</body></html>=
+
+
+
+
+--_f8902207-c452-407d-96a2-f03d0a69b373_--

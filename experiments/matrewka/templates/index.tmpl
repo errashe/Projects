@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello, world!</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+	<div id="app">
+		<ul>
+			<li v-for="message in messages">
+				#{message}
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		App = new Vue({
+			delimiters: ["#{", "}"],
+			el: '#app',
+			data: {
+				messages: [],
+				ws: null,
+			},
+			mounted: function() {
+				this.ws = new WebSocket("wss://localhost:8080/ws");
+				this.ws.onmessage = (e) => { this.messages.push(e.data); }
+			}
+		});
+	</script>
+</body>
+</html>
