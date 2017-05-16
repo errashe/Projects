@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/cheggaaa/pb"
+	iconv "github.com/djimenez/iconv-go"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
@@ -94,6 +96,7 @@ func (w *Worker) Do() {
 	var task Task
 	for len(w.Tasks) > 0 {
 		task, w.Tasks = w.Tasks[0], w.Tasks[1:]
+		first.Add(1)
 
 		if task.Attemts >= 5 {
 			// Println("DELETE ", task.Url)
@@ -105,6 +108,7 @@ func (w *Worker) Do() {
 		if err != nil || time.Since(tout) >= 5000*time.Millisecond {
 			task.Attemts++
 			w.Tasks = append(w.Tasks, task)
+			first.Add(-1)
 			// Println("RETRY ", task.Url)
 			continue
 		}
@@ -116,7 +120,17 @@ func (w *Worker) Do() {
 			Println("GOQ", err)
 			continue
 		}
-		w.Results = append(w.Results, Result{strings.TrimSpace(goq.Find("title").Text()), task.Url})
+
+		var tit string = goq.Find("title").Text()
+		var enc string = tit
+		header := strings.Split(res.Header.Get("Content-type"), "; ")
+		if len(header) > 1 {
+			charset := strings.Split(header[1], "=")
+			if len(charset[1]) > 0 {
+				enc, _ = iconv.ConvertString(tit, charset[1], "utf-8")
+			}
+		}
+		w.Results = append(w.Results, Result{strings.TrimSpace(enc), task.Url})
 		// Println("APPEND ", task.Url)
 	}
 }
@@ -128,14 +142,14 @@ var (
 	threads = kingpin.Flag("threads", "number of goroutines").Short('t').Default("10").Int()
 )
 
+var first *pb.ProgressBar
+
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	kingpin.Parse()
 
 	log.SetOutput(ioutil.Discard)
-
-	t := time.Now()
 
 	fileB, err := ioutil.ReadFile(*in)
 	if err != nil {
@@ -149,6 +163,10 @@ func main() {
 
 	l := len(fileD)
 	step := int(math.Ceil(float64(l) / float64(*threads)))
+
+	first = pb.StartNew(l).Prefix("CHECKING")
+	first.ShowTimeLeft = false
+	first.ShowSpeed = true
 
 	var workers []*Worker
 
@@ -165,7 +183,7 @@ func main() {
 		results = append(results, worker.Results...)
 	}
 	ioutil.WriteFile("out.csv", []byte(results.toString()), 0644)
-	Println("COMMON DONE")
+	first.FinishPrint("WORK DONE")
 
 	if *ru {
 
@@ -183,8 +201,4 @@ func main() {
 
 		Println("RU/EN DONE")
 	}
-
-	Println("NOW U CAN CHECK out.csv AND ru.csv/en.csv")
-
-	Println(time.Since(t))
 }
